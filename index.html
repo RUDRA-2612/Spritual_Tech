@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spritual Tech — The Digital Sanctuary & Operating System for Gurus & Seekers</title>
+  <meta name="description" content="All-in-one sacred platform uniting disciples and ashrams: ad-free discourses, automated retreat QR ticketing, gate volunteer scanning, daily sadhana habit tracking, and direct dakshina.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Audio Indicator -->
+  <div id="ambientAudioBar" class="ambient-bar">
+    <div class="ambient-info">
+      <span class="ambient-icon pulse">🕉️</span>
+      <span class="ambient-title" id="ambientTrackName">Digital Sanctuary: 432Hz Cosmic Om Drone</span>
+    </div>
+    <div class="ambient-controls">
+      <button id="toggleAmbientBtn" class="btn-icon" title="Toggle Sacred Ambient Audio">
+        <svg id="ambientPlayIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <input type="range" id="ambientVolume" min="0" max="1" step="0.05" value="0.3" title="Master Volume">
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="logo-symbol">
+          <span class="sacred-glow"></span>
+          🕉️
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">SPRITUAL TECH</span>
+          <span class="logo-sub">Ashram OS & Digital Sanctuary</span>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-links" id="mainNav">
+        <button class="nav-btn active" data-target="view-sanctuary">Sanctuary</button>
+        <button class="nav-btn" data-target="view-discourses">Ad-Free Pravachan</button>
+        <button class="nav-btn" data-target="view-retreats">Retreats & Passes</button>
+        <button class="nav-btn" data-target="view-sadhana">Daily Sadhana</button>
+        <button class="nav-btn" data-target="view-dakshina">Dakshina Seva</button>
+      </nav>
+
+      <!-- Role Switcher & Action -->
+      <div class="header-actions">
+        <div class="role-pill-switch" id="roleSwitch">
+          <button class="pill-option active" id="btnRoleSeeker">Seeker Mode</button>
+          <button class="pill-option" id="btnRoleGuru">
+            <span class="studio-badge">Guru Studio</span>
+          </button>
+        </div>
+        <button class="btn btn-primary" id="openDakshinaModalBtn">
+          <span>Offer Dakshina</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="app-body">
+
+    <!-- ============================================== -->
+    <!-- VIEW 1: SEEKER SANCTUARY (DISCIPLE EXPERIENCE) -->
+    <!-- ============================================== -->
+    <div id="viewSeekerWrapper" class="view-wrapper active">
+      
+      <!-- HERO SECTION -->
+      <section class="sanctuary-hero" id="view-sanctuary">
+        <div class="hero-bg-overlay"></div>
+        <img src="assets/hero.jpg" alt="Sacred Himalayan Meditation Sanctuary" class="hero-bg-img">
+        <div class="hero-content">
+          <div class="sacred-tag">
+            <span class="dot"></span> 100% Ad-Free • Sacred Distraction-Free Space
+          </div>
+          <h1 class="hero-heading">Ek Single Platform.<br><span class="gradient-gold">Sampoorna Spiritual Journey.</span></h1>
+          <p class="hero-desc">
+            5 alag apps ka bikhra hua jhanjhat khatam. Guru ke live satsang, ad-free pravachan, retreat pass with instant QR, aur daily sadhana streak—sab kuch ek shanti-bhare digital vatavaran me.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-gold" id="heroExploreRetreats">
+              <span>Book Upcoming Retreat</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42L16.86 11H5v2z"/></svg>
+            </button>
+            <button class="btn btn-outline" id="heroStartSadhana">
+              <span>Open Daily Sadhana Tracker</span>
+            </button>
+          </div>
+
+          <!-- Live Satsang Status Banner -->
+          <div class="live-satsang-pill" id="liveSatsangBanner">
+            <div class="live-indicator"><span class="pulse-ring"></span>LIVE NOW</div>
+            <div class="live-details">
+              <strong>Maharishi Anand Ji:</strong> "Overcoming the Restless Mind (Chitta Vritti Nirodha)"
+            </div>
+            <button class="btn-sm btn-saffron" id="joinLiveSatsangBtn">Enter Satsang Room</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PILLAR 1: AD-FREE PRAVACHAN & DISCOURSES -->
+      <section class="section-container" id="view-discourses">
+        <div class="section-header">
+          <div class="section-kicker">PROBLEM 3 SOLVED: ZERO BETTING ADS, ZERO CLICKBAIT</div>
+          <h2 class="section-title">Ad-Free Sacred Audio & Pravachan Library</h2>
+          <p class="section-subtitle">
+            YouTube aur social media ke shor-sharabe se mukt. Screen band karke suniye background audio mode me bina kisi commercial disturbance ke.
+          </p>
+        </div>
+
+        <div class="filter-tabs" id="discourseFilters">
+          <button class="tab-chip active" data-category="all">All Discourses</button>
+          <button class="tab-chip" data-category="meditation">Meditation & Dhyana</button>
+          <button class="tab-chip" data-category="bhakti">Bhakti & Kirtan</button>
+          <button class="tab-chip" data-category="vedanta">Upanishad & Vedanta</button>
+          <button class="tab-chip" data-category="qa">Seeker Q&A</button>
+        </div>
+
+        <div class="discourses-grid" id="discoursesGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Background Mode Banner Feature -->
+        <div class="feature-highlight-card">
+          <div class="feat-icon">📱🎧</div>
+          <div class="feat-text">
+            <h3>Background Audio Mode Enabled</h3>
+            <p>Aap screen lock karke bhi discourse sun sakte hain. Koi visual distraction nahi, sirf shuddh vani aur anand.</p>
+          </div>
+          <button class="btn btn-outline-gold" id="btnDemoBackgroundAudio">Try Sacred Audio Player</button>
+        </div>
+      </section>
+
+      <!-- PILLAR 2: UPCOMING RETREATS & QR TICKETING -->
+      <section class="section-container" id="view-retreats">
+        <div class="section-header">
+          <div class="section-kicker">PROBLEM 1 & 2 SOLVED: NO GOOGLE FORMS, NO WHATSAPP SCREENSHOTS</div>
+          <h2 class="section-title">Sacred Retreats & Automated Pass Booking</h2>
+          <p class="section-subtitle">
+            Instant digital QR ticket jo seedhe aapke app me save hota hai. Gate par seamless scan entry aur lifelong sadhana access unlock.
+          </p>
+        </div>
+
+        <div class="retreats-grid" id="retreatsGrid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- User's Existing Passes Bar -->
+        <div class="my-passes-strip" id="userPassesStrip">
+          <div class="strip-header">
+            <h4>🎟️ Your Active Retreat Passes</h4>
+            <span class="badge-subtle" id="userPassCount">1 Pass Active</span>
+          </div>
+          <div class="passes-container" id="activePassesList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- PILLAR 4: DAILY SADHANA & HABIT TRACKER -->
+      <section class="section-container" id="view-sadhana">
+        <div class="section-header">
+          <div class="section-kicker">PROBLEM 4 SOLVED: RETREAT KE BAAD CONNECTION TOOTNE NAHI DENA</div>
+          <h2 class="section-title">Daily Sadhana & Spiritual Discipline Suite</h2>
+          <p class="section-subtitle">
+            Retreat se ghar aane ke baad bhi Guru ki kripa aur daily abhyas jari rakhein. 108 Japa Mala counter, Pranayama box breathing, aur nitya Swadhyaya reflection journal.
+          </p>
+        </div>
+
+        <div class="sadhana-dashboard">
+          <!-- Japa Mala Counter Card -->
+          <div class="sadhana-card japa-card">
+            <div class="card-top">
+              <span class="card-icon">📿</span>
+              <div>
+                <h3>Interactive 108 Japa Mala</h3>
+                <p class="card-meta">Sacred Chanting Beads with Bell Chimes</p>
+              </div>
+            </div>
+
+            <div class="mantra-picker">
+              <label for="mantraSelect">Chanting Mantra:</label>
+              <select id="mantraSelect">
+                <option value="om-namah-shivaya">Om Namah Shivaya (ॐ नमः शिवाय)</option>
+                <option value="gayatri-mantra">Gayatri Mantra (ॐ भूर्भुवः स्वः)</option>
+                <option value="maha-mantra">Hare Krishna Maha Mantra</option>
+                <option value="maha-mrityunjaya">Maha Mrityunjaya Mantra</option>
+                <option value="so-ham">So-Ham (Silent Breath Awareness)</option>
+              </select>
+            </div>
+
+            <!-- Mala Visualizer Ring -->
+            <div class="japa-ring-container">
+              <div class="bead-progress-circle" id="beadCircle">
+                <div class="japa-count-display">
+                  <span class="big-counter" id="japaBeadCount">0</span>
+                  <span class="target-counter">/ 108 Beads</span>
+                  <span class="malas-completed" id="japaMalaCount">0 Malas Completed Today</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="japa-actions">
+              <button class="btn btn-japa" id="btnChantBead">
+                <span>Chant Next Bead (Tap)</span>
+              </button>
+              <button class="btn-sm btn-ghost" id="btnResetMala">Reset Mala</button>
+            </div>
+            <p class="japa-hint">Tip: Tap anywhere on the bead button or press Spacebar to advance beads.</p>
+          </div>
+
+          <!-- Dhyana & Pranayama Breathing Pacer Card -->
+          <div class="sadhana-card breathing-card">
+            <div class="card-top">
+              <span class="card-icon">🧘</span>
+              <div>
+                <h3>Pranayama & Dhyana Visualizer</h3>
+                <p class="card-meta">Box Breathing & Meditation Bell Timer</p>
+              </div>
+            </div>
+
+            <div class="breathing-circle-wrapper">
+              <div class="breathing-ring" id="breathingRing">
+                <div class="breath-label" id="breathInstruction">Press Start to Begin</div>
+                <div class="breath-seconds" id="breathTimerDisplay">4s</div>
+              </div>
+            </div>
+
+            <div class="timer-controls">
+              <button class="btn btn-outline-gold" id="btnToggleBreath">Start Guided Breath</button>
+              <div class="bell-setting">
+                <span>Sound: Temple Bell Chime</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Swadhyaya Reflection Journal -->
+          <div class="sadhana-card journal-card">
+            <div class="card-top">
+              <span class="card-icon">📖</span>
+              <div>
+                <h3>Swadhyaya (Daily Reflection Journal)</h3>
+                <p class="card-meta">Private introspection locked in your device</p>
+              </div>
+            </div>
+
+            <div class="daily-prompt">
+              <span class="prompt-badge">Today's Contemplation</span>
+              <p id="todayPrompt">"What attachment or anxious thought did you surrender to the divine today?"</p>
+            </div>
+
+            <textarea id="journalInput" placeholder="Apne dhyan, vichar aur anubhav yahan likhein..."></textarea>
+            
+            <div class="journal-footer">
+              <span class="saved-status" id="journalStatus">Autosaved locally</span>
+              <button class="btn btn-sm btn-gold" id="btnSaveJournal">Save Reflection</button>
+            </div>
+
+            <div class="past-reflections" id="pastReflectionsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Sadhana Streak Widget -->
+          <div class="sadhana-card streak-card">
+            <div class="card-top">
+              <span class="card-icon">🔥</span>
+              <div>
+                <h3>Lifelong Sadhana Streak</h3>
+                <p class="card-meta">Post-Retreat Discipline Continuity</p>
+              </div>
+            </div>
+
+            <div class="streak-hero">
+              <div class="streak-number" id="streakDays">14</div>
+              <div class="streak-label">Days Consecutive Abhyas</div>
+            </div>
+
+            <div class="streak-calendar-preview">
+              <span class="day-chip done">Mon</span>
+              <span class="day-chip done">Tue</span>
+              <span class="day-chip done">Wed</span>
+              <span class="day-chip done">Thu</span>
+              <span class="day-chip done">Fri</span>
+              <span class="day-chip done">Sat</span>
+              <span class="day-chip active">Sun</span>
+            </div>
+            <p class="streak-quote">"Abhyasena tu kaunteya vairagyena cha grihyate." — Bhagavad Gita</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DAKSHINA & SEVA SECTION -->
+      <section class="section-container" id="view-dakshina">
+        <div class="section-header">
+          <div class="section-kicker">PROBLEM 1 & 2 SOLVED: TRANSPARENT DIRECT SEVA</div>
+          <h2 class="section-title">Sacred Dakshina & Ashram Seva Offerings</h2>
+          <p class="section-subtitle">
+            No messy manual WhatsApp screenshots. Direct, transparent seva to genuine spiritual causes with automated digital receipt.
+          </p>
+        </div>
+
+        <div class="seva-cards-grid">
+          <div class="seva-card">
+            <div class="seva-badge">Mahaprasad</div>
+            <h3>Anna Daan Seva</h3>
+            <p>Feed 100 pilgrims and sadhus visiting the ashram retreat daily.</p>
+            <div class="seva-amount">₹ 1,100 / Seva Slot</div>
+            <button class="btn btn-outline-gold btn-seva" data-cause="Anna Daan Seva" data-amt="1100">Contribute Seva</button>
+          </div>
+
+          <div class="seva-card featured">
+            <div class="seva-badge popular">Most Supported</div>
+            <h3>Ashram Retreat Sponsorship</h3>
+            <p>Sponsor a deserving student or sincere seeker who cannot afford retreat stay.</p>
+            <div class="seva-amount">₹ 2,500 / Seeker</div>
+            <button class="btn btn-gold btn-seva" data-cause="Seeker Retreat Sponsorship" data-amt="2500">Sponsor a Seeker</button>
+          </div>
+
+          <div class="seva-card">
+            <div class="seva-badge">Sanctuary</div>
+            <h3>Gau Seva & Cow Care</h3>
+            <p>Daily fodder, veterinary medical care, and shelter for ashram cows.</p>
+            <div class="seva-amount">₹ 500 / Day</div>
+            <button class="btn btn-outline-gold btn-seva" data-cause="Gau Seva & Cow Care" data-amt="500">Contribute Seva</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- VIEW 2: GURU STUDIO (ASHRAM & VOLUNTEER OS)    -->
+    <!-- ============================================== -->
+    <div id="viewGuruWrapper" class="view-wrapper">
+      
+      <div class="guru-studio-container">
+        <!-- Studio Header -->
+        <div class="studio-topbar">
+          <div>
+            <div class="studio-tag">PROBLEM 2 SOLVED: FULL ASHRAM AUTOMATION</div>
+            <h1 class="studio-title">Guru Studio & Ashram Command Center</h1>
+            <p class="studio-sub">No Excel sheets. No WhatsApp screenshot checking. Direct QR gate entry, automated payouts & zero clerk work.</p>
+          </div>
+          <div class="studio-quick-actions">
+            <button class="btn btn-gold" id="btnOpenScanner">
+              <span>📷 Volunteer Gate Scanner</span>
+            </button>
+            <button class="btn btn-outline" id="btnCreateRetreatModal">
+              <span>+ Launch New Retreat</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">👥</div>
+            <div class="metric-value">1,480</div>
+            <div class="metric-label">Active Disciples (Seekers)</div>
+            <div class="metric-change positive">↑ 24% this month</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🎟️</div>
+            <div class="metric-value">412 / 450</div>
+            <div class="metric-label">Rishikesh Retreat Booked</div>
+            <div class="metric-change positive">91% capacity filled</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">₹</div>
+            <div class="metric-value">₹ 6,85,000</div>
+            <div class="metric-label">Automated Payouts Settled</div>
+            <div class="metric-sub">Zero manual screenshot checks</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🔥</div>
+            <div class="metric-value">84%</div>
+            <div class="metric-label">Post-Retreat Sadhana Retention</div>
+            <div class="metric-sub">Seekers meditating daily at home</div>
+          </div>
+        </div>
+
+        <!-- Management Split Grid -->
+        <div class="studio-split-grid">
+          <!-- Gate Volunteer Scanner Simulator Card -->
+          <div class="studio-card">
+            <div class="card-head">
+              <h3>🚪 Venue Gate Verification Center</h3>
+              <span class="badge-status-green">Gate 1 Active</span>
+            </div>
+            <p class="card-desc">
+              Volunteers scan attendee QR passes at ashram venue entrance. Fast verification eliminates entry crowds and eliminates paper sheets.
+            </p>
+            
+            <div class="scanner-simulation-box">
+              <div class="scan-camera-sim">
+                <div class="scan-laser"></div>
+                <div class="scan-target-corners"></div>
+                <div class="scan-camera-placeholder">
+                  <span>📱 Camera Sensor Live</span>
+                  <small>Hold Attendee QR Pass in front of sensor</small>
+                </div>
+              </div>
+
+              <!-- Quick Barcode Manual Input for Testing -->
+              <div class="manual-scan-group">
+                <input type="text" id="manualTicketInput" placeholder="Enter Ticket Code (e.g. RET-RISHI-9041)">
+                <button class="btn btn-saffron" id="btnManualScanVerify">Verify Entry</button>
+              </div>
+
+              <!-- Scan Verification Result Box -->
+              <div id="scanResultBadge" class="scan-result-card hidden">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-Time Attendee Roster -->
+          <div class="studio-card">
+            <div class="card-head">
+              <h3>📋 Live Checked-In Attendees</h3>
+              <span class="badge-subtle" id="attendeeSummaryBadge">Live Sync</span>
+            </div>
+            <p class="card-desc">Real-time attendee roster updating directly from volunteer gate scanners.</p>
+
+            <div class="roster-table-wrapper">
+              <table class="roster-table">
+                <thead>
+                  <tr>
+                    <th>Pass ID</th>
+                    <th>Disciple Name</th>
+                    <th>Tier</th>
+                    <th>Status</th>
+                    <th>Gate Action</th>
+                  </tr>
+                </thead>
+                <tbody id="rosterTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Automated Finance & Dakshina Ledger -->
+        <div class="studio-card mt-6">
+          <div class="card-head">
+            <h3>💰 Automated Payout Ledger (Direct to Ashram Account)</h3>
+            <span class="badge-subtle">No Middleman Delays</span>
+          </div>
+          <div class="ledger-summary">
+            <div class="ledger-item">
+              <span class="ledger-title">Total Retreat Registrations:</span>
+              <span class="ledger-val">₹ 5,45,000</span>
+            </div>
+            <div class="ledger-item">
+              <span class="ledger-title">Voluntary Dakshina & Seva:</span>
+              <span class="ledger-val">₹ 1,40,000</span>
+            </div>
+            <div class="ledger-item">
+              <span class="ledger-title">Payment Gateway Fee (Direct):</span>
+              <span class="ledger-val">₹ 0 (Direct UPI / NetBanking)</span>
+            </div>
+            <div class="ledger-item highlight">
+              <span class="ledger-title">Net Bank Payout:</span>
+              <span class="ledger-val text-gold">₹ 6,85,000 (Settled)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============================================== -->
+  <!-- MODAL 1: TICKET PURCHASE & INSTANT QR PASS     -->
+  <!-- ============================================== -->
+  <div id="retreatModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="closeRetreatModalBtn">&times;</button>
+      <div id="modalStepBooking">
+        <div class="modal-badge">Retreat Booking</div>
+        <h2 id="modalRetreatTitle">3-Day Silence & Kundalini Awakening Retreat</h2>
+        <p class="modal-loc" id="modalRetreatLocation">📍 Rishikesh Ashram, Ganges Riverbank</p>
+        
+        <div class="tier-selector">
+          <label>Select Seeker Accommodation Tier:</label>
+          <div class="tiers-options">
+            <div class="tier-box selected" data-price="4500" data-name="Standard Sadhak Pass">
+              <span class="tier-name">Standard Sadhak Pass</span>
+              <span class="tier-sub">Satsang entry + Vegetarian Mahaprasad</span>
+              <span class="tier-price">₹ 4,500</span>
+            </div>
+            <div class="tier-box" data-price="8500" data-name="Residential Ashram Stay">
+              <span class="tier-name">Residential Ashram Stay</span>
+              <span class="tier-sub">Ashram room + Meals + Personal Diksha Slot</span>
+              <span class="tier-price">₹ 8,500</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="seekerName">Disciple / Seeker Full Name:</label>
+          <input type="text" id="seekerName" value="Ishvit Bhardwaj" placeholder="Your Full Name">
+        </div>
+
+        <div class="form-group">
+          <label for="seekerPhone">WhatsApp Mobile (For Pass Delivery):</label>
+          <input type="text" id="seekerPhone" value="+91 98765 43210" placeholder="+91 XXXXX XXXXX">
+        </div>
+
+        <div class="booking-total-bar">
+          <div>
+            <span>Total Payable:</span>
+            <strong id="modalTotalAmount">₹ 4,500</strong>
+          </div>
+          <button class="btn btn-gold" id="btnConfirmBooking">Confirm & Generate QR Pass</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: GENERATED QR PASS SUCCESS -->
+      <div id="modalStepSuccess" class="hidden">
+        <div class="pass-success-animation">✨ Pass Generated & Saved!</div>
+        <div class="digital-boarding-pass" id="digitalBoardingPass">
+          <div class="pass-header">
+            <div>
+              <span class="pass-org">SPRITUAL TECH ASHRAM PASS</span>
+              <h3 id="passRetreatName">Rishikesh Silence Retreat</h3>
+            </div>
+            <span class="pass-chip">VERIFIED PASS</span>
+          </div>
+
+          <div class="pass-body">
+            <div class="pass-meta-col">
+              <div class="pass-field">
+                <label>Seeker Name</label>
+                <div id="passAttendeeName">Ishvit Bhardwaj</div>
+              </div>
+              <div class="pass-field">
+                <label>Tier</label>
+                <div id="passTierName">Standard Sadhak Pass</div>
+              </div>
+              <div class="pass-field">
+                <label>Ticket ID</label>
+                <div class="pass-id-code" id="passTicketId">RET-RISHI-9041</div>
+              </div>
+              <div class="pass-field">
+                <label>Status</label>
+                <div class="pass-status-pill">VALID FOR GATE ENTRY</div>
+              </div>
+            </div>
+
+            <!-- Real QR Code Canvas Generated Dynamically -->
+            <div class="pass-qr-col">
+              <canvas id="qrCanvas" width="160" height="160"></canvas>
+              <small>Show this at Ashram Venue Gate</small>
+            </div>
+          </div>
+
+          <div class="pass-footer">
+            <span>Unlocked: Daily Sadhana Tracker & Guru Audio Vani are now permanently unlocked in your app.</span>
+          </div>
+        </div>
+
+        <div class="pass-download-actions">
+          <button class="btn btn-outline-gold" id="btnSavePassToDevice">Save to My Active Passes</button>
+          <button class="btn btn-saffron" id="btnGoToSadhanaSuite">Open Daily Sadhana Tracker</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL 2: LIVE SATSANG INTERACTIVE ROOM         -->
+  <!-- ============================================== -->
+  <div id="satsangModal" class="modal-overlay hidden">
+    <div class="modal-card modal-wide">
+      <button class="modal-close" id="closeSatsangModalBtn">&times;</button>
+      <div class="live-room-container">
+        <div class="live-video-pane">
+          <div class="live-badge-stream">🔴 LIVE SATSANG • 1,248 SEEKERS ONLINE</div>
+          <img src="assets/satsang.jpg" alt="Live Satsang with Guru" class="live-stream-img">
+          
+          <div class="stream-floating-controls">
+            <button class="stream-btn active" id="btnStreamAudio">🔊 Pure Audio (Background Mode)</button>
+            <button class="stream-btn" id="btnFlowerPranam">🌸 Send Pushpanjali (Flower Offering)</button>
+            <button class="stream-btn" id="btnStreamBells">🔔 Ring Temple Bell</button>
+          </div>
+        </div>
+
+        <div class="live-interaction-pane">
+          <div class="chat-header">
+            <h4>🕉️ Seeker Reflections & Pranams</h4>
+            <span class="chat-sub">Ad-Free Sacred Space</span>
+          </div>
+          <div class="chat-messages" id="liveChatMessages">
+            <div class="chat-msg">
+              <span class="chat-user">Rudra (Volunteer):</span>
+              <span class="chat-text">Pranam Guruji! Welcome all sadhaks joining from Delhi, Rishikesh, and abroad.</span>
+            </div>
+            <div class="chat-msg">
+              <span class="chat-user">Meera Sharma:</span>
+              <span class="chat-text">Guruji, how to silence anxious thoughts during morning Brahma Muhurta?</span>
+            </div>
+            <div class="chat-msg">
+              <span class="chat-user">Ishvit Bhardwaj:</span>
+              <span class="chat-text">Charan Sparsh Guruji 🙏 Listening with complete devotion.</span>
+            </div>
+          </div>
+          <div class="chat-input-bar">
+            <input type="text" id="liveChatInput" placeholder="Share your pranam or reflection...">
+            <button class="btn-sm btn-gold" id="btnSendChat">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL 3: DAKSHINA SEVA CONTRIBUTIONS           -->
+  <!-- ============================================== -->
+  <div id="dakshinaModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="closeDakshinaModalBtn">&times;</button>
+      <div class="modal-badge">Transparent Guru Dakshina</div>
+      <h2>Offer Voluntary Dakshina & Seva</h2>
+      <p class="modal-loc">100% of contributions are routed directly to ashram anna daan, gau seva, and spiritual education.</p>
+      
+      <div class="form-group mt-4">
+        <label>Selected Seva Purpose:</label>
+        <select id="dakshinaPurposeSelect">
+          <option value="Anna Daan Seva (Mahaprasad for 100 Sadhus)">Anna Daan Seva (Mahaprasad for 100 Sadhus)</option>
+          <option value="Seeker Retreat Sponsorship">Seeker Retreat Sponsorship (Deserving Student)</option>
+          <option value="Gau Seva & Cow Care">Gau Seva & Cow Care</option>
+          <option value="General Guru Dakshina">General Guru Dakshina & Ashram Building</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Select Dakshina Amount (₹):</label>
+        <div class="amount-chips">
+          <button class="amt-chip active" data-amt="500">₹ 500</button>
+          <button class="amt-chip" data-amt="1100">₹ 1,100</button>
+          <button class="amt-chip" data-amt="2500">₹ 2,500</button>
+          <button class="amt-chip" data-amt="5100">₹ 5,100</button>
+        </div>
+        <input type="number" id="customDakshinaInput" value="500" placeholder="Or enter custom amount in ₹">
+      </div>
+
+      <div class="form-group">
+        <label>Seeker Name for Prasad Sankalp:</label>
+        <input type="text" id="sankalpName" value="Ishvit Bhardwaj">
+      </div>
+
+      <div class="booking-total-bar">
+        <div>
+          <span>Total Seva:</span>
+          <strong id="dakshinaTotalDisplay">₹ 500</strong>
+        </div>
+        <button class="btn btn-gold" id="btnSubmitDakshina">Complete Digital Dakshina</button>
+      </div>
+
+      <div id="dakshinaReceiptSuccess" class="receipt-success-box hidden">
+        <div class="receipt-icon">🕉️</div>
+        <h3>Dakshina Sankalp Completed</h3>
+        <p>Aapka seva yogdaan direct ashram account me submit ho gaya hai. Digital tax-exempt receipt WhatsApp par bhej di gayi hai.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h4>SPRITUAL TECH</h4>
+        <p>Digital Sanctuary & Operating System for Gurus, Ashrams & Disciples.</p>
+      </div>
+      <div class="footer-links">
+        <span>© 2026 Spritual Tech • Founded by RUDRA-2612 & Ishvit-Bhardwaj</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
