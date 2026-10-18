@@ -1996,6 +1996,8 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
 }
 
 .modal-overlay.hidden {
@@ -2013,7 +2015,8 @@ h1, h2, h3, h4 {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--gold-glow);
   max-height: 90vh;
   overflow-y: auto;
-  animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  animation: modalScale 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-card.modal-wide {

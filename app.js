@@ -623,21 +623,21 @@ function setupGuruStudio() {
   const btnCancelCreate = document.getElementById('btnCancelCreateRetreat');
   const btnSubmitNew = document.getElementById('btnSubmitNewRetreat');
 
-  if (btnCreateModal && createModal) {
+  if (btnCreateModal) {
     btnCreateModal.addEventListener('click', () => {
-      createModal.classList.remove('hidden');
+      openModal('createRetreatModal');
     });
   }
 
-  if (closeCreateModalBtn && createModal) {
+  if (closeCreateModalBtn) {
     closeCreateModalBtn.addEventListener('click', () => {
-      createModal.classList.add('hidden');
+      closeModal('createRetreatModal');
     });
   }
 
-  if (btnCancelCreate && createModal) {
+  if (btnCancelCreate) {
     btnCancelCreate.addEventListener('click', () => {
-      createModal.classList.add('hidden');
+      closeModal('createRetreatModal');
     });
   }
 
@@ -663,7 +663,7 @@ function setupGuruStudio() {
       });
 
       renderRetreats();
-      createModal.classList.add('hidden');
+      closeModal('createRetreatModal');
       audioApp.playSingingBowl();
       showToast(`✨ "${title}" successfully published to Sanctuary retreats!`);
     });
@@ -817,7 +817,7 @@ function openRetreatBookingModal(retreat) {
   document.getElementById('modalRetreatLocation').textContent = retreat.location;
   document.getElementById('modalTotalAmount').textContent = `₹ ${retreat.price.toLocaleString('en-IN')}`;
 
-  modal.classList.remove('hidden');
+  openModal('retreatModal');
 }
 
 function renderUserPasses() {
@@ -936,7 +936,7 @@ function showPassQRModal(ticketCode, name, retreatName, tierName) {
   document.getElementById('passTicketId').textContent = ticketCode;
 
   drawSacredQRCode('qrCanvas', ticketCode);
-  modal.classList.remove('hidden');
+  openModal('retreatModal');
 }
 
 // ---------------------------------------------------------------------------
@@ -1171,13 +1171,74 @@ function setupScannerSimulation() {
 }
 
 // ---------------------------------------------------------------------------
-// 6. MODALS SETUP (BOOKING, SATSANG, DAKSHINA)
+// 6. GLOBAL UNIFIED MODAL SYSTEM (Click Outside, Escape Key, Back Gesture)
 // ---------------------------------------------------------------------------
-function setupModals() {
-  // Booking modal close
-  document.getElementById('closeRetreatModalBtn').addEventListener('click', () => {
-    document.getElementById('retreatModal').classList.add('hidden');
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+
+  // Push state to browser history so touchpad swipe back or back button closes modal smoothly
+  history.pushState({ modalOpen: modalId }, '', window.location.pathname + window.location.search);
+}
+
+function closeModal(modalOrId, fromPopState = false) {
+  const modal = typeof modalOrId === 'string' ? document.getElementById(modalOrId) : modalOrId;
+  if (!modal || modal.classList.contains('hidden')) return;
+
+  modal.classList.add('hidden');
+
+  // If no other modal is open, restore page scroll
+  const anyOpen = document.querySelector('.modal-overlay:not(.hidden)');
+  if (!anyOpen) {
+    document.body.style.overflow = '';
+  }
+
+  // If closed by user click/key and history state is this modal, revert state
+  if (!fromPopState && history.state && history.state.modalOpen) {
+    history.back();
+  }
+}
+
+function closeAllModals(fromPopState = false) {
+  document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(m => {
+    closeModal(m, fromPopState);
   });
+}
+
+function setupModals() {
+  // Global Click Outside (Backdrop click closes modal)
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeModal(overlay);
+      }
+    });
+  });
+
+  // Global Escape Key to close any open modal
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllModals();
+    }
+  });
+
+  // Global PopState: Touchpad swipe back / browser back button closes modal smoothly
+  window.addEventListener('popstate', (e) => {
+    const openModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
+    if (openModals.length > 0) {
+      closeAllModals(true);
+    }
+  });
+
+  // Booking modal close button
+  const closeRetreatBtn = document.getElementById('closeRetreatModalBtn');
+  if (closeRetreatBtn) {
+    closeRetreatBtn.addEventListener('click', () => {
+      closeModal('retreatModal');
+    });
+  }
 
   // Tier selection in booking modal
   document.querySelectorAll('.tier-box').forEach(box => {
@@ -1185,56 +1246,67 @@ function setupModals() {
       document.querySelectorAll('.tier-box').forEach(b => b.classList.remove('selected'));
       box.classList.add('selected');
       const price = parseInt(box.getAttribute('data-price'), 10);
-      document.getElementById('modalTotalAmount').textContent = `₹ ${price.toLocaleString('en-IN')}`;
+      const totalDisplay = document.getElementById('modalTotalAmount');
+      if (totalDisplay) totalDisplay.textContent = `₹ ${price.toLocaleString('en-IN')}`;
     });
   });
 
   // Booking confirm button
-  document.getElementById('btnConfirmBooking').addEventListener('click', () => {
-    const name = document.getElementById('seekerName').value || 'Ishvit Bhardwaj';
-    const selectedTierBox = document.querySelector('.tier-box.selected');
-    const tierName = selectedTierBox ? selectedTierBox.getAttribute('data-name') : 'Standard Sadhak Pass';
-    const retreat = selectedRetreatForBooking;
+  const confirmBtn = document.getElementById('btnConfirmBooking');
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      const name = document.getElementById('seekerName')?.value || 'Ishvit Bhardwaj';
+      const selectedTierBox = document.querySelector('.tier-box.selected');
+      const tierName = selectedTierBox ? selectedTierBox.getAttribute('data-name') : 'Standard Sadhak Pass';
+      const retreat = selectedRetreatForBooking;
 
-    // Generate ticket ID
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const newTicketId = `${retreat.codePrefix}-${randomSuffix}`;
+      // Generate ticket ID
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      const newTicketId = `${retreat.codePrefix}-${randomSuffix}`;
 
-    // Add to attendee roster
-    ATTENDEE_ROSTER.unshift({
-      id: newTicketId,
-      name: name,
-      tier: tierName,
-      status: 'Booked',
-      gate: 'Gate 1'
+      // Add to attendee roster
+      ATTENDEE_ROSTER.unshift({
+        id: newTicketId,
+        name: name,
+        tier: tierName,
+        status: 'Booked',
+        gate: 'Gate 1'
+      });
+      renderRoster();
+
+      // Show generated QR pass
+      audioApp.playSingingBowl();
+      showPassQRModal(newTicketId, name, retreat.title, tierName);
     });
-    renderRoster();
-
-    // Show generated QR pass
-    audioApp.playSingingBowl();
-    showPassQRModal(newTicketId, name, retreat.title, tierName);
-  });
+  }
 
   // Save pass button
-  document.getElementById('btnSavePassToDevice').addEventListener('click', () => {
-    const code = document.getElementById('passTicketId').textContent;
-    let savedPasses = JSON.parse(localStorage.getItem('spritual_tech_passes') || '[]');
-    savedPasses.push({
-      id: code,
-      title: document.getElementById('passRetreatName').textContent,
-      location: 'Rishikesh Ganges Ashram',
-      dates: 'Upcoming',
-      tier: document.getElementById('passTierName').textContent
+  const savePassBtn = document.getElementById('btnSavePassToDevice');
+  if (savePassBtn) {
+    savePassBtn.addEventListener('click', () => {
+      const code = document.getElementById('passTicketId')?.textContent;
+      let savedPasses = JSON.parse(localStorage.getItem('spritual_tech_passes') || '[]');
+      savedPasses.push({
+        id: code,
+        title: document.getElementById('passRetreatName')?.textContent || 'Retreat',
+        location: 'Rishikesh Ganges Ashram',
+        dates: 'Upcoming',
+        tier: document.getElementById('passTierName')?.textContent || 'Standard Sadhak Pass'
+      });
+      localStorage.setItem('spritual_tech_passes', JSON.stringify(savedPasses));
+      renderUserPasses();
+      showToast('✨ Pass saved to your Active Passes! Accessible anytime offline.');
     });
-    localStorage.setItem('spritual_tech_passes', JSON.stringify(savedPasses));
-    renderUserPasses();
-    alert('✨ Pass saved to your Active Passes! You can access it anytime offline.');
-  });
+  }
 
-  document.getElementById('btnGoToSadhanaSuite').addEventListener('click', () => {
-    document.getElementById('retreatModal').classList.add('hidden');
-    document.getElementById('view-sadhana').scrollIntoView({ behavior: 'smooth' });
-  });
+  const goSadhanaBtn = document.getElementById('btnGoToSadhanaSuite');
+  if (goSadhanaBtn) {
+    goSadhanaBtn.addEventListener('click', () => {
+      closeModal('retreatModal');
+      const sadhanaSection = document.getElementById('view-sadhana');
+      if (sadhanaSection) sadhanaSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -1248,14 +1320,18 @@ function setupLiveSatsangRoom() {
   const sendChatBtn = document.getElementById('btnSendChat');
   const chatMessages = document.getElementById('liveChatMessages');
 
-  bannerBtn.addEventListener('click', () => {
-    satsangModal.classList.remove('hidden');
-    audioApp.startOmDrone();
-  });
+  if (bannerBtn) {
+    bannerBtn.addEventListener('click', () => {
+      openModal('satsangModal');
+      audioApp.startOmDrone();
+    });
+  }
 
-  closeBtn.addEventListener('click', () => {
-    satsangModal.classList.add('hidden');
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeModal('satsangModal');
+    });
+  }
 
   function sendChat() {
     const msg = chatInput.value.trim();
@@ -1314,14 +1390,18 @@ function setupDakshinaLogic() {
   const submitBtn = document.getElementById('btnSubmitDakshina');
   const successBox = document.getElementById('dakshinaReceiptSuccess');
 
-  openBtn.addEventListener('click', () => {
-    dakshinaModal.classList.remove('hidden');
-    successBox.classList.add('hidden');
-  });
+  if (openBtn) {
+    openBtn.addEventListener('click', () => {
+      openModal('dakshinaModal');
+      if (successBox) successBox.classList.add('hidden');
+    });
+  }
 
-  closeBtn.addEventListener('click', () => {
-    dakshinaModal.classList.add('hidden');
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeModal('dakshinaModal');
+    });
+  }
 
   // Seva buttons from Seva Section
   document.querySelectorAll('.btn-seva').forEach(btn => {
@@ -1331,11 +1411,11 @@ function setupDakshinaLogic() {
       
       const select = document.getElementById('dakshinaPurposeSelect');
       if (select) select.value = cause;
-      customInput.value = amt;
-      totalDisplay.textContent = `₹ ${parseInt(amt, 10).toLocaleString('en-IN')}`;
+      if (customInput) customInput.value = amt;
+      if (totalDisplay) totalDisplay.textContent = `₹ ${parseInt(amt, 10).toLocaleString('en-IN')}`;
 
-      dakshinaModal.classList.remove('hidden');
-      successBox.classList.add('hidden');
+      openModal('dakshinaModal');
+      if (successBox) successBox.classList.add('hidden');
     });
   });
 
