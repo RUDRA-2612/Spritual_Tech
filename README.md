@@ -1,7 +1,6 @@
 # 🕉️ Spritual Tech
 
-> **Digital Sanctuary & Operating System for Gurus, Ashrams & Disciples**  
-> *A collaborative project by [RUDRA-2612](https://github.com/RUDRA-2612) and [Ishvit-Bhardwaj](https://github.com/Ishvit-Bhardwaj).*
+> **Digital Sanctuary & Operating System for Gurus, Ashrams & Disciples**
 
 [![Status](https://img.shields.io/badge/Status-Active%20Development-success?style=for-the-badge)](https://github.com/RUDRA-2612/Spritual_Tech)
 [![Tech Stack](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20Vanilla%20JS-orange?style=for-the-badge)](https://github.com/RUDRA-2612/Spritual_Tech)
@@ -113,12 +112,6 @@ Open your browser and navigate to:
 http://localhost:3000/
 ```
 
----
-
-## 👥 Contributors & Core Team
-
-- **[RUDRA-2612](https://github.com/RUDRA-2612)** — Project Lead & Architecture
-- **[Ishvit-Bhardwaj](https://github.com/Ishvit-Bhardwaj)** — Co-Founder & Development
 
 ---
 

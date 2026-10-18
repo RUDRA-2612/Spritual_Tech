@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * SPRITUAL TECH — ASHRAM OPERATING SYSTEM & DIGITAL SANCTUARY
- * Co-Founded by RUDRA-2612 & Ishvit-Bhardwaj
+ * Modern Vedic Spiritual Ecosystem
  * ============================================================================
  */
 
