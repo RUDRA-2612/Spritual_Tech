@@ -1072,9 +1072,9 @@ function applyUserRole(role, notify = true) {
     if (seekerWrapper) seekerWrapper.classList.add('active');
     if (avatar) avatar.textContent = '🧘';
     if (roleTag) roleTag.textContent = 'Disciple Mode';
-    if (nameDisplay) nameDisplay.textContent = 'Ishvit Bhardwaj';
+    if (nameDisplay) nameDisplay.textContent = 'Rudra';
     if (mainNav) mainNav.style.display = 'flex';
-    if (notify) showToast('🧘 Welcome to Disciple Sanctuary: Ishvit Bhardwaj');
+    if (notify) showToast('🧘 Welcome to Disciple Sanctuary: Rudra');
   }
 
   closeRoleGateModal();
@@ -1739,7 +1739,7 @@ function renderUserPasses() {
   document.querySelectorAll('.btn-view-qr-pass').forEach(btn => {
     btn.addEventListener('click', () => {
       const code = btn.getAttribute('data-code');
-      showPassQRModal(code, 'Ishvit Bhardwaj', 'Rishikesh Silence Retreat', 'Standard Seeker Pass');
+      showPassQRModal(code, 'Rudra', 'Rishikesh Silence Retreat', 'Standard Seeker Pass');
     });
   });
 }
@@ -2152,7 +2152,7 @@ function setupModals() {
   const confirmBtn = document.getElementById('btnConfirmBooking');
   if (confirmBtn) {
     confirmBtn.addEventListener('click', () => {
-      const name = document.getElementById('seekerName')?.value || 'Ishvit Bhardwaj';
+      const name = document.getElementById('seekerName')?.value || 'Rudra';
       const selectedTierBox = document.querySelector('.tier-box.selected');
       const tierName = selectedTierBox ? selectedTierBox.getAttribute('data-name') : 'Standard Seeker Pass';
       const retreat = selectedRetreatForBooking;
@@ -2245,7 +2245,7 @@ function setupLiveSatsangRoom() {
     const div = document.createElement('div');
     div.className = 'chat-msg';
     div.innerHTML = `
-      <span class="chat-user">Ishvit Bhardwaj:</span>
+      <span class="chat-user">Rudra:</span>
       <span class="chat-text">${msg}</span>
     `;
     chatMessages.appendChild(div);
