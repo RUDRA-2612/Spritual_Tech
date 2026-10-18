@@ -3477,40 +3477,40 @@ h1, h2, h3, h4 {
    ROLE GATE ENTRANCE MODAL (GURU OR DISCIPLE)
    ========================================================================== */
 .role-gate-card {
-  max-width: 820px !important;
-  width: 94% !important;
+  max-width: 560px !important;
+  width: 92% !important;
   background: linear-gradient(180deg, #1b0e06 0%, #0d0603 100%) !important;
   border: 1px solid rgba(251, 146, 60, 0.4) !important;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(234, 88, 12, 0.2) !important;
   text-align: center;
-  padding: 36px 32px !important;
+  padding: 36px 28px !important;
 }
 
 .role-gate-desc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  margin: 6px auto 26px;
-  max-width: 580px;
+  margin: 6px auto 22px;
+  max-width: 480px;
 }
 
 .role-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  gap: 18px;
   margin-top: 10px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 600px) {
   .role-cards-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .role-selection-card {
-  background: rgba(26, 13, 6, 0.75);
+  background: rgba(26, 13, 6, 0.8);
   border: 1px solid rgba(254, 215, 170, 0.16);
   border-radius: var(--radius-lg);
-  padding: 26px 22px;
+  padding: 28px 20px 22px 20px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3534,9 +3534,9 @@ h1, h2, h3, h4 {
 
 .role-selection-card:hover {
   border-color: var(--orange-400);
-  background: rgba(38, 19, 9, 0.9);
+  background: rgba(38, 19, 9, 0.95);
   transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(234, 88, 12, 0.25);
+  box-shadow: 0 16px 36px rgba(234, 88, 12, 0.28);
 }
 
 .role-selection-card:hover::before {
@@ -3558,40 +3558,17 @@ h1, h2, h3, h4 {
 
 .role-selection-card h3 {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 4px;
 }
 
 .role-card-hindi {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--orange-300);
   font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.role-card-info {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
   margin-bottom: 18px;
-  text-align: center;
-}
-
-.role-card-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
-  text-align: left;
-  width: 100%;
-  font-size: 0.78rem;
-  color: var(--orange-100);
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  border-top: 1px solid rgba(254, 215, 170, 0.1);
-  padding-top: 14px;
 }
 
 .btn-enter-role {
