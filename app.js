@@ -1247,7 +1247,60 @@ function showToast(message) {
 }
 
 function setupGuruStudio() {
-  // 1. Metric Cards Smooth Jump Handlers
+  // 1. Core 4 Questions Metric Cards Smooth Jump Handlers
+  const cardViews = document.getElementById('guruCardViews');
+  if (cardViews) {
+    cardViews.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('panelSatsangViews');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 35px rgba(234, 88, 12, 0.45)';
+        setTimeout(() => el.style.boxShadow = '', 1600);
+      }
+    });
+  }
+
+  const cardPopularity = document.getElementById('guruCardPopularity');
+  if (cardPopularity) {
+    cardPopularity.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('panelContentPopularity');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+        setTimeout(() => el.style.boxShadow = '', 1600);
+      }
+    });
+  }
+
+  const cardTickets = document.getElementById('guruCardTickets');
+  if (cardTickets) {
+    cardTickets.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('sectionGuruRetreats');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 35px rgba(234, 88, 12, 0.45)';
+        setTimeout(() => el.style.boxShadow = '', 1600);
+      }
+    });
+  }
+
+  const cardFollowers = document.getElementById('guruCardFollowers');
+  if (cardFollowers) {
+    cardFollowers.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('panelFollowersReach') || document.getElementById('sectionGuruDisciples');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 35px rgba(249, 115, 22, 0.45)';
+        setTimeout(() => el.style.boxShadow = '', 1600);
+      }
+    });
+  }
+
+  // Backward compatible handlers
   const cardDisciples = document.getElementById('guruCardDisciples');
   if (cardDisciples) {
     cardDisciples.addEventListener('click', () => {

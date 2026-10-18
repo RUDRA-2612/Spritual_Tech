@@ -647,76 +647,206 @@
           </div>
         </div>
 
-        <!-- Interactive Metric Stat Cards (Click any card to jump directly to its section) -->
+        <!-- ========================================================================= -->
+        <!-- THE 4 CORE GURU DASHBOARD KPI CARDS (Answering User's 4 Core Questions)  -->
+        <!-- ========================================================================= -->
         <div class="metrics-grid">
-          <div class="metric-card clickable" id="guruCardDisciples" title="Click to jump to Disciples Directory">
+          <!-- 1. Satsangs pe kaise views aa rhe hai -->
+          <div class="metric-card clickable" id="guruCardViews" title="Click to view full Satsang Views Velocity">
             <div class="metric-card-header">
-              <div class="metric-icon">👥</div>
-              <span class="click-hint">Jump to Disciples ↓</span>
+              <div class="metric-icon">👁️</div>
+              <span class="click-hint">Viewership Details ↓</span>
             </div>
-            <div class="metric-value">1,480</div>
-            <div class="metric-label">Active Disciples (Seekers)</div>
-            <div class="metric-change positive">↑ 24% this month • 890 daily sadhaks</div>
+            <div class="metric-value">1,42,500</div>
+            <div class="metric-label">सत्संग व्यूज (Total Satsang Views)</div>
+            <div class="metric-change positive">↑ 18.4% इस हफ्ते • 4,200 दैनिक औसत • 68% बैकग्राउंड ऑडियो</div>
           </div>
 
-          <div class="metric-card clickable" id="guruCardRetreat" title="Click to jump to Rishikesh Retreat & Capacity">
+          <!-- 2. Logo ko kya pasand aa rha hai -->
+          <div class="metric-card clickable" id="guruCardPopularity" title="Click to view Content Popularity Rankings">
+            <div class="metric-card-header">
+              <div class="metric-icon">💖</div>
+              <span class="click-hint">Top Content Loved ↓</span>
+            </div>
+            <div class="metric-value">98.2% Loved</div>
+            <div class="metric-label">लोगों की पसंद (Audience Favorite)</div>
+            <div class="metric-change positive">Top: ध्यान व मौन (44%) • 34,500 पुष्पांजलि • 92% वॉच-टाइम</div>
+          </div>
+
+          <!-- 3. Kitne tickets uske bik gaye hai -->
+          <div class="metric-card clickable" id="guruCardTickets" title="Click to view Retreat Ticket Sales & Capacity">
             <div class="metric-card-header">
               <div class="metric-icon">🎟️</div>
-              <span class="click-hint">Jump to Retreats ↓</span>
+              <span class="click-hint">Ticket Sales Status ↓</span>
             </div>
             <div class="metric-value" id="statRishikeshBooked">412 / 450</div>
-            <div class="metric-label">Rishikesh Retreat Booked</div>
-            <div class="metric-change positive" id="statRishikeshCapText">91% capacity filled • 38 slots left</div>
+            <div class="metric-label">टिकट्स बिके (Rishikesh Tickets Sold)</div>
+            <div class="metric-change positive" id="statRishikeshCapText">91.5% Capacity Filled • मात्र 38 सीटें बाकी</div>
           </div>
 
-          <div class="metric-card clickable" id="guruCardScanner" title="Click to jump to Gate Volunteer Scanner">
+          <!-- 4. Guru ke kitne followers hai -->
+          <div class="metric-card clickable" id="guruCardFollowers" title="Click to view Followers & Global Demographics">
             <div class="metric-card-header">
-              <div class="metric-icon">🚪</div>
-              <span class="click-hint">Jump to Scanner ↓</span>
+              <div class="metric-icon">👥</div>
+              <span class="click-hint">Followers Reach ↓</span>
             </div>
-            <div class="metric-value">Gate 1 Live</div>
-            <div class="metric-label">Volunteer Scanner & Check-in</div>
-            <div class="metric-change positive">Instant QR Validation • Zero Wait</div>
-          </div>
-
-          <div class="metric-card clickable" id="guruCardLedger" title="Click to jump to Ashram Bank Ledger">
-            <div class="metric-card-header">
-              <div class="metric-icon">💰</div>
-              <span class="click-hint">Jump to Ledger ↓</span>
-            </div>
-            <div class="metric-value">₹ 6,85,000</div>
-            <div class="metric-label">Direct Bank Payouts Settled</div>
-            <div class="metric-change positive">₹ 0 middleman cut • Direct to Ashram</div>
+            <div class="metric-value">48,200</div>
+            <div class="metric-label">गुरु के फॉलोअर्स (Lineage Devotees)</div>
+            <div class="metric-change positive">↑ 3,840 नए इस महीने • 1,480 नित्य साधक (Disciples)</div>
           </div>
         </div>
 
-        <!-- SECTION 0: SATSANG VIEWERSHIP & DEVOTEE ANALYTICS (Requested in Audio 1) -->
-        <div class="studio-card mb-6" id="sectionSatsangAnalytics">
+        <!-- ========================================================================= -->
+        <!-- CORE QUESTION 1: SATSANG PE KAISE VIEWS AA RAHE HAIN (Viewership Channels)-->
+        <!-- ========================================================================= -->
+        <div class="studio-card mb-6" id="panelSatsangViews">
           <div class="panel-header-bar">
             <div>
-              <span class="badge-saffron">Satsang Analytics & Devotee Engagement</span>
-              <h3>👁️ Satsang Viewership, Content Popularity & Followers</h3>
-              <p>Real-time analytics on how disciples are receiving and watching your recorded and live pravachans.</p>
+              <span class="badge-saffron">Analytics Pillar 1 • Viewership Velocity</span>
+              <h3>👁️ Satsang Viewership Trends: सत्संग पे कैसे व्यूज आ रहे हैं?</h3>
+              <p>Real-time analytics on how disciples watch your pravachans: Live streams, locked-screen background audio, and video archives.</p>
             </div>
             <div class="panel-stat-pills">
-              <span class="stat-pill"><strong>142,500</strong> Total Views</span>
-              <span class="stat-pill"><strong>48,200</strong> Followers</span>
+              <span class="stat-pill"><strong>1,42,500</strong> Total Views</span>
+              <span class="stat-pill"><strong>38.4 min</strong> Avg Watch Time</span>
+              <span class="stat-pill"><strong>4,200+</strong> Daily Seekers</span>
+            </div>
+          </div>
+
+          <!-- 7-Day Velocity Bar Graph -->
+          <div class="views-chart-container">
+            <div class="chart-header">
+              <span class="chart-title">Weekly Viewership Trajectory (Past 7 Days Growth)</span>
+              <span class="chart-legend">📈 Peak streaming: ब्रह्म मुहूर्त (5:00 AM) एवं संध्या आरती (6:30 PM)</span>
+            </div>
+            <div class="views-bar-chart">
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 52%;" data-val="16.2k"></div>
+                <span class="bar-day">Mon</span>
+                <span class="bar-val">16.2k</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 59%;" data-val="18.5k"></div>
+                <span class="bar-day">Tue</span>
+                <span class="bar-val">18.5k</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 64%;" data-val="19.8k"></div>
+                <span class="bar-day">Wed</span>
+                <span class="bar-val">19.8k</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 70%;" data-val="21.4k"></div>
+                <span class="bar-day">Thu</span>
+                <span class="bar-val">21.4k</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 78%;" data-val="24.1k"></div>
+                <span class="bar-day">Fri</span>
+                <span class="bar-val">24.1k</span>
+              </div>
+              <div class="bar-col highlight">
+                <div class="bar-fill" style="height: 92%;" data-val="29.5k"></div>
+                <span class="bar-day">Sat</span>
+                <span class="bar-val">29.5k</span>
+              </div>
+              <div class="bar-col highlight">
+                <div class="bar-fill" style="height: 100%;" data-val="32.8k"></div>
+                <span class="bar-day">Sun</span>
+                <span class="bar-val">32.8k</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Traffic Source Breakdown Cards -->
+          <div class="traffic-channels-grid">
+            <div class="channel-card">
+              <div class="channel-top">
+                <span class="channel-icon">🔴</span>
+                <span class="channel-pct">42% (59,850 Views)</span>
+              </div>
+              <h4>Live Ashram Satsang Streams</h4>
+              <p>Seekers joining real-time broadcasts. 52 min avg engagement with interactive pushpanjali flower offerings & questions.</p>
+              <div class="channel-meta">
+                <span>Peak: 1,248 concurrent</span>
+                <span class="badge-growth positive">↑ 31% Growth</span>
+              </div>
+            </div>
+
+            <div class="channel-card">
+              <div class="channel-top">
+                <span class="channel-icon">🎧</span>
+                <span class="channel-pct">34% (48,450 Views)</span>
+              </div>
+              <h4>Background Audio Mode Pravachans</h4>
+              <p>Disciples listening with screen off during morning walk, cooking, or silent meditation. Zero interruption & high retention.</p>
+              <div class="channel-meta">
+                <span>Avg: 41 min session</span>
+                <span class="badge-growth positive">↑ 44% Growth</span>
+              </div>
+            </div>
+
+            <div class="channel-card">
+              <div class="channel-top">
+                <span class="channel-icon">📼</span>
+                <span class="channel-pct">24% (34,200 Views)</span>
+              </div>
+              <h4>Recorded Video Archives & Q&A</h4>
+              <p>Deep Upanishad study and verse-by-verse Gita re-watches. High Swadhyaya journal notes and repeat bookmarking.</p>
+              <div class="channel-meta">
+                <span>8,900 notes saved</span>
+                <span class="badge-growth positive">↑ 16% Growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- CORE QUESTION 2: LOGO KO KYA PASAND AA RHA HAI (Content Preferences)      -->
+        <!-- ========================================================================= -->
+        <div class="studio-card mb-6" id="panelContentPopularity">
+          <div class="panel-header-bar">
+            <div>
+              <span class="badge-saffron">Analytics Pillar 2 • Content Engagement</span>
+              <h3>💖 Content Popularity: लोगों को क्या पसंद आ रहा है?</h3>
+              <p>Disciples' highest-ranked spiritual topics, most loved pravachans, and direct emotional feedback from seekers.</p>
+            </div>
+            <div class="panel-stat-pills">
+              <span class="stat-pill"><strong>98.2%</strong> Devotee Love Ratio</span>
+              <span class="stat-pill"><strong>34,500</strong> Pushpanjali Flowers</span>
               <span class="stat-pill"><strong>92.4%</strong> Completion Rate</span>
             </div>
           </div>
 
+          <!-- Audience Category Preference Bars -->
+          <div class="preference-distribution-box">
+            <span class="dist-label">Seeker Topic Preferences (Which genres your disciples engage with most):</span>
+            <div class="multi-progress-bar">
+              <div class="prog-seg seg-dhyan" style="width: 44%;" title="Dhyana & Meditation: 44%">44% ध्यान व मौन</div>
+              <div class="prog-seg seg-vedanta" style="width: 28%;" title="Advaita Vedanta: 28%">28% अद्वैत वेदांत</div>
+              <div class="prog-seg seg-bhakti" style="width: 18%;" title="Bhakti & Kirtan: 18%">18% भक्ति कीर्तन</div>
+              <div class="prog-seg seg-qa" style="width: 10%;" title="Seeker Q&A: 10%">10% प्रश्नोत्तरी</div>
+            </div>
+            <div class="prog-legend">
+              <span><span class="legend-dot dot-dhyan"></span> 🧘 ध्यान व मौन साधना (44% - Most Loved)</span>
+              <span><span class="legend-dot dot-vedanta"></span> 📜 अद्वैत वेदांत व उपनिषद् (28%)</span>
+              <span><span class="legend-dot dot-bhakti"></span> 🪕 नाम संकीर्तन व भक्ति (18%)</span>
+              <span><span class="legend-dot dot-qa"></span> ❓ जिज्ञासा व शंका समाधान (10%)</span>
+            </div>
+          </div>
+
           <!-- Top Loved Pravachan Grid -->
-          <div class="content-popularity-grid">
+          <div class="content-popularity-grid mt-4">
             <div class="popularity-card">
               <div class="pop-card-top">
-                <span class="pop-rank">#1 Most Loved</span>
+                <span class="pop-rank">#1 Most Loved Content</span>
                 <span class="pop-views">👁️ 64,200 Views</span>
               </div>
               <h4>Chitta Shuddhi & The Eternal Witness</h4>
-              <p class="pop-desc">42 min Meditation Pravachan • 98.4% Like Ratio</p>
+              <p class="pop-desc">42 min Meditation Pravachan • 98.4% Like Ratio • "Brings immediate quietude to anxiety"</p>
               <div class="pop-meta-bar">
                 <span>🌸 12,400 Pushpanjali</span>
-                <span>⏱️ 39 min avg watch time</span>
+                <span>⏱️ 39m avg watch time</span>
               </div>
             </div>
 
@@ -726,10 +856,10 @@
                 <span class="pop-views">👁️ 52,800 Views</span>
               </div>
               <h4>Bhagavad Gita: Nishkama Karma in Modern Life</h4>
-              <p class="pop-desc">58 min Vedanta Discourse • 97.1% Like Ratio</p>
+              <p class="pop-desc">58 min Vedanta Discourse • 97.1% Like Ratio • "Practical clarity for career & family duties"</p>
               <div class="pop-meta-bar">
                 <span>💬 8,900 Reflections</span>
-                <span>⏱️ 47 min avg watch time</span>
+                <span>⏱️ 47m avg watch time</span>
               </div>
             </div>
 
@@ -739,10 +869,10 @@
                 <span class="pop-views">👁️ 41,500 Views</span>
               </div>
               <h4>Naam Sankirtan & Heart Center Awakening</h4>
-              <p class="pop-desc">35 min Bhakti & Kirtan • 99.2% Like Ratio</p>
+              <p class="pop-desc">35 min Bhakti & Kirtan • 99.2% Like Ratio • "Deep emotional opening and tears of joy"</p>
               <div class="pop-meta-bar">
                 <span>🔔 15,100 Singing Bowls</span>
-                <span>⏱️ 34 min avg watch time</span>
+                <span>⏱️ 34m avg watch time</span>
               </div>
             </div>
 
@@ -752,26 +882,80 @@
                 <span class="pop-views">👁️ 34,000 Views</span>
               </div>
               <h4>Mandukya Upanishad: The 4 States & Om</h4>
-              <p class="pop-desc">54 min Contemplation • 96.5% Like Ratio</p>
+              <p class="pop-desc">54 min Contemplation • 96.5% Like Ratio • "Explains Turiya beyond waking, dream & deep sleep"</p>
               <div class="pop-meta-bar">
                 <span>📿 9,200 Japa Malas</span>
-                <span>⏱️ 48 min avg watch time</span>
+                <span>⏱️ 48m avg watch time</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- SECTION 1: RISHIKESH RETREAT & CAPACITY MANAGEMENT -->
+        <!-- ========================================================================= -->
+        <!-- CORE QUESTION 3: KITNE TICKETS USKE BIK GAYE HAIN (Ticket Sales & Capacity)-->
+        <!-- ========================================================================= -->
         <div class="rishikesh-feature-card mb-6" id="sectionGuruRetreats">
-          <div class="rishikesh-card-header">
+          <div class="panel-header-bar" style="margin-bottom: 20px;">
             <div>
-              <span class="badge-saffron">Featured Upcoming Gathering</span>
+              <span class="badge-saffron">Analytics Pillar 3 • Retreat & Gathering Sales</span>
+              <h3>🎟️ Event Ticket Sales & Capacity: कितने टिकट्स बिक गए हैं?</h3>
+              <p>Real-time booking progress across upcoming ashram retreats and satsang gatherings.</p>
+            </div>
+            <div class="panel-stat-pills">
+              <span class="stat-pill"><strong>1,177 / 1,250</strong> Total Passes Sold</span>
+              <span class="stat-pill"><strong>94.1%</strong> Sold Out Rate</span>
+              <span class="stat-pill"><strong>73 Seats</strong> Left Total</span>
+            </div>
+          </div>
+
+          <!-- Multi-Gathering Quick Summary Row -->
+          <div class="retreats-summary-cards-row">
+            <div class="retreat-sum-card active-sum">
+              <div class="sum-top">
+                <span class="sum-badge">Featured Event</span>
+                <span class="sum-pct">91.5% Sold</span>
+              </div>
+              <h4>Rishikesh Silence Retreat</h4>
+              <div class="sum-numbers">
+                <strong>412 Sold</strong> / 450 Seats
+              </div>
+              <small class="text-gold">Only 38 slots remaining</small>
+            </div>
+
+            <div class="retreat-sum-card">
+              <div class="sum-top">
+                <span class="sum-badge">Upcoming</span>
+                <span class="sum-pct">92.5% Sold</span>
+              </div>
+              <h4>Varanasi Advaita Intensive</h4>
+              <div class="sum-numbers">
+                <strong>185 Sold</strong> / 200 Seats
+              </div>
+              <small class="text-gold">Only 15 slots remaining</small>
+            </div>
+
+            <div class="retreat-sum-card">
+              <div class="sum-top">
+                <span class="sum-badge">Upcoming</span>
+                <span class="sum-pct">96.6% Sold</span>
+              </div>
+              <h4>Haridwar Ganga Kirtan Night</h4>
+              <div class="sum-numbers">
+                <strong>580 Sold</strong> / 600 Seats
+              </div>
+              <small class="text-gold">Only 20 slots remaining</small>
+            </div>
+          </div>
+
+          <div class="rishikesh-card-header mt-4">
+            <div>
+              <span class="badge-saffron">Featured Gathering Focus</span>
               <h2>3-Day Silence & Kundalini Awakening Retreat — Rishikesh</h2>
               <p class="text-muted">📍 Ganges Riverbank Ashram • Nov 14-16, 2026</p>
             </div>
             <div class="capacity-stat-box">
               <span class="cap-number" id="rishikeshCapNumber">412 / 450</span>
-              <span class="cap-label" id="rishikeshCapPct">91% Total Capacity Filled</span>
+              <span class="cap-label" id="rishikeshCapPct">91.5% Total Capacity Filled</span>
             </div>
           </div>
 
@@ -878,6 +1062,88 @@
                   <!-- Populated by JS -->
                 </tbody>
               </table>
+            </div>
+          </div>
+        <!-- ========================================================================= -->
+        <!-- CORE QUESTION 4: GURU KE KITNE FOLLOWERS HAIN (Followers & Demographics)  -->
+        <!-- ========================================================================= -->
+        <div class="studio-card mb-6" id="panelFollowersReach">
+          <div class="panel-header-bar">
+            <div>
+              <span class="badge-saffron">Analytics Pillar 4 • Followers & Devotee Reach</span>
+              <h3>👥 Followers Demographics: गुरु के कितने फॉलोअर्स हैं?</h3>
+              <p>Total followers across India and global ashram chapters, follower growth velocity, and active disciples.</p>
+            </div>
+            <div class="panel-stat-pills">
+              <span class="stat-pill"><strong>48,200</strong> Total Followers</span>
+              <span class="stat-pill"><strong>+3,840</strong> New this Month (+24%)</span>
+              <span class="stat-pill"><strong>1,480</strong> Daily Sadhaks</span>
+            </div>
+          </div>
+
+          <!-- Geographic Distribution Grid -->
+          <div class="demographics-grid">
+            <div class="demo-card">
+              <span class="demo-card-title">Geographic Follower Distribution (प्रमुख शहर एवं अनुयायी)</span>
+              <div class="demo-city-list">
+                <div class="demo-city-item">
+                  <div class="demo-city-meta">
+                    <span>📍 Delhi NCR</span>
+                    <strong>13,500 (28%)</strong>
+                  </div>
+                  <div class="demo-bar-track"><div class="demo-bar-fill" style="width: 28%;"></div></div>
+                </div>
+
+                <div class="demo-city-item">
+                  <div class="demo-city-meta">
+                    <span>📍 Mumbai</span>
+                    <strong>10,600 (22%)</strong>
+                  </div>
+                  <div class="demo-bar-track"><div class="demo-bar-fill" style="width: 22%;"></div></div>
+                </div>
+
+                <div class="demo-city-item">
+                  <div class="demo-city-meta">
+                    <span>📍 Rishikesh & Haridwar</span>
+                    <strong>8,670 (18%)</strong>
+                  </div>
+                  <div class="demo-bar-track"><div class="demo-bar-fill" style="width: 18%;"></div></div>
+                </div>
+
+                <div class="demo-city-item">
+                  <div class="demo-city-meta">
+                    <span>📍 Bengaluru</span>
+                    <strong>6,750 (14%)</strong>
+                  </div>
+                  <div class="demo-bar-track"><div class="demo-bar-fill" style="width: 14%;"></div></div>
+                </div>
+
+                <div class="demo-city-item">
+                  <div class="demo-city-meta">
+                    <span>🌍 International (US, UK, Canada, Germany)</span>
+                    <strong>8,680 (18%)</strong>
+                  </div>
+                  <div class="demo-bar-track"><div class="demo-bar-fill" style="width: 18%;"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-card">
+              <span class="demo-card-title">Disciples Sadhana Habit Health (नित्य दैनिक साधना)</span>
+              <div class="sadhana-health-metrics">
+                <div class="health-stat-box">
+                  <span class="health-stat-num text-gold">1,480</span>
+                  <span class="health-stat-desc">Daily Active Sadhaks (Track 108 Japa & Pranayama Daily)</span>
+                </div>
+                <div class="health-stat-box">
+                  <span class="health-stat-num text-green">89.4%</span>
+                  <span class="health-stat-desc">30-Day Sadhana Habit Retention Rate</span>
+                </div>
+                <div class="health-stat-box">
+                  <span class="health-stat-num text-orange">42 Days</span>
+                  <span class="health-stat-desc">Average Disciple Japa Meditation Streak</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
