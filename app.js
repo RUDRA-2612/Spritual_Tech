@@ -479,7 +479,7 @@ let DISCIPLES_DIRECTORY = [
 // ---------------------------------------------------------------------------
 function bootstrapApp() {
   setupNavigation();
-  setupRoleSwitcher();
+  setupRoleGate();
   setupSadhanaMenuDrawer();
   setupGurusDirectory();
   setupGuruStudio();
@@ -655,6 +655,41 @@ function setupSadhanaMenuDrawer() {
 // ---------------------------------------------------------------------------
 // GURUS DIRECTORY & SANCTUARY PORTAL NAVIGATION
 // ---------------------------------------------------------------------------
+function getFollowedGurus() {
+  try {
+    return JSON.parse(localStorage.getItem('spritual_followed_gurus') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function toggleFollowGuru(guruId, buttonEl) {
+  let followed = getFollowedGurus();
+  const guru = GURUS_DATA.find(g => g.id === guruId);
+  const guruName = guru ? guru.name : 'Guru';
+
+  if (followed.includes(guruId)) {
+    followed = followed.filter(id => id !== guruId);
+    localStorage.setItem('spritual_followed_gurus', JSON.stringify(followed));
+    if (buttonEl) {
+      buttonEl.classList.remove('followed');
+      buttonEl.textContent = '➕ Follow';
+      buttonEl.title = 'Follow Guru';
+    }
+    showToast(`Unfollowed ${guruName}`);
+  } else {
+    followed.push(guruId);
+    localStorage.setItem('spritual_followed_gurus', JSON.stringify(followed));
+    if (buttonEl) {
+      buttonEl.classList.add('followed');
+      buttonEl.textContent = '✓ Following';
+      buttonEl.title = 'Unfollow Guru';
+    }
+    audioApp.playBeadClick();
+    showToast(`🌸 You are now following ${guruName}! Direct updates enabled.`);
+  }
+}
+
 function renderGurusDirectory(filter = 'all', searchQuery = '') {
   const grid = document.getElementById('gurusGrid');
   if (!grid) return;
@@ -699,7 +734,10 @@ function renderGurusDirectory(filter = 'all', searchQuery = '') {
     return;
   }
 
+  const followedList = getFollowedGurus();
+
   list.forEach(guru => {
+    const isFollowed = followedList.includes(guru.id);
     const card = document.createElement('div');
     card.className = 'guru-card';
     card.innerHTML = `
@@ -715,13 +753,27 @@ function renderGurusDirectory(filter = 'all', searchQuery = '') {
           <span>👥 ${guru.discipleCount}</span>
           <span>📜 ${guru.discoursesCount} Teachings</span>
         </div>
-        <button class="btn-select-guru" data-guru-id="${guru.id}">
-          Enter Sanctuary ➔
-        </button>
+        <div class="guru-card-actions">
+          <button class="btn-follow-guru ${isFollowed ? 'followed' : ''}" data-guru-id="${guru.id}" title="${isFollowed ? 'Unfollow Guru' : 'Follow Guru'}">
+            ${isFollowed ? '✓ Following' : '➕ Follow'}
+          </button>
+          <button class="btn-select-guru" data-guru-id="${guru.id}">
+            Enter Sanctuary ➔
+          </button>
+        </div>
       </div>
     `;
 
-    // Clicking anywhere on card opens Guru sanctuary window
+    // Follow button click
+    const followBtn = card.querySelector('.btn-follow-guru');
+    if (followBtn) {
+      followBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFollowGuru(guru.id, followBtn);
+      });
+    }
+
+    // Select guru button & entire card click
     card.addEventListener('click', () => {
       audioApp.playSingingBowl();
       selectGuru(guru.id);
@@ -947,30 +999,137 @@ function setupNavigation() {
   }
 }
 
-function setupRoleSwitcher() {
-  const btnSeeker = document.getElementById('btnRoleSeeker');
-  const btnGuru = document.getElementById('btnRoleGuru');
+// ---------------------------------------------------------------------------
+// ROLE GATE ENTRANCE (GURU OR DISCIPLE) & ROLE CONTROLLER
+// ---------------------------------------------------------------------------
+function openRoleGateModal() {
+  const modal = document.getElementById('roleGateModal');
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeRoleGateModal() {
+  const modal = document.getElementById('roleGateModal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  const anyOpenModal = document.querySelector('.modal-overlay:not(.hidden)');
+  if (!anyOpenModal) {
+    document.body.style.overflow = '';
+  }
+}
+
+function applyUserRole(role, notify = true) {
   const seekerWrapper = document.getElementById('viewSeekerWrapper');
   const guruWrapper = document.getElementById('viewGuruWrapper');
+  const avatar = document.getElementById('headerAvatar');
+  const roleTag = document.getElementById('headerRoleTag');
+  const nameDisplay = document.getElementById('headerNameDisplay');
+  const mainNav = document.getElementById('mainNav');
 
-  if (btnSeeker) {
-    btnSeeker.addEventListener('click', () => {
-      btnSeeker.classList.add('active');
-      if (btnGuru) btnGuru.classList.remove('active');
-      if (seekerWrapper) seekerWrapper.classList.add('active');
-      if (guruWrapper) guruWrapper.classList.remove('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  localStorage.setItem('spritual_user_role', role);
+
+  if (role === 'guru') {
+    if (seekerWrapper) seekerWrapper.classList.remove('active');
+    if (guruWrapper) guruWrapper.classList.add('active');
+    if (avatar) avatar.textContent = '🕉️';
+    if (roleTag) roleTag.textContent = 'Guru Studio';
+    if (nameDisplay) nameDisplay.textContent = 'Acharya Vedantacharya';
+    if (mainNav) mainNav.style.display = 'none'; // Guru has dedicated ashram studio
+    if (notify) showToast('🕉️ Welcome to Guru Studio: Acharya Vedantacharya');
+  } else {
+    // Default: Disciple / Seeker
+    if (guruWrapper) guruWrapper.classList.remove('active');
+    if (seekerWrapper) seekerWrapper.classList.add('active');
+    if (avatar) avatar.textContent = '🧘';
+    if (roleTag) roleTag.textContent = 'Disciple Mode';
+    if (nameDisplay) nameDisplay.textContent = 'Ishvit Bhardwaj';
+    if (mainNav) mainNav.style.display = 'flex';
+    if (notify) showToast('🧘 Welcome to Disciple Sanctuary: Ishvit Bhardwaj');
+  }
+
+  closeRoleGateModal();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setupRoleGate() {
+  // Check persisted role on initial load
+  const savedRole = localStorage.getItem('spritual_user_role');
+  if (!savedRole) {
+    // Show role entrance prompt
+    openRoleGateModal();
+  } else {
+    applyUserRole(savedRole, false);
+  }
+
+  // Bind Card 1: Disciple
+  const cardDisciple = document.getElementById('cardChooseDisciple');
+  const btnEnterDisciple = document.getElementById('btnEnterAsDisciple');
+  if (cardDisciple) {
+    cardDisciple.addEventListener('click', () => {
+      audioApp.playSingingBowl();
+      applyUserRole('disciple', true);
+    });
+  }
+  if (btnEnterDisciple) {
+    btnEnterDisciple.addEventListener('click', (e) => {
+      e.stopPropagation();
+      audioApp.playSingingBowl();
+      applyUserRole('disciple', true);
     });
   }
 
-  if (btnGuru) {
-    btnGuru.addEventListener('click', () => {
-      btnGuru.classList.add('active');
-      if (btnSeeker) btnSeeker.classList.remove('active');
-      if (guruWrapper) guruWrapper.classList.add('active');
-      if (seekerWrapper) seekerWrapper.classList.remove('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Bind Card 2: Guru
+  const cardGuru = document.getElementById('cardChooseGuru');
+  const btnEnterGuru = document.getElementById('btnEnterAsGuru');
+  if (cardGuru) {
+    cardGuru.addEventListener('click', () => {
+      audioApp.playSingingBowl();
+      applyUserRole('guru', true);
     });
+  }
+  if (btnEnterGuru) {
+    btnEnterGuru.addEventListener('click', (e) => {
+      e.stopPropagation();
+      audioApp.playSingingBowl();
+      applyUserRole('guru', true);
+    });
+  }
+
+  // Top-Right Logout / Switch Button
+  const btnLogout = document.getElementById('btnLogoutRole');
+  if (btnLogout) {
+    btnLogout.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      localStorage.removeItem('spritual_user_role');
+      openRoleGateModal();
+      showToast('🚪 Logged out. Choose your portal: Guru or Disciple.');
+    });
+  }
+
+  // Backdrop click to close if already logged in
+  const roleModal = document.getElementById('roleGateModal');
+  if (roleModal) {
+    roleModal.addEventListener('click', (e) => {
+      if (e.target === roleModal) {
+        // If a role is already set, allow closing modal; otherwise enforce selection
+        if (localStorage.getItem('spritual_user_role')) {
+          closeRoleGateModal();
+        } else {
+          showToast('Please select Guru or Disciple to enter.');
+        }
+      }
+    });
+  }
+
+  // Legacy switcher buttons if present
+  const btnSeeker = document.getElementById('btnRoleSeeker');
+  const btnGuru = document.getElementById('btnRoleGuru');
+  if (btnSeeker) {
+    btnSeeker.addEventListener('click', () => applyUserRole('disciple', true));
+  }
+  if (btnGuru) {
+    btnGuru.addEventListener('click', () => applyUserRole('guru', true));
   }
 
   const openScanBtn = document.getElementById('btnOpenScanner');
@@ -985,6 +1144,9 @@ function setupRoleSwitcher() {
     });
   }
 }
+
+// Backwards compatibility alias
+const setupRoleSwitcher = setupRoleGate;
 
 // ---------------------------------------------------------------------------
 // GURU STUDIO INTERACTIVE DASHBOARD & DISCIPLES DIRECTORY
@@ -1975,6 +2137,14 @@ function setupLiveSatsangRoom() {
 
   if (bannerBtn) {
     bannerBtn.addEventListener('click', () => {
+      openModal('satsangModal');
+      audioApp.startOmDrone();
+    });
+  }
+
+  const pillar4Btn = document.getElementById('btnOpenLiveRoomFromPillar4');
+  if (pillar4Btn) {
+    pillar4Btn.addEventListener('click', () => {
       openModal('satsangModal');
       audioApp.startOmDrone();
     });

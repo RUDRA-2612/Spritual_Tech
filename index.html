@@ -61,16 +61,17 @@
         <button class="nav-btn" data-target="view-dakshina">Dakshina Seva</button>
       </nav>
 
-      <!-- Role Switcher & Action -->
+      <!-- Top Right: Active Profile & Role Logout / Switch -->
       <div class="header-actions">
-        <div class="role-pill-switch" id="roleSwitch">
-          <button class="pill-option active" id="btnRoleSeeker">Seeker Mode</button>
-          <button class="pill-option" id="btnRoleGuru">
-            <span class="studio-badge">Guru Studio</span>
-          </button>
+        <div class="user-role-badge" id="headerProfileBadge" title="Current Active Profile">
+          <span class="user-avatar-circle" id="headerAvatar">🧘</span>
+          <div class="user-meta-text">
+            <span class="user-role-tag" id="headerRoleTag">Disciple Mode</span>
+            <strong class="user-name-display" id="headerNameDisplay">Ishvit Bhardwaj</strong>
+          </div>
         </div>
-        <button class="btn btn-primary" id="openDakshinaModalBtn">
-          <span>Offer Dakshina</span>
+        <button class="btn btn-outline-gold btn-logout-role" id="btnLogoutRole" title="Logout or Switch between Guru and Disciple mode">
+          <span>🚪 Logout</span>
         </button>
       </div>
     </div>
@@ -205,6 +206,57 @@
     </div>
   </div>
 
+  <!-- ============================================== -->
+  <!-- ROLE SELECTION ENTRANCE GATE (GURU OR DISCIPLE)-->
+  <!-- ============================================== -->
+  <div id="roleGateModal" class="modal-overlay hidden">
+    <div class="modal-card role-gate-card">
+      <div class="modal-badge">Spritual Tech • Sacred Gateway</div>
+      <h2>Select Your Role to Enter the Sanctuary</h2>
+      <p class="role-gate-desc">Aap website me kis roop me pravesh karna chahte hain? Choose your portal:</p>
+      
+      <div class="role-cards-grid">
+        <!-- Card 1: Disciple / Seeker -->
+        <div class="role-selection-card" id="cardChooseDisciple">
+          <div class="role-card-icon">🧘</div>
+          <h3>Disciple / Seeker</h3>
+          <p class="role-card-hindi">साधक / शिष्य पोर्टल</p>
+          <p class="role-card-info">
+            Explore 12 Revered Sanskrit Gurus, Pravachan audio/video library, book retreat passes, and daily 108 Japa sadhana.
+          </p>
+          <ul class="role-card-features">
+            <li>✓ Browse & Follow Lineage Masters</li>
+            <li>✓ Spiritual Content (Pravachan & Audio)</li>
+            <li>✓ 108 Japa & Daily Sadhana Tracker</li>
+            <li>✓ Retreat Passes with Instant QR Code</li>
+          </ul>
+          <button class="btn btn-gold btn-enter-role" id="btnEnterAsDisciple">
+            Enter as Disciple ➔
+          </button>
+        </div>
+
+        <!-- Card 2: Guru / Ashram Admin -->
+        <div class="role-selection-card" id="cardChooseGuru">
+          <div class="role-card-icon">🕉️</div>
+          <h3>Guru / Ashram Admin</h3>
+          <p class="role-card-hindi">गुरु / आश्रम स्टूडियो</p>
+          <p class="role-card-info">
+            Manage your Ashram Studio, track Satsang viewership & engagement, monitor retreat ticket sales, and view direct settlements.
+          </p>
+          <ul class="role-card-features">
+            <li>✓ Satsang Viewership & Devotee Analytics</li>
+            <li>✓ Followers & Disciples Growth</li>
+            <li>✓ Retreat Ticket Bookings & Capacity Tracker</li>
+            <li>✓ Volunteer Gate QR Code Scanner</li>
+          </ul>
+          <button class="btn btn-saffron btn-enter-role" id="btnEnterAsGuru">
+            Enter as Guru ➔
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MAIN WRAPPER -->
   <main class="app-body">
 
@@ -316,25 +368,23 @@
           </div>
         </section>
 
-        <!-- Quick Jump Navigation for Guru Sanctuary Features -->
+        <!-- Quick Jump Navigation for Guru Sanctuary 4 Core Pillars -->
         <div class="guru-features-nav-bar">
           <div class="features-nav-inner">
-            <a href="#view-discourses" class="feature-nav-link active">🧘 Meditation & Dhyana</a>
-            <a href="#view-discourses" class="feature-nav-link">🪕 Bhakti & Kirtan</a>
-            <a href="#view-discourses" class="feature-nav-link">📜 Upanishads & Pravachan</a>
-            <a href="#view-retreats" class="feature-nav-link">🎟️ Shows & Retreats</a>
-            <a href="#view-sadhana" class="feature-nav-link">📿 Daily Sadhana</a>
-            <a href="#view-dakshina" class="feature-nav-link">🙏 Ashram Seva</a>
+            <a href="#view-discourses" class="feature-nav-link active">📜 1. Spiritual Content (प्रवचन)</a>
+            <a href="#view-retreats" class="feature-nav-link">🎟️ 2. Satsang & Retreat Booking (शिविर)</a>
+            <a href="#view-sadhana" class="feature-nav-link">📿 3. Daily Sadhana Tracker (दैनिक साधना)</a>
+            <a href="#view-dakshina" class="feature-nav-link">🌸 4. Guru Connection & Seva (सानिध्य एवं सेवा)</a>
           </div>
         </div>
 
-      <!-- PILLAR 1: SACRED PRAVACHAN & DISCOURSES -->
+      <!-- PILLAR 1: SPIRITUAL CONTENT (PRAVACHAN, VIDEOS, AUDIOS, RECORDED SATSANG) -->
       <section class="section-container" id="view-discourses">
         <div class="section-header">
-          <div class="section-kicker">PURE VEDIC SANCTUARY</div>
-          <h2 class="section-title">Sacred Audio & Pravachan Library</h2>
+          <div class="section-kicker">PILLAR 1 • SPIRITUAL CONTENT (आध्यात्मिक प्रवचन)</div>
+          <h2 class="section-title">Spiritual Content: Pravachan, Videos & Recorded Satsang</h2>
           <p class="section-subtitle">
-            Distraction-free sacred audio and discourses. Listen in background mode with zero interruptions.
+            Pravachan audios, video discourses, and recorded satsangs in one place with background listening support.
           </p>
         </div>
 
@@ -361,13 +411,13 @@
         </div>
       </section>
 
-      <!-- PILLAR 2: UPCOMING RETREATS & QR TICKETING -->
+      <!-- PILLAR 2: SATSANG & RETREAT BOOKING (EVENTS & SEAT BOOKING) -->
       <section class="section-container" id="view-retreats">
         <div class="section-header">
-          <div class="section-kicker">ASHRAM RETREATS & SATSANG</div>
-          <h2 class="section-title">Sacred Retreats & Automated Pass Booking</h2>
+          <div class="section-kicker">PILLAR 2 • SATSANG & RETREAT BOOKING (सत्संग एवं शिविर बुकिंग)</div>
+          <h2 class="section-title">Satsang & Retreat Booking: Events & Instant QR Passes</h2>
           <p class="section-subtitle">
-            Instant digital QR pass with seamless gate entry and direct access to ashram guidance.
+            Explore upcoming ashram gatherings, check seat availability, and book instant digital entry passes with QR codes.
           </p>
         </div>
 
@@ -387,13 +437,13 @@
         </div>
       </section>
 
-      <!-- PILLAR 4: DAILY SADHANA & HABIT TRACKER -->
+      <!-- PILLAR 3: DAILY SADHANA TRACKER (MEDITATION, CHANTING, SWADHYAYA) -->
       <section class="section-container" id="view-sadhana">
         <div class="section-header">
-          <div class="section-kicker">DAILY SPIRITUAL PRACTICE</div>
-          <h2 class="section-title">Daily Sadhana & Spiritual Discipline Suite</h2>
+          <div class="section-kicker">PILLAR 3 • DAILY SADHANA TRACKER (दैनिक साधना ट्रैकर)</div>
+          <h2 class="section-title">Daily Sadhana Tracker: 108 Japa, Pranayama & Swadhyaya</h2>
           <p class="section-subtitle">
-            Deepen daily abhyas with interactive Japa Mala chanting counter, guided Pranayama breathing, and Swadhyaya reflection journal.
+            Track daily meditation, interactive 108 Japa Mala chanting counter, guided 4-4-4-4 Pranayama breathing, and contemplative Swadhyaya reflections.
           </p>
         </div>
 
@@ -520,14 +570,28 @@
         </div>
       </section>
 
-      <!-- DAKSHINA & SEVA SECTION -->
+      <!-- PILLAR 4: GURU CONNECTION & SEVA (DIRECT GUIDANCE, LIVE SATSANG & DAKSHINA) -->
       <section class="section-container" id="view-dakshina">
         <div class="section-header">
-          <div class="section-kicker">DIRECT ASHRAM SEVA</div>
-          <h2 class="section-title">Sacred Dakshina & Ashram Seva Offerings</h2>
+          <div class="section-kicker">PILLAR 4 • GURU CONNECTION & SEVA (गुरु सानिध्य एवं सेवा)</div>
+          <h2 class="section-title">Guru Connection & Ashram Seva Offerings</h2>
           <p class="section-subtitle">
-            Direct, transparent contributions to authentic spiritual causes with instant digital tax-exempt receipt.
+            Receive direct Guru guidance & announcements, join interactive live satsangs, and contribute to authentic ashram seva.
           </p>
+        </div>
+
+        <!-- Direct Guru Connection & Live Satsang Box -->
+        <div class="guru-connection-card mb-6">
+          <div class="connect-left">
+            <span class="live-pulse-badge">🔴 Direct Ashram Hub</span>
+            <h3>Connect Directly with Your Guru</h3>
+            <p id="guruDirectNotice">Interactive pravachans are streamed live directly from the Ashram. Submit spiritual questions, offer pushpanjali flowers, and ring consecrated temple bells.</p>
+          </div>
+          <div class="connect-right">
+            <button class="btn btn-saffron" id="btnOpenLiveRoomFromPillar4">
+              <span>Enter Live Satsang Room</span>
+            </button>
+          </div>
         </div>
 
         <div class="seva-cards-grid">
@@ -623,6 +687,77 @@
             <div class="metric-value">₹ 6,85,000</div>
             <div class="metric-label">Direct Bank Payouts Settled</div>
             <div class="metric-change positive">₹ 0 middleman cut • Direct to Ashram</div>
+          </div>
+        </div>
+
+        <!-- SECTION 0: SATSANG VIEWERSHIP & DEVOTEE ANALYTICS (Requested in Audio 1) -->
+        <div class="studio-card mb-6" id="sectionSatsangAnalytics">
+          <div class="panel-header-bar">
+            <div>
+              <span class="badge-saffron">Satsang Analytics & Devotee Engagement</span>
+              <h3>👁️ Satsang Viewership, Content Popularity & Followers</h3>
+              <p>Real-time analytics on how disciples are receiving and watching your recorded and live pravachans.</p>
+            </div>
+            <div class="panel-stat-pills">
+              <span class="stat-pill"><strong>142,500</strong> Total Views</span>
+              <span class="stat-pill"><strong>48,200</strong> Followers</span>
+              <span class="stat-pill"><strong>92.4%</strong> Completion Rate</span>
+            </div>
+          </div>
+
+          <!-- Top Loved Pravachan Grid -->
+          <div class="content-popularity-grid">
+            <div class="popularity-card">
+              <div class="pop-card-top">
+                <span class="pop-rank">#1 Most Loved</span>
+                <span class="pop-views">👁️ 64,200 Views</span>
+              </div>
+              <h4>Chitta Shuddhi & The Eternal Witness</h4>
+              <p class="pop-desc">42 min Meditation Pravachan • 98.4% Like Ratio</p>
+              <div class="pop-meta-bar">
+                <span>🌸 12,400 Pushpanjali</span>
+                <span>⏱️ 39 min avg watch time</span>
+              </div>
+            </div>
+
+            <div class="popularity-card">
+              <div class="pop-card-top">
+                <span class="pop-rank">#2 High Engagement</span>
+                <span class="pop-views">👁️ 52,800 Views</span>
+              </div>
+              <h4>Bhagavad Gita: Nishkama Karma in Modern Life</h4>
+              <p class="pop-desc">58 min Vedanta Discourse • 97.1% Like Ratio</p>
+              <div class="pop-meta-bar">
+                <span>💬 8,900 Reflections</span>
+                <span>⏱️ 47 min avg watch time</span>
+              </div>
+            </div>
+
+            <div class="popularity-card">
+              <div class="pop-card-top">
+                <span class="pop-rank">#3 Viral Devotion</span>
+                <span class="pop-views">👁️ 41,500 Views</span>
+              </div>
+              <h4>Naam Sankirtan & Heart Center Awakening</h4>
+              <p class="pop-desc">35 min Bhakti & Kirtan • 99.2% Like Ratio</p>
+              <div class="pop-meta-bar">
+                <span>🔔 15,100 Singing Bowls</span>
+                <span>⏱️ 34 min avg watch time</span>
+              </div>
+            </div>
+
+            <div class="popularity-card">
+              <div class="pop-card-top">
+                <span class="pop-rank">#4 Deep Samadhi</span>
+                <span class="pop-views">👁️ 34,000 Views</span>
+              </div>
+              <h4>Mandukya Upanishad: The 4 States & Om</h4>
+              <p class="pop-desc">54 min Contemplation • 96.5% Like Ratio</p>
+              <div class="pop-meta-bar">
+                <span>📿 9,200 Japa Malas</span>
+                <span>⏱️ 48 min avg watch time</span>
+              </div>
+            </div>
           </div>
         </div>
 

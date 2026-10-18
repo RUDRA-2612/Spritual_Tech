@@ -3472,3 +3472,401 @@ h1, h2, h3, h4 {
   color: var(--orange-400);
   transform: translateX(3px);
 }
+
+/* ==========================================================================
+   ROLE GATE ENTRANCE MODAL (GURU OR DISCIPLE)
+   ========================================================================== */
+.role-gate-card {
+  max-width: 820px !important;
+  width: 94% !important;
+  background: linear-gradient(180deg, #1b0e06 0%, #0d0603 100%) !important;
+  border: 1px solid rgba(251, 146, 60, 0.4) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(234, 88, 12, 0.2) !important;
+  text-align: center;
+  padding: 36px 32px !important;
+}
+
+.role-gate-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 6px auto 26px;
+  max-width: 580px;
+}
+
+.role-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 10px;
+}
+
+@media (max-width: 720px) {
+  .role-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.role-selection-card {
+  background: rgba(26, 13, 6, 0.75);
+  border: 1px solid rgba(254, 215, 170, 0.16);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-selection-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.role-selection-card:hover {
+  border-color: var(--orange-400);
+  background: rgba(38, 19, 9, 0.9);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(234, 88, 12, 0.25);
+}
+
+.role-selection-card:hover::before {
+  background: var(--saffron-gradient);
+}
+
+.role-card-icon {
+  font-size: 2.8rem;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(251, 146, 60, 0.12);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.role-selection-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.role-card-hindi {
+  font-size: 0.88rem;
+  color: var(--orange-300);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.role-card-info {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.role-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+  width: 100%;
+  font-size: 0.78rem;
+  color: var(--orange-100);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border-top: 1px solid rgba(254, 215, 170, 0.1);
+  padding-top: 14px;
+}
+
+.btn-enter-role {
+  width: 100%;
+  margin-top: auto;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   TOP RIGHT PROFILE BADGE & ROLE LOGOUT / SWITCH
+   ========================================================================== */
+.user-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(26, 13, 6, 0.85);
+  border: 1px solid rgba(254, 215, 170, 0.18);
+  padding: 4px 12px 4px 6px;
+  border-radius: var(--radius-full);
+}
+
+.user-avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(251, 146, 60, 0.18);
+  border: 1px solid var(--orange-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.user-meta-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.15;
+}
+
+.user-role-tag {
+  font-size: 0.65rem;
+  color: var(--orange-300);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-name-display {
+  font-size: 0.82rem;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-logout-role {
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-logout-role:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #fff;
+}
+
+/* ==========================================================================
+   GURU STUDIO SATSANG ANALYTICS & CONTENT POPULARITY
+   ========================================================================== */
+.panel-header-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.panel-header-bar h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #fff;
+  margin: 6px 0 4px;
+}
+
+.panel-header-bar p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.panel-stat-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  background: rgba(24, 12, 6, 0.85);
+  border: 1px solid rgba(254, 215, 170, 0.16);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.stat-pill strong {
+  color: var(--orange-300);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.content-popularity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.popularity-card {
+  background: rgba(20, 10, 5, 0.7);
+  border: 1px solid rgba(254, 215, 170, 0.1);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.popularity-card:hover {
+  border-color: rgba(251, 146, 60, 0.4);
+  transform: translateY(-3px);
+  background: rgba(30, 15, 7, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.pop-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pop-rank {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--orange-300);
+  background: rgba(234, 88, 12, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.pop-views {
+  font-size: 0.76rem;
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+.popularity-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.pop-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.pop-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(254, 215, 170, 0.08);
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   PILLAR 4: GURU CONNECTION CARD
+   ========================================================================== */
+.guru-connection-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(38, 18, 9, 0.9) 0%, rgba(20, 10, 5, 0.95) 100%);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .guru-connection-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.live-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.connect-left h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.connect-left p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   GURU CARD ACTIONS & FOLLOW GURU BUTTON
+   ========================================================================== */
+.guru-card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn-follow-guru {
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(254, 215, 170, 0.25);
+  background: rgba(28, 14, 7, 0.6);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-follow-guru:hover {
+  border-color: var(--orange-400);
+  color: #fff;
+  background: rgba(234, 88, 12, 0.2);
+}
+
+.btn-follow-guru.followed {
+  background: rgba(234, 88, 12, 0.35);
+  border-color: var(--orange-400);
+  color: var(--orange-200);
+  font-weight: 700;
+}
+
