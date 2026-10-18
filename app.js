@@ -150,23 +150,112 @@ class SacredAudioEngine {
 const audioApp = new SacredAudioEngine();
 
 // ---------------------------------------------------------------------------
-// 2. DATA STORES: RETREATS, DISCOURSES & ATTENDEES
+// 2. DATA STORES: REVERED GURUS, RETREATS, DISCOURSES & ATTENDEES
 // ---------------------------------------------------------------------------
+const GURUS_DATA = [
+  {
+    id: 'guru-vedanta',
+    name: 'Acharya Vedantacharya',
+    title: 'Advaita Vedanta & Himalayan Silence Master',
+    tradition: 'Advaita Vedanta',
+    category: 'Vedanta',
+    location: 'Rishikesh Sanctuary, Ganges Riverbank',
+    avatar: 'assets/hero.jpg',
+    discipleCount: '48,000+ Disciples',
+    liveStatus: 'Live Mauna Satsang Tomorrow at 6:00 AM IST',
+    liveTopic: 'Chitta Shuddhi & The Eternal Witness',
+    quote: '"You are not the thoughts that ripple across consciousness; you are the unshakeable stillness in which they arise and dissolve."',
+    tags: ['Mauna Silence', 'Mandukya Upanishad', 'Atma Vichara'],
+    retreatsCount: 3,
+    discoursesCount: 14
+  },
+  {
+    id: 'guru-shantikrupa',
+    name: 'Mata Shantikrupa Devi',
+    title: 'Bhakti Yoga & Naada Kirtan Visionary',
+    tradition: 'Bhakti & Prema Marga',
+    category: 'Bhakti',
+    location: 'Vrindavan Sacred Dham',
+    avatar: 'assets/satsang.jpg',
+    discipleCount: '62,000+ Disciples',
+    liveStatus: 'Akhanda Kirtan Vigil Tonight at 8:00 PM IST',
+    liveTopic: 'Awakening The Pure Devotional Heart Center',
+    quote: '"When every heartbeat turns into a prayer, the divine presence does not remain a distant philosophy—it becomes your breath."',
+    tags: ['Naam Sankirtan', 'Radha Krishna Prema', 'Heart Awakening'],
+    retreatsCount: 2,
+    discoursesCount: 18
+  },
+  {
+    id: 'guru-nirvanananda',
+    name: 'Swami Nirvanananda Giri',
+    title: 'Himalayan Dhyana & Kriya Master',
+    tradition: 'Kriya & Raja Yoga',
+    category: 'Kriya',
+    location: 'Uttarkashi Mountain Hermitage',
+    avatar: 'assets/sadhana.jpg',
+    discipleCount: '35,000+ Disciples',
+    liveStatus: 'Kriya Pranayama Intensive on Sunday',
+    liveTopic: 'The Alchemy of Prana & Shushumna',
+    quote: '"Pranayama is the divine bridge across which the wanderer mind crosses into pure, boundless transcendence."',
+    tags: ['Kriya Yoga', 'Kundalini Awakening', 'Himalayan Dhyana'],
+    retreatsCount: 2,
+    discoursesCount: 12
+  },
+  {
+    id: 'guru-tejomaya',
+    name: 'Brahmarshi Tejomaya',
+    title: 'Sacred Sound & Mantra Yogacharya',
+    tradition: 'Naada & Mantra Yoga',
+    category: 'Meditation',
+    location: 'Varanasi Sacred Manikarnika Ghat',
+    avatar: 'assets/satsang.jpg',
+    discipleCount: '29,000+ Disciples',
+    liveStatus: 'Vedic Chanting Stream at Sunset',
+    liveTopic: 'Cosmic Harmonics of the 432Hz Om Vibration',
+    quote: '"The universe emerged from the primordial vibration of Om. When you align your inner frequency, suffering dissolves into cosmic music."',
+    tags: ['432Hz Sound Healing', 'Rudram Chanting', 'Mantra Diksha'],
+    retreatsCount: 1,
+    discoursesCount: 10
+  },
+  {
+    id: 'guru-anandabodha',
+    name: 'Yogacharya Anandabodha',
+    title: 'Raja Yoga & Daily Mindfulness Acharya',
+    tradition: 'Classical Patanjali Yoga',
+    category: 'Meditation',
+    location: 'Almora Pines Sanctuary, Uttarakhand',
+    avatar: 'assets/hero.jpg',
+    discipleCount: '41,000+ Disciples',
+    liveStatus: 'Mindful Living Satsang this Saturday',
+    liveTopic: 'Daily Karma Yoga & Mental Equilibrium',
+    quote: '"Spirituality is not abandoning the world, but bringing radiant clarity and love into every single mundane responsibility."',
+    tags: ['Patanjali Sutras', 'Mindful Living', 'Chitta Shuddhi'],
+    retreatsCount: 2,
+    discoursesCount: 16
+  }
+];
+
+let currentSelectedGuru = GURUS_DATA[0];
+
 const RETREATS_DATA = [
   {
     id: 'retreat-1',
+    guruId: 'guru-vedanta',
+    guru: 'Acharya Vedantacharya',
     codePrefix: 'RET-RISHI',
     title: '3-Day Silence & Kundalini Awakening Retreat',
     location: '📍 Rishikesh Ashram, Ganges Riverbank',
     dateMonth: 'NOV',
     dateDay: '14-16',
-    desc: 'Complete digital detox, mauna (sacred silence), pranayama by the Ganga, and deep guided meditation with the Guru.',
+    desc: 'Complete digital detox, mauna (sacred silence), pranayama by the Ganga, and deep guided meditation with the Acharya.',
     price: 4500,
     image: 'assets/hero.jpg',
     highlights: ['Direct Guru Guidance', 'Complimentary Daily Japa Mala', 'Ashram Vegetarian Mahaprasad']
   },
   {
     id: 'retreat-2',
+    guruId: 'guru-shantikrupa',
+    guru: 'Mata Shantikrupa Devi',
     codePrefix: 'RET-VRINDA',
     title: 'Bhakti & Prema Satsang Maha-Utsav',
     location: '📍 Vrindavan Sacred Dham',
@@ -179,6 +268,8 @@ const RETREATS_DATA = [
   },
   {
     id: 'retreat-3',
+    guruId: 'guru-nirvanananda',
+    guru: 'Swami Nirvanananda Giri',
     codePrefix: 'RET-KEDAR',
     title: 'Himalayan Dhyana & Upanishad Intensive',
     location: '📍 Uttarkashi Mountain Ashram',
@@ -194,43 +285,69 @@ const RETREATS_DATA = [
 const DISCOURSES_DATA = [
   {
     id: 'disc-1',
-    title: 'Chitta Shuddhi: Overcoming Restless Mind and Inner Chaos',
+    guruId: 'guru-vedanta',
+    guru: 'Acharya Vedantacharya',
+    title: 'Chitta Shuddhi: Master the Stillness Beyond Mental Chaos',
     category: 'meditation',
     categoryLabel: 'Meditation & Dhyana',
-    guru: 'Maharishi Anand Ji',
     duration: '42 min',
     desc: 'A pure sacred exploration of how the ancient rishis mastered mental agitations without external distractions.',
     image: 'assets/satsang.jpg'
   },
   {
     id: 'disc-2',
+    guruId: 'guru-vedanta',
+    guru: 'Acharya Vedantacharya',
     title: 'Bhagavad Gita Chapter 2: The Art of Nishkama Karma in Modern Life',
     category: 'vedanta',
     categoryLabel: 'Upanishad & Vedanta',
-    guru: 'Swami Vishwananda',
     duration: '58 min',
     desc: 'How to work effortlessly in high-pressure business and career environments while remaining established in peace.',
     image: 'assets/hero.jpg'
   },
   {
     id: 'disc-3',
-    title: 'Naam Sankirtan & The Power of Sacred Vibrations',
+    guruId: 'guru-shantikrupa',
+    guru: 'Mata Shantikrupa Devi',
+    title: 'Naam Sankirtan & The Awakening of Pure Heart Center',
     category: 'bhakti',
     categoryLabel: 'Bhakti & Kirtan',
-    guru: 'Mata Ananda Devi',
     duration: '35 min',
-    desc: 'Transformative chanting session activating heart chakras with background listening enabled.',
+    desc: 'Transformative devotional chanting session activating heart chakras with celestial melody.',
     image: 'assets/sadhana.jpg'
   },
   {
     id: 'disc-4',
+    guruId: 'guru-anandabodha',
+    guru: 'Yogacharya Anandabodha',
     title: 'Seeker Dialogue: Balancing Family, Work & Daily Sadhana',
     category: 'qa',
     categoryLabel: 'Seeker Q&A',
-    guru: 'Maharishi Anand Ji',
     duration: '28 min',
-    desc: 'Real questions from disciples answered with practical wisdom and Vedic humor.',
+    desc: 'Real questions from disciples answered with practical wisdom, mindfulness, and Vedic clarity.',
     image: 'assets/satsang.jpg'
+  },
+  {
+    id: 'disc-5',
+    guruId: 'guru-nirvanananda',
+    guru: 'Swami Nirvanananda Giri',
+    title: 'Kriya Pranayama: The Alchemy of Cosmic Breath & Shushumna',
+    category: 'meditation',
+    categoryLabel: 'Meditation & Dhyana',
+    duration: '48 min',
+    desc: 'Deep Himalayan guidance on directing prana into the spine for effortless meditation states.',
+    image: 'assets/hero.jpg'
+  },
+  {
+    id: 'disc-6',
+    guruId: 'guru-tejomaya',
+    guru: 'Brahmarshi Tejomaya',
+    title: 'Mandukya Upanishad: The 4 States of Consciousness & Om',
+    category: 'vedanta',
+    categoryLabel: 'Upanishad & Vedanta',
+    duration: '54 min',
+    desc: 'Unlocking the profound secrets of Waking, Dreaming, Deep Sleep, and Turiya through sacred vibration.',
+    image: 'assets/sadhana.jpg'
   }
 ];
 
@@ -260,11 +377,16 @@ let DISCIPLES_DIRECTORY = [
 // ---------------------------------------------------------------------------
 // 3. APPLICATION INITIALIZATION & DOM BINDINGS
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// 3. APPLICATION INITIALIZATION & DOM BINDINGS
+// ---------------------------------------------------------------------------
 function bootstrapApp() {
   setupNavigation();
   setupRoleSwitcher();
+  setupGurusDirectory();
   setupGuruStudio();
   setupAmbientAudio();
+  renderGurusDirectory('all');
   renderDiscourses('all');
   renderRetreats();
   renderUserPasses();
@@ -283,6 +405,258 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', bootstrapApp);
 } else {
   bootstrapApp();
+}
+
+// ---------------------------------------------------------------------------
+// GURUS DIRECTORY & SANCTUARY PORTAL NAVIGATION
+// ---------------------------------------------------------------------------
+function renderGurusDirectory(filter = 'all', searchQuery = '') {
+  const grid = document.getElementById('gurusGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  let list = GURUS_DATA;
+  if (filter && filter !== 'all') {
+    const fLower = filter.toLowerCase();
+    list = list.filter(g => 
+      g.category.toLowerCase().includes(fLower) || 
+      g.tradition.toLowerCase().includes(fLower) ||
+      g.tags.some(t => t.toLowerCase().includes(fLower))
+    );
+  }
+
+  if (searchQuery && searchQuery.trim() !== '') {
+    const q = searchQuery.toLowerCase().trim();
+    list = list.filter(g => 
+      g.name.toLowerCase().includes(q) || 
+      g.tradition.toLowerCase().includes(q) || 
+      g.location.toLowerCase().includes(q) ||
+      g.tags.some(t => t.toLowerCase().includes(q))
+    );
+  }
+
+  if (list.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--gold-300);">
+        <p style="font-size: 1.2rem; margin-bottom: 12px;">🕉️ No Gurus found matching your search.</p>
+        <button class="btn btn-sm btn-gold" id="btnResetGuruFilter">View All Revered Gurus</button>
+      </div>
+    `;
+    const resetBtn = document.getElementById('btnResetGuruFilter');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const searchInput = document.getElementById('guruSearchInput');
+        if (searchInput) searchInput.value = '';
+        document.querySelectorAll('.guru-filter-pill').forEach(p => {
+          p.classList.toggle('active', p.getAttribute('data-filter') === 'all');
+        });
+        renderGurusDirectory('all', '');
+      });
+    }
+    return;
+  }
+
+  list.forEach(guru => {
+    const card = document.createElement('div');
+    card.className = 'guru-card';
+    card.innerHTML = `
+      <div class="guru-card-media">
+        <img src="${guru.avatar}" alt="${guru.name}">
+        <span class="guru-tradition-pill">${guru.tradition}</span>
+        <span class="guru-location-pill">📍 ${guru.location}</span>
+      </div>
+      <div class="guru-card-body">
+        <div class="guru-card-header">
+          <h3 class="guru-card-name">${guru.name}</h3>
+          <p class="guru-card-subtitle">${guru.title}</p>
+        </div>
+        <p class="guru-card-quote">${guru.quote}</p>
+        <div class="guru-tags-row">
+          ${guru.tags.map(t => `<span class="guru-tag-chip"># ${t}</span>`).join('')}
+        </div>
+        <div class="guru-card-stats">
+          <span>👥 ${guru.discipleCount}</span>
+          <span>📜 ${guru.discoursesCount} Teachings</span>
+          <span>🎟️ ${guru.retreatsCount} Retreats</span>
+        </div>
+        <div class="guru-card-actions">
+          <button class="btn-select-guru" data-guru-id="${guru.id}">
+            Enter Spiritual Sanctuary ➔
+          </button>
+        </div>
+      </div>
+    `;
+
+    // Clicking anywhere on card opens Guru sanctuary window
+    card.addEventListener('click', () => {
+      audioApp.playSingingBowl();
+      selectGuru(guru.id);
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+function selectGuru(guruId) {
+  const guru = GURUS_DATA.find(g => g.id === guruId) || GURUS_DATA[0];
+  currentSelectedGuru = guru;
+
+  // 1. Update Mini Sticky Bar
+  const miniName = document.getElementById('miniGuruName');
+  if (miniName) miniName.textContent = guru.name;
+
+  const miniTradition = document.getElementById('miniGuruTradition');
+  if (miniTradition) miniTradition.textContent = `${guru.tradition} • ${guru.location}`;
+
+  // 2. Update Grand Hero Elements
+  const heroHeading = document.getElementById('guruHeroHeading');
+  if (heroHeading) {
+    heroHeading.innerHTML = `${guru.name}<br><span class="gradient-gold">Digital Ashram Sanctuary</span>`;
+  }
+
+  const traditionTag = document.getElementById('guruHeroTraditionTag');
+  if (traditionTag) {
+    traditionTag.innerHTML = `<span class="dot"></span> ${guru.tradition} Master • ${guru.location}`;
+  }
+
+  const heroQuote = document.getElementById('guruHeroQuote');
+  if (heroQuote) heroQuote.textContent = guru.quote;
+
+  const heroBgImg = document.getElementById('guruHeroBgImg');
+  if (heroBgImg) heroBgImg.src = guru.avatar;
+
+  const liveGuruName = document.getElementById('liveGuruName');
+  if (liveGuruName) liveGuruName.textContent = `${guru.name}:`;
+
+  const liveGuruTopic = document.getElementById('liveGuruTopic');
+  if (liveGuruTopic) liveGuruTopic.textContent = `"${guru.liveTopic || 'Direct Satsang'}"`;
+
+  // 3. Render offerings personalized to this Guru
+  renderDiscourses('all', guru);
+  renderRetreats(guru);
+
+  // 4. Switch Subview
+  const homeDir = document.getElementById('seekerHomeDirectory');
+  const sanctuary = document.getElementById('seekerGuruSanctuary');
+  if (homeDir) homeDir.classList.remove('active');
+  if (sanctuary) sanctuary.classList.add('active');
+
+  // 5. Browser history push for back navigation
+  if (!history.state || history.state.guruSelected !== guru.id) {
+    history.pushState({ guruSelected: guru.id }, '', `#guru=${guru.id}`);
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  showToast(`🙏 Welcome to the sacred sanctuary of ${guru.name}`);
+}
+
+function returnToGurusDirectory(fromPopState = false) {
+  const homeDir = document.getElementById('seekerHomeDirectory');
+  const sanctuary = document.getElementById('seekerGuruSanctuary');
+  if (sanctuary) sanctuary.classList.remove('active');
+  if (homeDir) homeDir.classList.add('active');
+
+  if (!fromPopState && history.state && history.state.guruSelected) {
+    history.back();
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setupGurusDirectory() {
+  const searchInput = document.getElementById('guruSearchInput');
+  const filterPills = document.querySelectorAll('.guru-filter-pill');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const activePill = document.querySelector('.guru-filter-pill.active');
+      const filter = activePill ? activePill.getAttribute('data-filter') : 'all';
+      renderGurusDirectory(filter, e.target.value);
+    });
+  }
+
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.getAttribute('data-filter');
+      const q = searchInput ? searchInput.value : '';
+      renderGurusDirectory(filter, q);
+    });
+  });
+
+  // Return to Gurus button in Sticky Topbar
+  const backBtn = document.getElementById('btnBackToGurus');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      returnToGurusDirectory(false);
+    });
+  }
+
+  // Quick Dakshina button in Sticky Topbar
+  const quickDakshina = document.getElementById('btnQuickDakshina');
+  if (quickDakshina) {
+    quickDakshina.addEventListener('click', () => {
+      openModal('dakshinaModal');
+    });
+  }
+
+  // Brand Logo click navigates back to directory if in sanctuary
+  const brandLogo = document.getElementById('brandLogo');
+  if (brandLogo) {
+    brandLogo.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sanctuary = document.getElementById('seekerGuruSanctuary');
+      if (sanctuary && sanctuary.classList.contains('active')) {
+        returnToGurusDirectory(false);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Quick feature jump tabs inside selected Guru sanctuary
+  document.querySelectorAll('.feature-nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.feature-nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      
+      const targetHref = link.getAttribute('href');
+      const targetEl = document.querySelector(targetHref);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      const text = link.textContent;
+      if (text.includes('Meditation') || text.includes('Dhyana')) {
+        triggerDiscourseTab('meditation');
+      } else if (text.includes('Bhakti') || text.includes('Kirtan')) {
+        triggerDiscourseTab('bhakti');
+      } else if (text.includes('Upanishad') || text.includes('Pravachan') || text.includes('Vedanta')) {
+        triggerDiscourseTab('vedanta');
+      }
+    });
+  });
+
+  // Check URL hash on initial load
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#guru=')) {
+    const targetGuruId = hash.replace('#guru=', '');
+    selectGuru(targetGuruId);
+  }
+}
+
+function triggerDiscourseTab(category) {
+  document.querySelectorAll('.tab-chip').forEach(tab => {
+    if (tab.getAttribute('data-category') === category) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+  renderDiscourses(category);
 }
 
 // ---------------------------------------------------------------------------
@@ -308,7 +682,15 @@ function setupNavigation() {
         if (btnRoleSeeker) btnRoleSeeker.classList.add('active');
         if (btnRoleGuru) btnRoleGuru.classList.remove('active');
 
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+        // If in directory and user clicks a feature nav item, select default guru and view that section
+        const homeDir = document.getElementById('seekerHomeDirectory');
+        if (homeDir && homeDir.classList.contains('active')) {
+          selectGuru(currentSelectedGuru.id);
+        }
+
+        setTimeout(() => {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       }
     });
   });
@@ -708,13 +1090,22 @@ function setupAmbientAudio() {
 // ---------------------------------------------------------------------------
 // SACRED DISCOURSES & PRAVACHAN LIBRARY
 // ---------------------------------------------------------------------------
-function renderDiscourses(category) {
+function renderDiscourses(category = 'all', filterGuru = null) {
   const grid = document.getElementById('discoursesGrid');
+  if (!grid) return;
   grid.innerHTML = '';
 
+  const activeGuru = filterGuru || currentSelectedGuru;
+  let list = DISCOURSES_DATA;
+  if (activeGuru) {
+    const guruSpecific = list.filter(d => d.guru === activeGuru.name || d.guruId === activeGuru.id);
+    const others = list.filter(d => d.guru !== activeGuru.name && d.guruId !== activeGuru.id);
+    list = [...guruSpecific, ...others];
+  }
+
   const filtered = category === 'all' 
-    ? DISCOURSES_DATA 
-    : DISCOURSES_DATA.filter(d => d.category === category);
+    ? list 
+    : list.filter(d => d.category === category);
 
   filtered.forEach(d => {
     const card = document.createElement('div');
@@ -741,33 +1132,42 @@ function renderDiscourses(category) {
   });
 
   // Attach audio triggers
-  document.querySelectorAll('.btn-play-discourse').forEach(btn => {
+  grid.querySelectorAll('.btn-play-discourse').forEach(btn => {
     btn.addEventListener('click', () => {
       audioApp.playSingingBowl();
-      alert('Playing discourse in Sacred Sanctuary Mode with background audio support.');
-    });
-  });
-
-  // Tab Filtering
-  document.querySelectorAll('.tab-chip').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab-chip').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      renderDiscourses(tab.getAttribute('data-category'));
+      showToast('Playing discourse in Sacred Sanctuary Mode with background audio support.');
     });
   });
 }
+
+// Global Tab Filtering for Discourses
+document.querySelectorAll('.tab-chip').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab-chip').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderDiscourses(tab.getAttribute('data-category'));
+  });
+});
 
 // ---------------------------------------------------------------------------
 // RETREATS & QR PASS BOOKING ENGINE
 // ---------------------------------------------------------------------------
 let selectedRetreatForBooking = RETREATS_DATA[0];
 
-function renderRetreats() {
+function renderRetreats(filterGuru = null) {
   const grid = document.getElementById('retreatsGrid');
+  if (!grid) return;
   grid.innerHTML = '';
 
-  RETREATS_DATA.forEach(r => {
+  const activeGuru = filterGuru || currentSelectedGuru;
+  let list = RETREATS_DATA;
+  if (activeGuru) {
+    const guruSpecific = list.filter(r => r.guru === activeGuru.name || r.guruId === activeGuru.id);
+    const others = list.filter(r => r.guru !== activeGuru.name && r.guruId !== activeGuru.id);
+    list = [...guruSpecific, ...others];
+  }
+
+  list.forEach(r => {
     const card = document.createElement('div');
     card.className = 'retreat-card';
     card.innerHTML = `
@@ -781,6 +1181,7 @@ function renderRetreats() {
       <div class="retreat-body">
         <span class="retreat-loc">${r.location}</span>
         <h3 class="retreat-title">${r.title}</h3>
+        <p style="color: var(--gold-400); font-size: 0.82rem; font-weight: 600; margin-bottom: 8px;">Presided by: ${r.guru}</p>
         <p class="retreat-desc">${r.desc}</p>
         <ul class="retreat-highlights">
           ${r.highlights.map(h => `<li>${h}</li>`).join('')}
@@ -1224,11 +1625,18 @@ function setupModals() {
     }
   });
 
-  // Global PopState: Touchpad swipe back / browser back button closes modal smoothly
+  // Global PopState: Touchpad swipe back / browser back button closes modal or returns to Gurus Directory smoothly
   window.addEventListener('popstate', (e) => {
     const openModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
     if (openModals.length > 0) {
       closeAllModals(true);
+      return;
+    }
+
+    // If inside selected Guru sanctuary, return to Gurus Directory
+    const sanctuary = document.getElementById('seekerGuruSanctuary');
+    if (sanctuary && sanctuary.classList.contains('active')) {
+      returnToGurusDirectory(true);
     }
   });
 

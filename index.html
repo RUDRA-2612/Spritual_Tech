@@ -71,35 +71,120 @@
     <!-- ============================================== -->
     <div id="viewSeekerWrapper" class="view-wrapper active">
       
-      <!-- HERO SECTION -->
-      <section class="sanctuary-hero" id="view-sanctuary">
-        <div class="hero-bg-overlay"></div>
-        <img src="assets/hero.jpg" alt="Sacred Ashram Satsang & Meditation Gathering" class="hero-bg-img">
-        <div class="hero-content">
-          <div class="sacred-tag">
-            <span class="dot"></span> Sacred Distraction-Free Space
+      <!-- SUBVIEW 1: REVERED GURUS DIRECTORY (HOME PAGE) -->
+      <div id="seekerHomeDirectory" class="seeker-subview active">
+        <!-- Hero Section for Gurus Directory -->
+        <section class="gurus-directory-hero">
+          <div class="hero-bg-overlay"></div>
+          <img src="assets/hero.jpg" alt="Sacred Ashram Masters Gathering" class="hero-bg-img">
+          <div class="hero-content">
+            <div class="sacred-tag">
+              <span class="dot"></span> Sacred Ashram Directory • Revered Masters
+            </div>
+            <h1 class="hero-heading">Select Your Revered Guru.<br><span class="gradient-gold">Enter Their Sacred Digital Sanctuary.</span></h1>
+            <p class="hero-description">
+              Choose an enlightened spiritual master to enter their dedicated sanctuary: guided meditation, dhyana, devotional kirtan, Upanishadic pravachan, and upcoming ashram gatherings.
+            </p>
+
+            <!-- Search & Filters -->
+            <div class="directory-search-bar">
+              <input type="text" id="guruSearchInput" placeholder="🔍 Search masters by name, tradition, or ashram...">
+            </div>
+
+            <div class="guru-category-pills" id="guruFilterPills">
+              <button class="guru-filter-pill active" data-filter="all">All Masters (5)</button>
+              <button class="guru-filter-pill" data-filter="Meditation">🧘 Meditation & Dhyana</button>
+              <button class="guru-filter-pill" data-filter="Bhakti">🪕 Bhakti & Kirtan</button>
+              <button class="guru-filter-pill" data-filter="Vedanta">📜 Advaita Vedanta</button>
+              <button class="guru-filter-pill" data-filter="Kriya">⛰️ Himalayan Kriya</button>
+            </div>
           </div>
-          <h1 class="hero-heading">Shri Guru Satsang & Dhyana.<br><span class="gradient-gold">Sampoorna Spiritual Sanctuary.</span></h1>
-          <div class="hero-cta-group">
-            <button class="btn btn-gold" id="heroExploreRetreats">
-              <span>Book Upcoming Retreat</span>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42L16.86 11H5v2z"/></svg>
-            </button>
-            <button class="btn btn-outline" id="heroStartSadhana">
-              <span>Open Daily Sadhana Tracker</span>
-            </button>
+        </section>
+
+        <!-- Gurus Cards Grid Section -->
+        <section class="section-container" style="padding-top: 20px;">
+          <div class="section-header">
+            <div class="section-kicker">ENLIGHTENED SPIRITUAL LINEAGES</div>
+            <h2 class="section-title">Revered Masters & Ashram Sanctuaries</h2>
+            <p class="section-subtitle">
+              Click on any Guru to open their complete sanctuary portal with teachings, kirtans, shows, and ashram seva.
+            </p>
           </div>
 
-          <!-- Live Satsang Status Banner -->
-          <div class="live-satsang-pill" id="liveSatsangBanner">
-            <div class="live-indicator"><span class="pulse-ring"></span>LIVE NOW</div>
-            <div class="live-details">
-              <strong>Maharishi Anand Ji:</strong> "Overcoming the Restless Mind (Chitta Vritti Nirodha)"
+          <div class="gurus-cards-grid" id="gurusGrid">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </section>
+      </div>
+
+      <!-- SUBVIEW 2: DEDICATED GURU SANCTUARY PORTAL (OPENED AFTER SELECTING GURU) -->
+      <div id="seekerGuruSanctuary" class="seeker-subview">
+        <!-- Top Return Bar for Selected Guru -->
+        <div class="selected-guru-topbar" id="selectedGuruTopbar">
+          <div class="topbar-inner">
+            <button class="btn btn-outline-gold btn-back-to-gurus" id="btnBackToGurus">
+              <span>← Back to All Gurus</span>
+            </button>
+            <div class="active-guru-meta">
+              <span class="guru-avatar-mini" id="miniGuruAvatar">🕉️</span>
+              <div>
+                <strong id="miniGuruName">Acharya Vedantacharya</strong>
+                <small id="miniGuruTradition">Advaita Vedanta & Silence</small>
+              </div>
             </div>
-            <button class="btn-sm btn-saffron" id="joinLiveSatsangBtn">Enter Satsang Room</button>
+            <button class="btn btn-sm btn-gold" id="btnQuickDakshina">
+              <span>Offer Dakshina</span>
+            </button>
           </div>
         </div>
-      </section>
+
+        <!-- Selected Guru Grand Hero Banner -->
+        <section class="sanctuary-hero" id="view-sanctuary">
+          <div class="hero-bg-overlay"></div>
+          <img src="assets/hero.jpg" alt="Sacred Ashram Satsang" class="hero-bg-img" id="guruHeroBgImg">
+          <div class="hero-content">
+            <div class="sacred-tag" id="guruHeroTraditionTag">
+              <span class="dot"></span> Advaita Vedanta & Silence Master
+            </div>
+            <h1 class="hero-heading" id="guruHeroHeading">
+              Acharya Vedantacharya<br>
+              <span class="gradient-gold" id="guruHeroSubheading">Digital Ashram Sanctuary</span>
+            </h1>
+            <p class="guru-quote-box" id="guruHeroQuote">
+              "You are not the restless mind. You are the eternal stillness witnessing the thoughts."
+            </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-gold" id="heroExploreRetreats">
+                <span>View Guru's Upcoming Retreats</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42L16.86 11H5v2z"/></svg>
+              </button>
+              <button class="btn btn-outline" id="heroStartSadhana">
+                <span>Open Daily Sadhana Suite</span>
+              </button>
+            </div>
+
+            <!-- Live Satsang Status Banner -->
+            <div class="live-satsang-pill" id="liveSatsangBanner">
+              <div class="live-indicator"><span class="pulse-ring"></span>LIVE NOW</div>
+              <div class="live-details">
+                <strong id="liveGuruName">Acharya Vedantacharya:</strong> <span id="liveGuruTopic">"Chitta Shuddhi & Mental Silence"</span>
+              </div>
+              <button class="btn-sm btn-saffron" id="joinLiveSatsangBtn">Enter Satsang Room</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Jump Navigation for Guru Sanctuary Features -->
+        <div class="guru-features-nav-bar">
+          <div class="features-nav-inner">
+            <a href="#view-discourses" class="feature-nav-link active">🧘 Meditation & Dhyana</a>
+            <a href="#view-discourses" class="feature-nav-link">🪕 Bhakti & Kirtan</a>
+            <a href="#view-discourses" class="feature-nav-link">📜 Upanishads & Pravachan</a>
+            <a href="#view-retreats" class="feature-nav-link">🎟️ Shows & Retreats</a>
+            <a href="#view-sadhana" class="feature-nav-link">📿 Daily Sadhana</a>
+            <a href="#view-dakshina" class="feature-nav-link">🙏 Ashram Seva</a>
+          </div>
+        </div>
 
       <!-- PILLAR 1: SACRED PRAVACHAN & DISCOURSES -->
       <section class="section-container" id="view-discourses">
@@ -330,7 +415,8 @@
         </div>
       </section>
 
-    </div>
+      </div> <!-- /#seekerGuruSanctuary -->
+    </div> <!-- /#viewSeekerWrapper -->
 
     <!-- ============================================== -->
     <!-- VIEW 2: GURU STUDIO (ASHRAM & VOLUNTEER OS)    -->
