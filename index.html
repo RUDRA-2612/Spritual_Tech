@@ -980,75 +980,7 @@
           </div>
         </div>
 
-        <!-- SECTION 2: MANAGEMENT SPLIT GRID (GATE SCANNER & LIVE ROSTER) -->
-        <div class="studio-split-grid mb-6" id="sectionGuruScanner">
-          <!-- Gate Volunteer Scanner Simulator Card -->
-          <div class="studio-card">
-            <div class="card-head">
-              <h3>🚪 Venue Gate Verification Center</h3>
-              <span class="badge-status-green">Gate 1 Active</span>
-            </div>
-            <p class="card-desc">
-              Volunteers scan attendee QR passes at ashram venue entrance. Fast verification eliminates entry crowds and eliminates paper sheets.
-            </p>
-            
-            <div class="scanner-simulation-box">
-              <div class="scan-camera-sim">
-                <div class="scan-laser"></div>
-                <div class="scan-target-corners"></div>
-                <div class="scan-camera-placeholder">
-                  <span>📱 Camera Sensor Live</span>
-                  <small>Point at Attendee Ashram Pass QR</small>
-                </div>
-              </div>
 
-              <!-- Quick Barcode Manual Input for Testing -->
-              <div class="manual-scan-group">
-                <input type="text" id="manualTicketInput" placeholder="Enter Ticket Code (e.g. RET-RISHI-9041)">
-                <button class="btn btn-saffron" id="btnManualScanVerify">Verify Entry</button>
-              </div>
-
-              <div class="quick-code-chips">
-                <span>Quick Test Disciples:</span>
-                <button class="quick-code-btn" data-code="RET-RISHI-1001">Rudra</button>
-                <button class="quick-code-btn" data-code="RET-RISHI-1002">Tanishq</button>
-                <button class="quick-code-btn" data-code="RET-RISHI-9041">Ishvit</button>
-                <button class="quick-code-btn" data-code="RET-RISHI-1004">Lakshit</button>
-                <button class="quick-code-btn" data-code="RET-RISHI-1005">Vaishali</button>
-              </div>
-
-              <!-- Scan Verification Result Box -->
-              <div id="scanResultBadge" class="scan-result-card hidden">
-                <!-- Injected via JS -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Real-Time Attendee Roster -->
-          <div class="studio-card">
-            <div class="card-head">
-              <h3>📋 Live Gate Checked-In Roster</h3>
-              <span class="badge-subtle" id="attendeeSummaryBadge">Live Sync</span>
-            </div>
-            <p class="card-desc">Real-time attendee status updating directly from volunteer gate scanners.</p>
-
-            <div class="roster-table-wrapper">
-              <table class="roster-table">
-                <thead>
-                  <tr>
-                    <th>Pass ID</th>
-                    <th>Disciple Name</th>
-                    <th>Tier</th>
-                    <th>Status</th>
-                    <th>Gate Action</th>
-                  </tr>
-                </thead>
-                <tbody id="rosterTableBody">
-                  <!-- Populated by JS -->
-                </tbody>
-              </table>
-            </div>
-          </div>
         <!-- ========================================================================= -->
         <!-- CORE METRIC 4: GURU FOLLOWERS & DEMOGRAPHICS -->
         <!-- ========================================================================= -->

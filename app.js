@@ -1972,6 +1972,7 @@ function setupSwadhyayaJournal() {
 function renderRoster() {
   const tbody = document.getElementById('rosterTableBody');
   const badge = document.getElementById('attendeeSummaryBadge');
+  if (!tbody || !badge) return;
   tbody.innerHTML = '';
 
   const checkedInCount = ATTENDEE_ROSTER.filter(a => a.status === 'Verified').length;
@@ -2012,6 +2013,7 @@ function setupScannerSimulation() {
   const input = document.getElementById('manualTicketInput');
   const btnVerify = document.getElementById('btnManualScanVerify');
   const resultCard = document.getElementById('scanResultBadge');
+  if (!input || !btnVerify || !resultCard) return;
 
   function verifyTicket(code) {
     const cleanCode = code.trim().toUpperCase();
