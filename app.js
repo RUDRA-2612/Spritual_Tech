@@ -156,16 +156,15 @@ const GURUS_DATA = [
   {
     id: 'guru-vedanta',
     name: 'Acharya Vedantacharya',
-    title: 'Advaita Vedanta & Himalayan Silence Master',
+    title: 'Advaita Vedanta & Silence Master',
     tradition: 'Advaita Vedanta',
     category: 'Vedanta',
-    location: 'Rishikesh Sanctuary, Ganges Riverbank',
+    location: 'Rishikesh Sanctuary',
     avatar: 'assets/hero.jpg',
     discipleCount: '48,000+ Disciples',
     liveStatus: 'Live Mauna Satsang Tomorrow at 6:00 AM IST',
     liveTopic: 'Chitta Shuddhi & The Eternal Witness',
     quote: '"You are not the thoughts that ripple across consciousness; you are the unshakeable stillness in which they arise and dissolve."',
-    tags: ['Mauna Silence', 'Mandukya Upanishad', 'Atma Vichara'],
     retreatsCount: 3,
     discoursesCount: 14
   },
@@ -181,7 +180,6 @@ const GURUS_DATA = [
     liveStatus: 'Akhanda Kirtan Vigil Tonight at 8:00 PM IST',
     liveTopic: 'Awakening The Pure Devotional Heart Center',
     quote: '"When every heartbeat turns into a prayer, the divine presence does not remain a distant philosophy—it becomes your breath."',
-    tags: ['Naam Sankirtan', 'Radha Krishna Prema', 'Heart Awakening'],
     retreatsCount: 2,
     discoursesCount: 18
   },
@@ -191,13 +189,12 @@ const GURUS_DATA = [
     title: 'Himalayan Dhyana & Kriya Master',
     tradition: 'Kriya & Raja Yoga',
     category: 'Kriya',
-    location: 'Uttarkashi Mountain Hermitage',
+    location: 'Uttarkashi Hermitage',
     avatar: 'assets/sadhana.jpg',
     discipleCount: '35,000+ Disciples',
     liveStatus: 'Kriya Pranayama Intensive on Sunday',
     liveTopic: 'The Alchemy of Prana & Shushumna',
     quote: '"Pranayama is the divine bridge across which the wanderer mind crosses into pure, boundless transcendence."',
-    tags: ['Kriya Yoga', 'Kundalini Awakening', 'Himalayan Dhyana'],
     retreatsCount: 2,
     discoursesCount: 12
   },
@@ -207,31 +204,134 @@ const GURUS_DATA = [
     title: 'Sacred Sound & Mantra Yogacharya',
     tradition: 'Naada & Mantra Yoga',
     category: 'Meditation',
-    location: 'Varanasi Sacred Manikarnika Ghat',
+    location: 'Varanasi Sacred Ghats',
     avatar: 'assets/satsang.jpg',
     discipleCount: '29,000+ Disciples',
     liveStatus: 'Vedic Chanting Stream at Sunset',
     liveTopic: 'Cosmic Harmonics of the 432Hz Om Vibration',
     quote: '"The universe emerged from the primordial vibration of Om. When you align your inner frequency, suffering dissolves into cosmic music."',
-    tags: ['432Hz Sound Healing', 'Rudram Chanting', 'Mantra Diksha'],
     retreatsCount: 1,
     discoursesCount: 10
   },
   {
     id: 'guru-anandabodha',
     name: 'Yogacharya Anandabodha',
-    title: 'Raja Yoga & Daily Mindfulness Acharya',
+    title: 'Raja Yoga & Mindfulness Acharya',
     tradition: 'Classical Patanjali Yoga',
     category: 'Meditation',
-    location: 'Almora Pines Sanctuary, Uttarakhand',
+    location: 'Almora Pines Sanctuary',
     avatar: 'assets/hero.jpg',
     discipleCount: '41,000+ Disciples',
     liveStatus: 'Mindful Living Satsang this Saturday',
     liveTopic: 'Daily Karma Yoga & Mental Equilibrium',
     quote: '"Spirituality is not abandoning the world, but bringing radiant clarity and love into every single mundane responsibility."',
-    tags: ['Patanjali Sutras', 'Mindful Living', 'Chitta Shuddhi'],
     retreatsCount: 2,
     discoursesCount: 16
+  },
+  {
+    id: 'guru-chidghanananda',
+    name: 'Paramhansa Chidghanananda',
+    title: 'Kundalini Awakening & Mauna Diksha',
+    tradition: 'Kriya & Tantra Yoga',
+    category: 'Kriya',
+    location: 'Gangotri Mountain Sanctuary',
+    avatar: 'assets/sadhana.jpg',
+    discipleCount: '31,000+ Disciples',
+    liveStatus: 'Silent Kundalini Transmission at Dawn',
+    liveTopic: 'Piercing the Chakras with Pure Consciousness',
+    quote: '"Awakening is not something to be acquired; it is the natural fragrance of consciousness when the mind ceases to grasp."',
+    retreatsCount: 2,
+    discoursesCount: 11
+  },
+  {
+    id: 'guru-amritavani',
+    name: 'Sadhvi Amritavani Devi',
+    title: 'Prema Bhakti & Akhanda Japa Guru',
+    tradition: 'Bhakti & Prema Marga',
+    category: 'Bhakti',
+    location: 'Ayodhya Sacred Dham',
+    avatar: 'assets/satsang_meditation.jpg',
+    discipleCount: '54,000+ Disciples',
+    liveStatus: 'Divine Naam Japa Session at 7:00 PM',
+    liveTopic: 'The Nectar of Devotional Surrender',
+    quote: '"In complete surrender, the ego melts and infinite peace floods the soul."',
+    retreatsCount: 2,
+    discoursesCount: 15
+  },
+  {
+    id: 'guru-prajnatmananda',
+    name: 'Swami Prajnatmananda',
+    title: 'Mandukya Upanishad & Jnana Yoga',
+    tradition: 'Advaita Vedanta',
+    category: 'Vedanta',
+    location: 'Haridwar Ganges Sanctuary',
+    avatar: 'assets/hero.jpg',
+    discipleCount: '38,000+ Disciples',
+    liveStatus: 'Turiya State Discourse this Sunday',
+    liveTopic: 'Beyond Waking, Dreaming, and Deep Sleep',
+    quote: '"Discover the witness of all three states of mind, and you will know yourself to be immortal."',
+    retreatsCount: 3,
+    discoursesCount: 20
+  },
+  {
+    id: 'guru-ishanadeva',
+    name: 'Acharya Ishanadeva',
+    title: 'Shaktipat & Transcendental Dhyana',
+    tradition: 'Kashmir Shaivism',
+    category: 'Meditation',
+    location: 'Badrinath Sacred Valley',
+    avatar: 'assets/sadhana.jpg',
+    discipleCount: '27,000+ Disciples',
+    liveStatus: 'Spanda Karika Satsang Tomorrow',
+    liveTopic: 'The Sacred Throb of Shiva Consciousness',
+    quote: '"Every sensation, every perception is nothing other than the divine dance of universal awareness."',
+    retreatsCount: 1,
+    discoursesCount: 13
+  },
+  {
+    id: 'guru-karunapara',
+    name: 'Mata Karunaparameshwari',
+    title: 'Seva Yoga & Divine Compassion Guide',
+    tradition: 'Bhakti & Karma Yoga',
+    category: 'Bhakti',
+    location: 'Ujjain Kshipra Sanctuary',
+    avatar: 'assets/satsang.jpg',
+    discipleCount: '46,000+ Disciples',
+    liveStatus: 'Heart Awakening Pravachan Tonight',
+    liveTopic: 'Serving the Divine in All Living Beings',
+    quote: '"True spiritual vision sees no other; it beholds the Supreme smiling through every tear and every laugh."',
+    retreatsCount: 2,
+    discoursesCount: 14
+  },
+  {
+    id: 'guru-divyaswarupa',
+    name: 'Maharshi Divyaswarupa',
+    title: 'Vedic Agnihotra & Chitta Shuddhi',
+    tradition: 'Vedic Ritual & Dhyana',
+    category: 'Vedanta',
+    location: 'Omkareshwar Narmada Island',
+    avatar: 'assets/hero.jpg',
+    discipleCount: '33,000+ Disciples',
+    liveStatus: 'Sacred Homa & Dhyana Stream',
+    liveTopic: 'Purification of Mind Through Fire & Mantra',
+    quote: '"Offer the restlessness of the senses into the flame of inner awareness."',
+    retreatsCount: 1,
+    discoursesCount: 9
+  },
+  {
+    id: 'guru-bodhichetana',
+    name: 'Yogini Bodhichetana',
+    title: 'Prana Vidya & Breath Mastery Acharya',
+    tradition: 'Hatha & Prana Yoga',
+    category: 'Kriya',
+    location: 'Kullu Mountain Hermitage',
+    avatar: 'assets/satsang_meditation.jpg',
+    discipleCount: '39,000+ Disciples',
+    liveStatus: 'Advanced Pranayama Masterclass',
+    liveTopic: 'Mastering the 5 Vital Pranic Currents',
+    quote: '"Breath is the master of mind. Control the prana, and stillness will follow effortlessly."',
+    retreatsCount: 2,
+    discoursesCount: 17
   }
 ];
 
@@ -420,8 +520,7 @@ function renderGurusDirectory(filter = 'all', searchQuery = '') {
     const fLower = filter.toLowerCase();
     list = list.filter(g => 
       g.category.toLowerCase().includes(fLower) || 
-      g.tradition.toLowerCase().includes(fLower) ||
-      g.tags.some(t => t.toLowerCase().includes(fLower))
+      g.tradition.toLowerCase().includes(fLower)
     );
   }
 
@@ -430,8 +529,7 @@ function renderGurusDirectory(filter = 'all', searchQuery = '') {
     list = list.filter(g => 
       g.name.toLowerCase().includes(q) || 
       g.tradition.toLowerCase().includes(q) || 
-      g.location.toLowerCase().includes(q) ||
-      g.tags.some(t => t.toLowerCase().includes(q))
+      g.location.toLowerCase().includes(q)
     );
   }
 
@@ -461,29 +559,20 @@ function renderGurusDirectory(filter = 'all', searchQuery = '') {
     card.className = 'guru-card';
     card.innerHTML = `
       <div class="guru-card-media">
-        <img src="${guru.avatar}" alt="${guru.name}">
+        <img src="${guru.avatar}" alt="${guru.name}" loading="lazy">
         <span class="guru-tradition-pill">${guru.tradition}</span>
         <span class="guru-location-pill">📍 ${guru.location}</span>
       </div>
       <div class="guru-card-body">
-        <div class="guru-card-header">
-          <h3 class="guru-card-name">${guru.name}</h3>
-          <p class="guru-card-subtitle">${guru.title}</p>
-        </div>
-        <p class="guru-card-quote">${guru.quote}</p>
-        <div class="guru-tags-row">
-          ${guru.tags.map(t => `<span class="guru-tag-chip"># ${t}</span>`).join('')}
-        </div>
+        <h3 class="guru-card-name">${guru.name}</h3>
+        <p class="guru-card-subtitle">${guru.title}</p>
         <div class="guru-card-stats">
           <span>👥 ${guru.discipleCount}</span>
           <span>📜 ${guru.discoursesCount} Teachings</span>
-          <span>🎟️ ${guru.retreatsCount} Retreats</span>
         </div>
-        <div class="guru-card-actions">
-          <button class="btn-select-guru" data-guru-id="${guru.id}">
-            Enter Spiritual Sanctuary ➔
-          </button>
-        </div>
+        <button class="btn-select-guru" data-guru-id="${guru.id}">
+          Enter Sanctuary ➔
+        </button>
       </div>
     `;
 
