@@ -4688,4 +4688,264 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
+/* ==========================================================================
+   GURU STUDIO SEGMENTED SUBNAV TABS (Reduces Dashboard Clutter & Overcrowding)
+   ========================================================================== */
+.studio-subnav-container {
+  margin: 24px 0 28px 0;
+  background: rgba(14, 7, 3, 0.7);
+  border: 1px solid rgba(254, 215, 170, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.studio-subnav-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .studio-subnav-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .studio-subnav-tabs {
+    grid-template-columns: 1fr;
+  }
+}
+
+.studio-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.studio-tab-btn span.tab-icon {
+  font-size: 1.3rem;
+  margin-bottom: 2px;
+}
+
+.studio-tab-btn strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fed7aa;
+}
+
+.studio-tab-btn small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.studio-tab-btn:hover {
+  background: rgba(254, 215, 170, 0.06);
+  color: #fff;
+  border-color: rgba(254, 215, 170, 0.15);
+}
+
+.studio-tab-btn.active {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.25), rgba(180, 83, 9, 0.2));
+  border-color: #f97316;
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.3), inset 0 1px 0 rgba(254, 215, 170, 0.2);
+}
+
+.studio-tab-btn.active strong {
+  color: #fff;
+}
+
+.studio-tab-btn.active small {
+  color: #fed7aa;
+}
+
+/* Panel Display State */
+.studio-panel-hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   ENHANCED PAYMENT GATEWAY UI/UX (Interactive 2FA, UPI PIN & Receipts)
+   ========================================================================== */
+.upi-verify-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-verify-vpa {
+  white-space: nowrap;
+  padding: 0 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.vpa-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  margin-top: 6px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.qr-timer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-top: 4px;
+}
+
+/* Card network badge */
+.card-input-wrapper {
+  position: relative;
+}
+
+.card-network-badge {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+  color: #fb923c;
+  letter-spacing: 0.05em;
+}
+
+/* Interactive 2FA / PIN Modal Pane */
+.pay-auth-pane {
+  background: rgba(12, 6, 3, 0.95);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+}
+
+.pin-boxes-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.pin-digit-box {
+  width: 46px;
+  height: 52px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(254, 215, 170, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fb923c;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.pin-digit-box.filled {
+  border-color: #f97316;
+  background: rgba(234, 88, 12, 0.12);
+}
+
+.numpad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 260px;
+  margin: 0 auto 16px auto;
+}
+
+.numpad-key {
+  background: rgba(254, 215, 170, 0.06);
+  border: 1px solid rgba(254, 215, 170, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fed7aa;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.numpad-key:hover {
+  background: rgba(251, 146, 60, 0.2);
+  border-color: #fb923c;
+  color: #fff;
+}
+
+.numpad-key:active {
+  transform: scale(0.95);
+}
+
+/* Success Receipt Screen */
+.pay-receipt-card {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receipt-check-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px auto;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+}
+
+.receipt-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #34d399;
+  margin-bottom: 4px;
+}
+
+.receipt-rows {
+  margin-top: 16px;
+  text-align: left;
+  border-top: 1px dashed rgba(254, 215, 170, 0.15);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+
 

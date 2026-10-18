@@ -508,6 +508,9 @@ function bootstrapApp() {
   setupScannerSimulation();
   setupLiveSatsangRoom();
   setupDakshinaLogic();
+  setupGuruStudioSubnav();
+  setupPaymentGateway();
+  setupGuruSubscription();
 }
 
 if (document.readyState === 'loading') {
@@ -2447,29 +2450,95 @@ function setupPaymentGateway() {
     });
   });
 
-  // UPI App Chips
+  // UPI App Chips with instant selection
   document.querySelectorAll('.upi-app-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       document.querySelectorAll('.upi-app-chip').forEach(c => c.classList.remove('selected'));
       chip.classList.add('selected');
       const app = chip.getAttribute('data-app');
       const vpa = document.getElementById('upiVpaInput');
+      const statusBadge = document.getElementById('vpaStatusBadge');
       if (vpa) {
         if (app === 'GPay') vpa.value = 'rudra@okhdfcbank';
         else if (app === 'PhonePe') vpa.value = '9876543210@ybl';
         else if (app === 'Paytm') vpa.value = '9876543210@paytm';
         else vpa.value = 'rudra@upi';
       }
+      if (statusBadge) {
+        statusBadge.textContent = `✓ Verified ${app} Account: RUDRA (State Bank of India)`;
+        statusBadge.style.display = 'flex';
+      }
+      audioApp.playBeadClick();
     });
   });
+
+  // VPA Verification Button
+  const btnVerifyVpa = document.getElementById('btnVerifyVpa');
+  if (btnVerifyVpa) {
+    btnVerifyVpa.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vpaInput = document.getElementById('upiVpaInput');
+      const statusBadge = document.getElementById('vpaStatusBadge');
+      const vpaVal = vpaInput?.value?.trim() || 'rudra@upi';
+
+      btnVerifyVpa.textContent = 'Checking...';
+      setTimeout(() => {
+        btnVerifyVpa.textContent = 'Verified ✓';
+        if (statusBadge) {
+          statusBadge.textContent = `✓ Verified Seeker VPA (${vpaVal}): RUDRA • State Bank of India`;
+          statusBadge.style.display = 'flex';
+        }
+        audioApp.playSingingBowl();
+        showToast(`✓ UPI VPA Verified: ${vpaVal}`);
+      }, 500);
+    });
+  }
+
+  // Card Number Auto-formatting (adds space every 4 digits) & Network Detection
+  const cardInput = document.getElementById('cardNumInput');
+  const cardBadge = document.getElementById('cardNetworkBadge');
+  if (cardInput) {
+    cardInput.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/\D/g, '');
+      if (val.length > 16) val = val.substring(0, 16);
+      let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
+      e.target.value = formatted;
+
+      if (cardBadge) {
+        if (val.startsWith('4')) cardBadge.textContent = 'VISA';
+        else if (val.startsWith('5')) cardBadge.textContent = 'MASTERCARD';
+        else if (val.startsWith('6')) cardBadge.textContent = 'RUPAY';
+        else cardBadge.textContent = 'CARD';
+      }
+    });
+  }
 
   // Bank Selection in Netbanking
   document.querySelectorAll('.bank-option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.bank-option-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
+      audioApp.playBeadClick();
     });
   });
+
+  // Start Dynamic QR Countdown (5-minute timer)
+  let qrSecondsLeft = 299;
+  const qrTimerEl = document.getElementById('qrCountdownText');
+  if (qrTimerEl) {
+    setInterval(() => {
+      if (qrSecondsLeft > 0) {
+        qrSecondsLeft--;
+        const mins = String(Math.floor(qrSecondsLeft / 60)).padStart(2, '0');
+        const secs = String(qrSecondsLeft % 60).padStart(2, '0');
+        qrTimerEl.textContent = `${mins}:${secs} min`;
+      } else {
+        qrTimerEl.textContent = 'Refreshed';
+        qrSecondsLeft = 299;
+        drawUpiPaymentQr('4500');
+      }
+    }, 1000);
+  }
 
   // Execute Payment Button
   const payBtn = document.getElementById('btnExecutePayment');
@@ -2506,6 +2575,81 @@ function setupPaymentGateway() {
       }, 3000);
     });
   }
+}
+
+// ---------------------------------------------------------------------------
+// GURU STUDIO SUBNAV TAB SWITCHER (Eliminates Crowded / Cluttered Feel)
+// ---------------------------------------------------------------------------
+function setupGuruStudioSubnav() {
+  const tabBtns = document.querySelectorAll('.studio-tab-btn');
+  const panelViews = document.getElementById('panelSatsangViews');
+  const panelContent = document.getElementById('panelContentPopularity');
+  const panelRetreats = document.getElementById('sectionGuruRetreats');
+  const panelFollowers = document.getElementById('panelFollowersReach');
+  const panelSub = document.getElementById('panelGuruSubscription');
+
+  function switchStudioTab(targetTab) {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    const matchingBtn = document.querySelector(`.studio-tab-btn[data-studio-tab="${targetTab}"]`);
+    if (matchingBtn) matchingBtn.classList.add('active');
+
+    // Hide or show panels according to selected tab
+    if (targetTab === 'tab-overview') {
+      // Show all panels cleanly
+      if (panelViews) panelViews.classList.remove('studio-panel-hidden');
+      if (panelContent) panelContent.classList.remove('studio-panel-hidden');
+      if (panelRetreats) panelRetreats.classList.remove('studio-panel-hidden');
+      if (panelFollowers) panelFollowers.classList.remove('studio-panel-hidden');
+      if (panelSub) panelSub.classList.remove('studio-panel-hidden');
+    } else if (targetTab === 'tab-viewership') {
+      if (panelViews) panelViews.classList.remove('studio-panel-hidden');
+      if (panelContent) panelContent.classList.remove('studio-panel-hidden');
+      if (panelRetreats) panelRetreats.classList.add('studio-panel-hidden');
+      if (panelFollowers) panelFollowers.classList.add('studio-panel-hidden');
+      if (panelSub) panelSub.classList.add('studio-panel-hidden');
+      panelViews?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (targetTab === 'tab-ticketing') {
+      if (panelViews) panelViews.classList.add('studio-panel-hidden');
+      if (panelContent) panelContent.classList.add('studio-panel-hidden');
+      if (panelRetreats) panelRetreats.classList.remove('studio-panel-hidden');
+      if (panelFollowers) panelFollowers.classList.add('studio-panel-hidden');
+      if (panelSub) panelSub.classList.add('studio-panel-hidden');
+      panelRetreats?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (targetTab === 'tab-disciples') {
+      if (panelViews) panelViews.classList.add('studio-panel-hidden');
+      if (panelContent) panelContent.classList.add('studio-panel-hidden');
+      if (panelRetreats) panelRetreats.classList.add('studio-panel-hidden');
+      if (panelFollowers) panelFollowers.classList.remove('studio-panel-hidden');
+      if (panelSub) panelSub.classList.add('studio-panel-hidden');
+      panelFollowers?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (targetTab === 'tab-subscription') {
+      if (panelViews) panelViews.classList.add('studio-panel-hidden');
+      if (panelContent) panelContent.classList.add('studio-panel-hidden');
+      if (panelRetreats) panelRetreats.classList.add('studio-panel-hidden');
+      if (panelFollowers) panelFollowers.classList.add('studio-panel-hidden');
+      if (panelSub) panelSub.classList.remove('studio-panel-hidden');
+      panelSub?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-studio-tab');
+      switchStudioTab(target);
+      audioApp.playBeadClick();
+    });
+  });
+
+  // Top 4 KPI Cards: Clicking jumps directly to relevant tab
+  const cardViews = document.getElementById('guruCardViews');
+  const cardPopularity = document.getElementById('guruCardPopularity');
+  const cardTickets = document.getElementById('guruCardTickets');
+  const cardFollowers = document.getElementById('guruCardFollowers');
+
+  if (cardViews) cardViews.addEventListener('click', () => switchStudioTab('tab-viewership'));
+  if (cardPopularity) cardPopularity.addEventListener('click', () => switchStudioTab('tab-viewership'));
+  if (cardTickets) cardTickets.addEventListener('click', () => switchStudioTab('tab-ticketing'));
+  if (cardFollowers) cardFollowers.addEventListener('click', () => switchStudioTab('tab-disciples'));
 }
 
 function setupGuruSubscription() {

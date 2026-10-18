@@ -680,6 +680,39 @@
         </div>
 
         <!-- ========================================================================= -->
+        <!-- GURU STUDIO SEGMENTED SUBNAV BAR (Clean, spacious, uncrowded layout)      -->
+        <!-- ========================================================================= -->
+        <div class="studio-subnav-container">
+          <div class="studio-subnav-tabs">
+            <button class="studio-tab-btn active" data-studio-tab="tab-overview">
+              <span class="tab-icon">📊</span>
+              <strong>All Insights</strong>
+              <small>Full Overview</small>
+            </button>
+            <button class="studio-tab-btn" data-studio-tab="tab-viewership">
+              <span class="tab-icon">👁️</span>
+              <strong>Satsang & Content</strong>
+              <small>Views & Preferences</small>
+            </button>
+            <button class="studio-tab-btn" data-studio-tab="tab-ticketing">
+              <span class="tab-icon">🎟️</span>
+              <strong>Tickets & Capacity</strong>
+              <small>Seats & Payouts</small>
+            </button>
+            <button class="studio-tab-btn" data-studio-tab="tab-disciples">
+              <span class="tab-icon">👥</span>
+              <strong>Disciples Directory</strong>
+              <small>13 Registered Seekers</small>
+            </button>
+            <button class="studio-tab-btn" data-studio-tab="tab-subscription">
+              <span class="tab-icon">👑</span>
+              <strong>Cloud Subscription</strong>
+              <small>Monthly Ashram Plans</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========================================================================= -->
         <!-- CORE METRIC 1: SATSANG VIEWERSHIP TRENDS (Viewership Channels)-->
         <!-- ========================================================================= -->
         <div class="studio-card mb-6" id="panelSatsangViews">
@@ -1543,7 +1576,11 @@
 
         <div class="form-group" style="margin-bottom: 12px;">
           <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Enter Virtual Payment Address (UPI ID):</label>
-          <input type="text" class="pay-input" id="upiVpaInput" value="rudra@okhdfcbank" placeholder="name@upi / mobilenumber@paytm">
+          <div class="upi-verify-row">
+            <input type="text" class="pay-input" id="upiVpaInput" value="rudra@okhdfcbank" placeholder="name@upi / mobilenumber@paytm">
+            <button class="btn btn-sm btn-outline-gold btn-verify-vpa" id="btnVerifyVpa">Verify VPA</button>
+          </div>
+          <div id="vpaStatusBadge" class="vpa-status-badge">✓ Verified Seeker: RUDRA (State Bank of India)</div>
         </div>
 
         <div class="upi-or-divider">OR SCAN DYNAMIC QR</div>
@@ -1553,6 +1590,7 @@
           <div class="qr-scan-info">
             <strong style="color: #fed7aa; display: block; margin-bottom: 2px;">Instant QR Payment</strong>
             <span>Scan with Google Pay, PhonePe, Paytm, or CRED to authorize instantly.</span>
+            <div class="qr-timer-pill">⏳ QR Expires in: <span id="qrCountdownText">04:59 min</span></div>
           </div>
         </div>
       </div>
@@ -1561,7 +1599,10 @@
       <div class="pay-panel" id="payPanel-cards">
         <div class="form-group" style="margin-bottom: 12px;">
           <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Card Number (Visa / MasterCard / RuPay):</label>
-          <input type="text" class="pay-input" id="cardNumInput" value="4532 •••• •••• 9012" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+          <div class="card-input-wrapper">
+            <input type="text" class="pay-input" id="cardNumInput" value="4532 8920 1042 9012" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+            <span class="card-network-badge" id="cardNetworkBadge">VISA</span>
+          </div>
         </div>
         <div class="card-form-grid">
           <div class="form-group">
