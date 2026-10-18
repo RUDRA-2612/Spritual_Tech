@@ -2353,3 +2353,211 @@ function setupDakshinaLogic() {
     }, 4000);
   });
 }
+
+
+// ---------------------------------------------------------------------------
+// 6. DISCIPLE PAYMENT GATEWAY & GURU SUBSCRIPTION SYSTEM
+// ---------------------------------------------------------------------------
+let currentPaymentContext = null;
+
+function openDisciplePaymentGateway({ itemTitle, seekerName, tierName, amountText, onSuccess }) {
+  currentPaymentContext = { itemTitle, seekerName, tierName, amountText, onSuccess };
+
+  const titleEl = document.getElementById('paySummaryItemTitle');
+  const seekerEl = document.getElementById('paySummarySeekerName');
+  const tierEl = document.getElementById('paySummaryTier');
+  const amtEl = document.getElementById('paySummaryAmount');
+  const btnAmtText = document.getElementById('btnPayAmountText');
+
+  if (titleEl) titleEl.textContent = itemTitle;
+  if (seekerEl) seekerEl.textContent = seekerName;
+  if (tierEl) tierEl.textContent = tierName;
+  if (amtEl) amtEl.textContent = amountText;
+  if (btnAmtText) btnAmtText.textContent = amountText;
+
+  // Draw dynamic QR code for UPI
+  drawUpiPaymentQr(amountText);
+
+  // Reset overlay
+  const overlay = document.getElementById('payProcessingOverlay');
+  if (overlay) overlay.classList.add('hidden');
+
+  openModal('disciplePaymentModal');
+}
+
+function drawUpiPaymentQr(amtText) {
+  const canvas = document.getElementById('upiQrCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, 80, 80);
+
+  // Draw simulated QR Matrix
+  ctx.fillStyle = '#0f172a';
+  // Corner markers
+  ctx.fillRect(4, 4, 22, 22);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(8, 8, 14, 14);
+  ctx.fillStyle = '#0f172a';
+  ctx.fillRect(11, 11, 8, 8);
+
+  ctx.fillRect(54, 4, 22, 22);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(58, 8, 14, 14);
+  ctx.fillStyle = '#0f172a';
+  ctx.fillRect(61, 11, 8, 8);
+
+  ctx.fillRect(4, 54, 22, 22);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(8, 58, 14, 14);
+  ctx.fillStyle = '#0f172a';
+  ctx.fillRect(11, 61, 8, 8);
+
+  // Random bit blocks for authenticity
+  const seed = (amtText || '4500').charCodeAt(0);
+  for (let r = 0; r < 6; r++) {
+    for (let c = 0; c < 6; c++) {
+      if ((r * 7 + c * 13 + seed) % 3 === 0) {
+        ctx.fillRect(30 + c * 4, 30 + r * 4, 3, 3);
+      }
+    }
+  }
+}
+
+function setupPaymentGateway() {
+  // Modal Close
+  const closeBtn = document.getElementById('closePaymentModalBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeModal('disciplePaymentModal');
+    });
+  }
+
+  // Method Tabs (UPI, Cards, NetBanking)
+  const tabBtns = document.querySelectorAll('.pay-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const targetTab = btn.getAttribute('data-tab');
+      document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
+      const activePanel = document.getElementById(`payPanel-${targetTab}`);
+      if (activePanel) activePanel.classList.add('active');
+    });
+  });
+
+  // UPI App Chips
+  document.querySelectorAll('.upi-app-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.upi-app-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      const app = chip.getAttribute('data-app');
+      const vpa = document.getElementById('upiVpaInput');
+      if (vpa) {
+        if (app === 'GPay') vpa.value = 'rudra@okhdfcbank';
+        else if (app === 'PhonePe') vpa.value = '9876543210@ybl';
+        else if (app === 'Paytm') vpa.value = '9876543210@paytm';
+        else vpa.value = 'rudra@upi';
+      }
+    });
+  });
+
+  // Bank Selection in Netbanking
+  document.querySelectorAll('.bank-option-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.bank-option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Execute Payment Button
+  const payBtn = document.getElementById('btnExecutePayment');
+  if (payBtn) {
+    payBtn.addEventListener('click', () => {
+      const overlay = document.getElementById('payProcessingOverlay');
+      const heading = document.getElementById('payStepHeading');
+      const sub = document.getElementById('payStepSub');
+
+      if (!overlay) return;
+      overlay.classList.remove('hidden');
+
+      // Animated multi-stage payment confirmation
+      if (heading) heading.textContent = 'Connecting to Secure Banking Gateway...';
+      if (sub) sub.textContent = 'Establishing 256-bit encrypted token session';
+
+      setTimeout(() => {
+        if (heading) heading.textContent = 'Authorizing Ashram Settlement...';
+        if (sub) sub.textContent = 'Verifying bank account & debit approval';
+      }, 1100);
+
+      setTimeout(() => {
+        if (heading) heading.textContent = '✓ Payment Approved & Settled!';
+        if (sub) sub.textContent = 'Generating Consecrated QR Pass...';
+        audioApp.playSingingBowl();
+      }, 2200);
+
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        closeModal('disciplePaymentModal');
+        if (currentPaymentContext && currentPaymentContext.onSuccess) {
+          currentPaymentContext.onSuccess();
+        }
+      }, 3000);
+    });
+  }
+}
+
+function setupGuruSubscription() {
+  // Modal Close
+  const closeBtn = document.getElementById('closeGuruSubModalBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeModal('guruSubscriptionModal');
+    });
+  }
+
+  // Manage Billing & Invoices
+  const billingBtn = document.getElementById('btnManageGuruBilling');
+  if (billingBtn) {
+    billingBtn.addEventListener('click', () => {
+      openGuruSubscriptionModal('Divine Lineage Pro', '4,999');
+    });
+  }
+
+  // Change / Upgrade Plan Buttons
+  document.querySelectorAll('.btn-change-guru-plan').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const plan = btn.getAttribute('data-plan') || 'Divine Lineage Pro';
+      const price = btn.getAttribute('data-price') || '4999';
+      openGuruSubscriptionModal(plan, price);
+    });
+  });
+
+  // Confirm Subscription Activation
+  const confirmSubBtn = document.getElementById('btnConfirmGuruSubscription');
+  if (confirmSubBtn) {
+    confirmSubBtn.addEventListener('click', () => {
+      const planTitle = document.getElementById('guruSubModalPlanTitle')?.textContent || 'Ashram Cloud Plan';
+      audioApp.playSingingBowl();
+      closeModal('guruSubscriptionModal');
+      showToast(`👑 Ashram Cloud Subscription Active: ${planTitle}! Direct T+0 clearing enabled.`);
+    });
+  }
+}
+
+function openGuruSubscriptionModal(planName, price) {
+  const planTitle = document.getElementById('guruSubModalPlanTitle');
+  const selPlan = document.getElementById('guruSubModalSelectedPlan');
+  const priceDisplay = document.getElementById('guruSubModalPrice');
+  const btnPriceText = document.getElementById('btnGuruSubPriceText');
+
+  const formattedPrice = parseInt(price.replace(/[^0-9]/g, ''), 10).toLocaleString('en-IN');
+
+  if (planTitle) planTitle.textContent = `Upgrade to ${planName}`;
+  if (selPlan) selPlan.textContent = planName;
+  if (priceDisplay) priceDisplay.textContent = `₹ ${formattedPrice} / mo`;
+  if (btnPriceText) btnPriceText.textContent = `₹ ${formattedPrice}`;
+
+  openModal('guruSubscriptionModal');
+}

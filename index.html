@@ -1143,6 +1143,90 @@
           </div>
         </div>
 
+        <!-- ========================================================================= -->
+        <!-- GURU CLOUD: MONTHLY ASHRAM SUBSCRIPTION & ENTERPRISE TIERS                -->
+        <!-- ========================================================================= -->
+        <div class="guru-sub-card mt-6" id="panelGuruSubscription">
+          <div class="guru-sub-header">
+            <div>
+              <span class="badge-saffron">Guru Cloud • Monthly Ashram Infrastructure</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fed7aa; margin: 4px 0;">👑 Monthly Ashram Cloud Subscription</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 0;">Dedicated streaming bandwidth, disciples roster cloud, automated QR gate passes, and 0% seva transaction fees.</p>
+            </div>
+            <button class="btn btn-sm btn-outline-gold" id="btnManageGuruBilling">📜 Invoices & GST Receipts</button>
+          </div>
+
+          <!-- Active Plan Status Banner -->
+          <div class="sub-active-banner">
+            <div class="sub-active-left">
+              <h4><span>👑</span> Divine Lineage Pro (Active Subscription)</h4>
+              <p>Next auto-renewal: <strong>Nov 19, 2026</strong> • Bank Mandate: SBI Trust A/C • 13 Disciples Enrolled</p>
+            </div>
+            <div class="sub-active-price">
+              ₹ 4,999 <span style="font-size:0.9rem; font-weight: normal; color: var(--text-muted);">/ month</span>
+              <small>Auto-Debit Enabled</small>
+            </div>
+          </div>
+
+          <!-- 3 Plans Grid -->
+          <div class="guru-plans-grid">
+            <!-- Plan 1: Starter -->
+            <div class="plan-tier-card">
+              <div class="plan-tier-title">Ashram Starter</div>
+              <div class="plan-tier-desc">Essential tools for local ashrams and single meditation centers.</div>
+              <div class="plan-tier-cost">
+                <span class="cost-num">₹ 1,499</span> <span class="cost-period">/ month</span>
+              </div>
+              <ul class="plan-features-list">
+                <li><span class="check-icon">✓</span> Up to 2,000 Disciples</li>
+                <li><span class="check-icon">✓</span> 1080p Full HD Satsang Broadcasts</li>
+                <li><span class="check-icon">✓</span> 1 Annual Retreat Pass Gate</li>
+                <li><span class="check-icon">✓</span> Daily Sadhana Tracker Sync</li>
+                <li class="disabled-feat">✕ Automated WhatsApp Pass Delivery</li>
+                <li class="disabled-feat">✕ Multi-Dham Ashram Network</li>
+              </ul>
+              <button class="btn btn-outline-gold plan-action-btn btn-change-guru-plan" data-plan="Ashram Starter" data-price="1499">Downgrade to Starter</button>
+            </div>
+
+            <!-- Plan 2: Divine Pro (Current) -->
+            <div class="plan-tier-card featured-plan">
+              <div class="plan-tag-top">Active Subscription</div>
+              <div class="plan-tier-title">Divine Lineage Pro</div>
+              <div class="plan-tier-desc">Comprehensive operating system for established gurus & active retreats.</div>
+              <div class="plan-tier-cost">
+                <span class="cost-num">₹ 4,999</span> <span class="cost-period">/ month</span>
+              </div>
+              <ul class="plan-features-list">
+                <li><span class="check-icon">✓</span> <strong>Unlimited</strong> Active Disciples</li>
+                <li><span class="check-icon">✓</span> <strong>4K Ultra-HD</strong> Satsang & Audio Cloud</li>
+                <li><span class="check-icon">✓</span> Unlimited QR Gate Passes & Verification</li>
+                <li><span class="check-icon">✓</span> Disciples Sadhana Habit Analytics</li>
+                <li><span class="check-icon">✓</span> <strong>0% Platform Fee</strong> on Dakshina & Seva</li>
+                <li><span class="check-icon">✓</span> Automated WhatsApp Ticket Dispatch</li>
+              </ul>
+              <button class="btn btn-gold plan-action-btn" id="btnActivePlanCurrent" disabled>✓ Active Plan (Renews Monthly)</button>
+            </div>
+
+            <!-- Plan 3: Enterprise -->
+            <div class="plan-tier-card">
+              <div class="plan-tier-title">Maha Mandaleshwar Enterprise</div>
+              <div class="plan-tier-desc">Multi-center ashrams, international foundations & mega gatherings.</div>
+              <div class="plan-tier-cost">
+                <span class="cost-num">₹ 11,999</span> <span class="cost-period">/ month</span>
+              </div>
+              <ul class="plan-features-list">
+                <li><span class="check-icon">✓</span> Multi-Branch Network (Up to 10 Dhams)</li>
+                <li><span class="check-icon">✓</span> Dedicated 24/7 Spiritual Tech Engineer</li>
+                <li><span class="check-icon">✓</span> Custom White-label Ashram Seeker App</li>
+                <li><span class="check-icon">✓</span> Unlimited Priority SMS & WhatsApp Gateways</li>
+                <li><span class="check-icon">✓</span> Automated 80G Tax Exemption Receipts</li>
+                <li><span class="check-icon">✓</span> VIP Retreat & International Pilgrim Concierge</li>
+              </ul>
+              <button class="btn btn-saffron plan-action-btn btn-change-guru-plan" data-plan="Maha Mandaleshwar Enterprise" data-price="11999">Upgrade to Enterprise</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1190,7 +1274,7 @@
             <span>Total Payable:</span>
             <strong id="modalTotalAmount">₹ 4,500</strong>
           </div>
-          <button class="btn btn-gold" id="btnConfirmBooking">Confirm & Generate QR Pass</button>
+          <button class="btn btn-gold" id="btnConfirmBooking">Proceed to Secure Payment</button>
         </div>
       </div>
 
@@ -1388,6 +1472,195 @@
       <div class="booking-total-bar mt-4">
         <button class="btn btn-outline" id="btnCancelCreateRetreat">Cancel</button>
         <button class="btn btn-gold" id="btnSubmitNewRetreat">Publish Retreat to Sanctuary</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: DISCIPLE SECURE PAYMENT GATEWAY         -->
+  <!-- ============================================== -->
+  <div id="disciplePaymentModal" class="modal-overlay hidden">
+    <div class="payment-modal-card">
+      <button class="modal-close" id="closePaymentModalBtn">&times;</button>
+      
+      <!-- Processing Overlay (Animated) -->
+      <div id="payProcessingOverlay" class="pay-processing-overlay hidden">
+        <div class="pay-spinner"></div>
+        <div class="pay-step-text" id="payStepHeading">Connecting to Banking Gateway...</div>
+        <div class="pay-step-sub" id="payStepSub">Awaiting 256-bit bank authentication token</div>
+      </div>
+
+      <div class="payment-header">
+        <div class="payment-badge-secure">🛡️ 256-Bit SSL Encrypted Sacred Gateway</div>
+        <h3 class="payment-title">Complete Secure Payment</h3>
+        <p class="payment-sub">Authorized Ashram Booking & Direct Trust Settlement</p>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="payment-order-summary">
+        <div class="order-row">
+          <span style="color: var(--text-secondary);">Item:</span>
+          <strong id="paySummaryItemTitle" style="color: #fed7aa;">3-Day Silence & Kundalini Awakening Retreat</strong>
+        </div>
+        <div class="order-row">
+          <span style="color: var(--text-secondary);">Seeker / Disciple:</span>
+          <strong id="paySummarySeekerName">Rudra</strong>
+        </div>
+        <div class="order-row">
+          <span style="color: var(--text-secondary);">Accommodation Tier:</span>
+          <span id="paySummaryTier" class="badge-subtle">Standard Seeker Pass</span>
+        </div>
+        <div class="order-row">
+          <span style="font-weight: 700; color: #fff;">Total Payable Amount:</span>
+          <span class="order-total-price" id="paySummaryAmount">₹ 4,500</span>
+        </div>
+      </div>
+
+      <!-- Payment Method Tabs -->
+      <div class="pay-method-tabs">
+        <button class="pay-tab-btn active" data-tab="upi">
+          <span style="font-size: 1.2rem;">⚡</span>
+          <span>UPI / QR</span>
+        </button>
+        <button class="pay-tab-btn" data-tab="cards">
+          <span style="font-size: 1.2rem;">💳</span>
+          <span>Card</span>
+        </button>
+        <button class="pay-tab-btn" data-tab="netbanking">
+          <span style="font-size: 1.2rem;">🏛️</span>
+          <span>NetBanking</span>
+        </button>
+      </div>
+
+      <!-- Method 1: UPI -->
+      <div class="pay-panel active" id="payPanel-upi">
+        <div class="upi-apps-grid">
+          <div class="upi-app-chip selected" data-app="GPay">🟢 Google Pay</div>
+          <div class="upi-app-chip" data-app="PhonePe">🟣 PhonePe</div>
+          <div class="upi-app-chip" data-app="Paytm">🔵 Paytm</div>
+          <div class="upi-app-chip" data-app="BHIM">🟠 BHIM UPI</div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Enter Virtual Payment Address (UPI ID):</label>
+          <input type="text" class="pay-input" id="upiVpaInput" value="rudra@okhdfcbank" placeholder="name@upi / mobilenumber@paytm">
+        </div>
+
+        <div class="upi-or-divider">OR SCAN DYNAMIC QR</div>
+
+        <div class="dynamic-qr-box">
+          <canvas id="upiQrCanvas" class="dynamic-qr-img" width="80" height="80"></canvas>
+          <div class="qr-scan-info">
+            <strong style="color: #fed7aa; display: block; margin-bottom: 2px;">Instant QR Payment</strong>
+            <span>Scan with Google Pay, PhonePe, Paytm, or CRED to authorize instantly.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Method 2: Cards -->
+      <div class="pay-panel" id="payPanel-cards">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Card Number (Visa / MasterCard / RuPay):</label>
+          <input type="text" class="pay-input" id="cardNumInput" value="4532 •••• •••• 9012" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+        </div>
+        <div class="card-form-grid">
+          <div class="form-group">
+            <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Cardholder Name:</label>
+            <input type="text" class="pay-input" id="cardHolderInput" value="Rudra">
+          </div>
+          <div class="form-group">
+            <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Expiry:</label>
+            <input type="text" class="pay-input" id="cardExpiryInput" value="08/29" placeholder="MM/YY">
+          </div>
+          <div class="form-group">
+            <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">CVV:</label>
+            <input type="password" class="pay-input" id="cardCvvInput" value="882" maxlength="4" placeholder="•••">
+          </div>
+        </div>
+      </div>
+
+      <!-- Method 3: NetBanking -->
+      <div class="pay-panel" id="payPanel-netbanking">
+        <label style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 8px; display: block;">Select Sacred Trust Approved Bank:</label>
+        <div class="banks-grid">
+          <button class="bank-option-btn selected" data-bank="HDFC">🏛️ HDFC Bank</button>
+          <button class="bank-option-btn" data-bank="SBI">🏛️ State Bank of India</button>
+          <button class="bank-option-btn" data-bank="ICICI">🏛️ ICICI Bank</button>
+          <button class="bank-option-btn" data-bank="AXIS">🏛️ Axis Bank</button>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button class="btn btn-gold btn-block" id="btnExecutePayment" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 700; margin-top: 6px;">
+        🔒 Pay <span id="btnPayAmountText">₹ 4,500</span> Securely
+      </button>
+
+      <div class="pay-trust-footer">
+        <span>✓ RBI Approved PG</span>
+        <span>✓ Instant Pass Issuance</span>
+        <span>✓ 100% Refundable per Ashram Policy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: GURU ASHRAM SUBSCRIPTION & BILLING     -->
+  <!-- ============================================== -->
+  <div id="guruSubscriptionModal" class="modal-overlay hidden">
+    <div class="payment-modal-card" style="max-width: 620px;">
+      <button class="modal-close" id="closeGuruSubModalBtn">&times;</button>
+      
+      <div class="payment-header">
+        <span class="payment-badge-secure">👑 Guru Cloud Subscription Checkout</span>
+        <h3 class="payment-title" id="guruSubModalPlanTitle">Upgrade to Divine Lineage Pro</h3>
+        <p class="payment-sub">Monthly recurring lineage cloud hosting and live streaming infrastructure</p>
+      </div>
+
+      <div class="payment-order-summary">
+        <div class="order-row">
+          <span style="color: var(--text-secondary);">Selected Ashram Plan:</span>
+          <strong id="guruSubModalSelectedPlan" style="color: #fed7aa;">Divine Lineage Pro</strong>
+        </div>
+        <div class="order-row">
+          <span style="color: var(--text-secondary);">Billing Frequency:</span>
+          <span>Monthly Recurring (Cancel anytime)</span>
+        </div>
+        <div class="order-row">
+          <span style="color: var(--text-secondary);">Ashram Trust / Beneficiary:</span>
+          <strong>Shri Ashram Seva Trust (80G Certified)</strong>
+        </div>
+        <div class="order-row">
+          <span style="font-weight: 700; color: #fff;">Monthly Subscription Cost:</span>
+          <span class="order-total-price" id="guruSubModalPrice">₹ 4,999 / mo</span>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">Ashram Legal Name / Trust Registration:</label>
+        <input type="text" class="pay-input" id="ashramTrustNameInput" value="Shri Veda Vyasa Ashram & Seva Trust">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 16px;">
+        <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px; display: block;">GSTIN / PAN (Optional for Tax Exemption):</label>
+        <input type="text" class="pay-input" id="ashramGstinInput" value="07AAAAA0000A1Z5" placeholder="Enter Ashram GSTIN / Trust PAN">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 18px;">
+        <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 6px; display: block;">Monthly Mandate Payment Method:</label>
+        <div class="banks-grid">
+          <button class="bank-option-btn selected">⚡ Instant UPI AutoPay Mandate</button>
+          <button class="bank-option-btn">🏛️ Corporate Trust NetBanking</button>
+        </div>
+      </div>
+
+      <button class="btn btn-gold btn-block" id="btnConfirmGuruSubscription" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 700;">
+        👑 Activate Monthly Subscription (<span id="btnGuruSubPriceText">₹ 4,999</span>)
+      </button>
+
+      <div class="pay-trust-footer">
+        <span>✓ GST Compliant Invoicing</span>
+        <span>✓ Bank E-Mandate Protected</span>
+        <span>✓ 24/7 Dedicated Ashram Line</span>
       </div>
     </div>
   </div>

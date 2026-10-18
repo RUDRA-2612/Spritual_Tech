@@ -4210,4 +4210,482 @@ h1, h2, h3, h4 {
   line-height: 1.35;
 }
 
+/* ==========================================================================
+   DISCIPLE PAYMENT GATEWAY & CHECKOUT STYLES
+   ========================================================================== */
+.payment-modal-card {
+  max-width: 580px;
+  width: 95%;
+  background: linear-gradient(175deg, #180c06 0%, #0c0603 100%);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(234, 88, 12, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.payment-header {
+  border-bottom: 1px solid rgba(254, 215, 170, 0.12);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.payment-badge-secure {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.payment-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--orange-100);
+  margin-bottom: 4px;
+}
+
+.payment-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.payment-order-summary {
+  background: rgba(254, 215, 170, 0.04);
+  border: 1px solid rgba(254, 215, 170, 0.1);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.order-row:last-child {
+  margin-bottom: 0;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(254, 215, 170, 0.15);
+}
+
+.order-total-price {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fb923c;
+}
+
+/* Payment Method Tabs */
+.pay-method-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pay-tab-btn {
+  background: rgba(14, 7, 3, 0.8);
+  border: 1px solid rgba(254, 215, 170, 0.12);
+  color: var(--text-secondary);
+  padding: 12px 8px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.pay-tab-btn:hover {
+  border-color: rgba(251, 146, 60, 0.4);
+  color: var(--orange-200);
+}
+
+.pay-tab-btn.active {
+  background: rgba(234, 88, 12, 0.15);
+  border-color: #f97316;
+  color: #fed7aa;
+  box-shadow: 0 0 15px rgba(234, 88, 12, 0.25);
+}
+
+.pay-panel {
+  display: none;
+  background: rgba(10, 5, 2, 0.6);
+  border: 1px solid rgba(254, 215, 170, 0.08);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.pay-panel.active {
+  display: block;
+}
+
+/* UPI Apps Grid */
+.upi-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.upi-app-chip {
+  background: rgba(254, 215, 170, 0.05);
+  border: 1px solid rgba(254, 215, 170, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 10px 4px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upi-app-chip:hover, .upi-app-chip.selected {
+  border-color: #fb923c;
+  color: #fff;
+  background: rgba(251, 146, 60, 0.15);
+}
+
+.upi-or-divider {
+  text-align: center;
+  margin: 14px 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  position: relative;
+}
+
+.upi-or-divider::before, .upi-or-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  background: rgba(254, 215, 170, 0.1);
+}
+
+.upi-or-divider::before { left: 0; }
+.upi-or-divider::after { right: 0; }
+
+/* Dynamic QR Box */
+.dynamic-qr-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(251, 146, 60, 0.3);
+}
+
+.dynamic-qr-img {
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.qr-scan-info {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Card Inputs */
+.card-form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+}
+
+.pay-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(254, 215, 170, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+.pay-input:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
+}
+
+/* NetBanking Grid */
+.banks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.bank-option-btn {
+  background: rgba(254, 215, 170, 0.04);
+  border: 1px solid rgba(254, 215, 170, 0.1);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.bank-option-btn:hover, .bank-option-btn.selected {
+  border-color: #fb923c;
+  color: #fff;
+  background: rgba(251, 146, 60, 0.15);
+}
+
+/* Trust Badges */
+.pay-trust-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* Processing Overlay */
+.pay-processing-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 5, 2, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 24px;
+  text-align: center;
+}
+
+.pay-spinner {
+  width: 52px;
+  height: 52px;
+  border: 3px solid rgba(251, 146, 60, 0.2);
+  border-top-color: #f97316;
+  border-radius: 50%;
+  animation: paySpin 0.8s linear infinite;
+  margin-bottom: 18px;
+}
+
+@keyframes paySpin {
+  to { transform: rotate(360deg); }
+}
+
+.pay-step-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fed7aa;
+  margin-bottom: 6px;
+}
+
+.pay-step-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   GURU ASHRAM CLOUD SUBSCRIPTION STYLES
+   ========================================================================== */
+.guru-sub-card {
+  background: linear-gradient(175deg, rgba(28, 14, 7, 0.95) 0%, rgba(14, 7, 3, 0.98) 100%);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(254, 215, 170, 0.1);
+  margin-bottom: 28px;
+}
+
+.guru-sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sub-active-banner {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.sub-active-left h4 {
+  font-size: 1.1rem;
+  color: #34d399;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sub-active-left p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.sub-active-price {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: right;
+}
+
+.sub-active-price small {
+  display: block;
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  color: #34d399;
+  font-weight: 600;
+}
+
+/* Subscription Plans 3-Col Grid */
+.guru-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.plan-tier-card {
+  background: rgba(12, 6, 3, 0.7);
+  border: 1px solid rgba(254, 215, 170, 0.12);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.plan-tier-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(251, 146, 60, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+.plan-tier-card.featured-plan {
+  background: linear-gradient(180deg, rgba(35, 16, 7, 0.9) 0%, rgba(16, 8, 4, 0.9) 100%);
+  border: 2px solid #f97316;
+  box-shadow: 0 0 25px rgba(234, 88, 12, 0.25);
+}
+
+.plan-tag-top {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #fb923c, #ea580c);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.plan-tier-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fed7aa;
+  margin-bottom: 6px;
+}
+
+.plan-tier-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  min-height: 38px;
+}
+
+.plan-tier-cost {
+  margin-bottom: 20px;
+}
+
+.plan-tier-cost .cost-num {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.plan-tier-cost .cost-period {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.plan-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plan-features-list li {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plan-features-list li span.check-icon {
+  color: #fb923c;
+  font-weight: bold;
+}
+
+.plan-features-list li.disabled-feat {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.plan-action-btn {
+  width: 100%;
+}
+
 
