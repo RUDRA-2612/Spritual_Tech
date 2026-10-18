@@ -341,9 +341,9 @@
         <!-- Studio Header -->
         <div class="studio-topbar">
           <div>
-            <div class="studio-tag">PROBLEM 2 SOLVED: FULL ASHRAM AUTOMATION</div>
-            <h1 class="studio-title">Guru Studio & Ashram Command Center</h1>
-            <p class="studio-sub">No Excel sheets. No WhatsApp screenshot checking. Direct QR gate entry, automated payouts & zero clerk work.</p>
+            <div class="studio-tag">ASHRAM OPERATING SYSTEM & COMMAND CENTER</div>
+            <h1 class="studio-title">Guru Studio & Ashram Sanctuary Portal</h1>
+            <p class="studio-sub">Real-time disciple tracking, Rishikesh retreat capacity management, volunteer gate QR scanning & direct bank settlements.</p>
           </div>
           <div class="studio-quick-actions">
             <button class="btn btn-gold" id="btnOpenScanner">
@@ -355,36 +355,103 @@
           </div>
         </div>
 
-        <!-- Metric Stat Cards -->
+        <!-- Interactive Metric Stat Cards (Click any card to jump directly to its section) -->
         <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="metric-icon">👥</div>
+          <div class="metric-card clickable" id="guruCardDisciples" title="Click to jump to Disciples Directory">
+            <div class="metric-card-header">
+              <div class="metric-icon">👥</div>
+              <span class="click-hint">Jump to Disciples ↓</span>
+            </div>
             <div class="metric-value">1,480</div>
             <div class="metric-label">Active Disciples (Seekers)</div>
-            <div class="metric-change positive">↑ 24% this month</div>
+            <div class="metric-change positive">↑ 24% this month • 890 daily sadhaks</div>
           </div>
-          <div class="metric-card">
-            <div class="metric-icon">🎟️</div>
-            <div class="metric-value">412 / 450</div>
+
+          <div class="metric-card clickable" id="guruCardRetreat" title="Click to jump to Rishikesh Retreat & Capacity">
+            <div class="metric-card-header">
+              <div class="metric-icon">🎟️</div>
+              <span class="click-hint">Jump to Retreats ↓</span>
+            </div>
+            <div class="metric-value" id="statRishikeshBooked">412 / 450</div>
             <div class="metric-label">Rishikesh Retreat Booked</div>
-            <div class="metric-change positive">91% capacity filled</div>
+            <div class="metric-change positive" id="statRishikeshCapText">91% capacity filled • 38 slots left</div>
           </div>
-          <div class="metric-card">
-            <div class="metric-icon">₹</div>
+
+          <div class="metric-card clickable" id="guruCardScanner" title="Click to jump to Gate Volunteer Scanner">
+            <div class="metric-card-header">
+              <div class="metric-icon">🚪</div>
+              <span class="click-hint">Jump to Scanner ↓</span>
+            </div>
+            <div class="metric-value">Gate 1 Live</div>
+            <div class="metric-label">Volunteer Scanner & Check-in</div>
+            <div class="metric-change positive">Instant QR Validation • Zero Wait</div>
+          </div>
+
+          <div class="metric-card clickable" id="guruCardLedger" title="Click to jump to Ashram Bank Ledger">
+            <div class="metric-card-header">
+              <div class="metric-icon">💰</div>
+              <span class="click-hint">Jump to Ledger ↓</span>
+            </div>
             <div class="metric-value">₹ 6,85,000</div>
-            <div class="metric-label">Automated Payouts Settled</div>
-            <div class="metric-sub">Zero manual screenshot checks</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-icon">🔥</div>
-            <div class="metric-value">84%</div>
-            <div class="metric-label">Post-Retreat Sadhana Retention</div>
-            <div class="metric-sub">Seekers meditating daily at home</div>
+            <div class="metric-label">Direct Bank Payouts Settled</div>
+            <div class="metric-change positive">₹ 0 middleman cut • Direct to Ashram</div>
           </div>
         </div>
 
-        <!-- Management Split Grid -->
-        <div class="studio-split-grid">
+        <!-- SECTION 1: RISHIKESH RETREAT & CAPACITY MANAGEMENT -->
+        <div class="rishikesh-feature-card mb-6" id="sectionGuruRetreats">
+          <div class="rishikesh-card-header">
+            <div>
+              <span class="badge-saffron">Featured Upcoming Gathering</span>
+              <h2>3-Day Silence & Kundalini Awakening Retreat — Rishikesh</h2>
+              <p class="text-muted">📍 Ganges Riverbank Ashram • Nov 14-16, 2026</p>
+            </div>
+            <div class="capacity-stat-box">
+              <span class="cap-number" id="rishikeshCapNumber">412 / 450</span>
+              <span class="cap-label" id="rishikeshCapPct">91% Total Capacity Filled</span>
+            </div>
+          </div>
+
+          <!-- Capacity Progress Bar -->
+          <div class="cap-bar-track">
+            <div class="cap-bar-fill" id="rishikeshCapBar" style="width: 91.5%;"></div>
+          </div>
+
+          <div class="capacity-breakdown-grid">
+            <div class="cap-mini-card">
+              <span class="cap-mini-title">Standard Sadhak Passes</span>
+              <strong class="cap-mini-val" id="rishikeshStandardVal">290 / 300</strong>
+              <small class="text-green">97% Occupancy</small>
+            </div>
+            <div class="cap-mini-card">
+              <span class="cap-mini-title">Residential Ashram Stay</span>
+              <strong class="cap-mini-val" id="rishikeshResidentialVal">122 / 150</strong>
+              <small class="text-green">81% Rooms Occupied</small>
+            </div>
+            <div class="cap-mini-card">
+              <span class="cap-mini-title">Remaining Slots</span>
+              <strong class="cap-mini-val text-gold" id="rishikeshRemainingVal">38 Passes</strong>
+              <small>Auto-waitlist triggers at 450</small>
+            </div>
+            <div class="cap-mini-card">
+              <span class="cap-mini-title">Direct Retreat Income</span>
+              <strong class="cap-mini-val text-gold">₹ 5,45,000</strong>
+              <small class="text-green">Settled in Ashram Bank</small>
+            </div>
+          </div>
+
+          <div class="retreat-admin-actions">
+            <button class="btn btn-gold" id="btnAddSlotsBtn">
+              <span>+ Add 25 Extra Ashram Slots</span>
+            </button>
+            <button class="btn btn-outline" id="btnSendSeekerNotice">
+              <span>📢 Send WhatsApp Notice to Attendees</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SECTION 2: MANAGEMENT SPLIT GRID (GATE SCANNER & LIVE ROSTER) -->
+        <div class="studio-split-grid mb-6" id="sectionGuruScanner">
           <!-- Gate Volunteer Scanner Simulator Card -->
           <div class="studio-card">
             <div class="card-head">
@@ -401,7 +468,7 @@
                 <div class="scan-target-corners"></div>
                 <div class="scan-camera-placeholder">
                   <span>📱 Camera Sensor Live</span>
-                  <small>Hold Attendee QR Pass in front of sensor</small>
+                  <small>Point at Attendee Ashram Pass QR</small>
                 </div>
               </div>
 
@@ -409,6 +476,13 @@
               <div class="manual-scan-group">
                 <input type="text" id="manualTicketInput" placeholder="Enter Ticket Code (e.g. RET-RISHI-9041)">
                 <button class="btn btn-saffron" id="btnManualScanVerify">Verify Entry</button>
+              </div>
+
+              <div class="quick-code-chips">
+                <span>Quick Test Disciples:</span>
+                <button class="quick-code-btn" data-code="RET-RISHI-9041">Ishvit Bhardwaj</button>
+                <button class="quick-code-btn" data-code="RET-RISHI-8812">Rudra Pratap</button>
+                <button class="quick-code-btn" data-code="RET-RISHI-6520">Dr. Alok Verma</button>
               </div>
 
               <!-- Scan Verification Result Box -->
@@ -421,10 +495,10 @@
           <!-- Real-Time Attendee Roster -->
           <div class="studio-card">
             <div class="card-head">
-              <h3>📋 Live Checked-In Attendees</h3>
+              <h3>📋 Live Gate Checked-In Roster</h3>
               <span class="badge-subtle" id="attendeeSummaryBadge">Live Sync</span>
             </div>
-            <p class="card-desc">Real-time attendee roster updating directly from volunteer gate scanners.</p>
+            <p class="card-desc">Real-time attendee status updating directly from volunteer gate scanners.</p>
 
             <div class="roster-table-wrapper">
               <table class="roster-table">
@@ -445,28 +519,80 @@
           </div>
         </div>
 
-        <!-- Automated Finance & Dakshina Ledger -->
-        <div class="studio-card mt-6">
-          <div class="card-head">
-            <h3>💰 Automated Payout Ledger (Direct to Ashram Account)</h3>
-            <span class="badge-subtle">No Middleman Delays</span>
+        <!-- SECTION 3: ACTIVE DISCIPLES & SADHANA DIRECTORY -->
+        <div class="studio-card mb-6" id="sectionGuruDisciples">
+          <div class="panel-header-bar">
+            <div>
+              <h3>👥 Active Disciples & Sadhana Directory (1,480)</h3>
+              <p>Complete directory of registered disciples, ashram initiates, and daily sadhana streaks.</p>
+            </div>
+            <div class="panel-search-box">
+              <input type="text" id="discipleSearchInput" placeholder="🔍 Search disciple by name, ID or city...">
+            </div>
           </div>
-          <div class="ledger-summary">
+
+          <div class="disciple-filter-pills">
+            <button class="disciple-filter-pill active" data-filter="all">All Disciples (1,480)</button>
+            <button class="disciple-filter-pill" data-filter="Residential Ashram Stay">Residential Stay (122)</button>
+            <button class="disciple-filter-pill" data-filter="Standard Sadhak Pass">Standard Pass (290)</button>
+            <button class="disciple-filter-pill" data-filter="Verified">Gate Verified</button>
+          </div>
+
+          <div class="roster-table-wrapper mt-3">
+            <table class="roster-table" id="disciplesTable">
+              <thead>
+                <tr>
+                  <th>Pass ID</th>
+                  <th>Disciple Name</th>
+                  <th>City / Dham</th>
+                  <th>Accommodation Tier</th>
+                  <th>Sadhana Streak</th>
+                  <th>Gate Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="disciplesTableBody">
+                <!-- Populated dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SECTION 4: AUTOMATED FINANCE & ASHRAM BANK LEDGER -->
+        <div class="studio-card mb-6" id="sectionGuruLedger">
+          <div class="card-head">
+            <div>
+              <h3>💰 Automated Payout Ledger (Direct to Ashram Account)</h3>
+              <p class="text-muted">Settled via Direct Ashram Bank UPI / NEFT • No middleman cuts</p>
+            </div>
+            <button class="btn btn-outline-gold" id="btnExportLedgerCsv">📥 Export Statement CSV</button>
+          </div>
+          
+          <div class="ledger-summary mt-4">
             <div class="ledger-item">
               <span class="ledger-title">Total Retreat Registrations:</span>
               <span class="ledger-val">₹ 5,45,000</span>
             </div>
             <div class="ledger-item">
-              <span class="ledger-title">Voluntary Dakshina & Seva:</span>
+              <span class="ledger-title">Voluntary Dakshina & Gau Seva:</span>
               <span class="ledger-val">₹ 1,40,000</span>
             </div>
             <div class="ledger-item">
-              <span class="ledger-title">Payment Gateway Fee (Direct):</span>
-              <span class="ledger-val">₹ 0 (Direct UPI / NetBanking)</span>
+              <span class="ledger-title">Payment Gateway Fee:</span>
+              <span class="ledger-val text-green">₹ 0 (100% Direct UPI Transfer)</span>
             </div>
             <div class="ledger-item highlight">
-              <span class="ledger-title">Net Bank Payout:</span>
+              <span class="ledger-title">Net Bank Payout Settled:</span>
               <span class="ledger-val text-gold">₹ 6,85,000 (Settled)</span>
+            </div>
+          </div>
+
+          <div class="ledger-bank-proof mt-4">
+            <div class="bank-pill">
+              <span>🏦 Linked Account:</span> <strong>Shri Ashram Seva Trust — SBI A/C ending in 8841</strong>
+            </div>
+            <div class="bank-pill">
+              <span>⚡ Settlement Schedule:</span> <strong>T+0 Daily Instant Clearing</strong>
             </div>
           </div>
         </div>
@@ -673,15 +799,59 @@
   </div>
 
 
+  <!-- MODAL 4: LAUNCH NEW RETREAT (FOR GURU) -->
+  <div id="createRetreatModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="closeCreateRetreatModalBtn">&times;</button>
+      <div class="modal-badge">Guru Ashram Portal</div>
+      <h2>Launch New Ashram Retreat</h2>
+      <p class="text-muted mb-4">Add a new spiritual retreat or satsang program. Tickets and QR gate codes will auto-generate.</p>
+      
+      <div class="form-group">
+        <label for="newRetreatTitle">Retreat Title:</label>
+        <input type="text" id="newRetreatTitle" placeholder="e.g. 5-Day Advaita Meditation & Silence">
+      </div>
+
+      <div class="form-group">
+        <label for="newRetreatLocation">Ashram / Dham Location:</label>
+        <input type="text" id="newRetreatLocation" placeholder="e.g. 📍 Rishikesh Ashram, Ganga Bank">
+      </div>
+
+      <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label for="newRetreatMonth">Month:</label>
+          <input type="text" id="newRetreatMonth" placeholder="e.g. FEB">
+        </div>
+        <div class="form-group">
+          <label for="newRetreatDays">Dates / Days:</label>
+          <input type="text" id="newRetreatDays" placeholder="e.g. 18-22">
+        </div>
+      </div>
+
+      <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label for="newRetreatPrice">Starting Pass Fee (₹):</label>
+          <input type="number" id="newRetreatPrice" value="5000">
+        </div>
+        <div class="form-group">
+          <label for="newRetreatCapacity">Seeker Capacity:</label>
+          <input type="number" id="newRetreatCapacity" value="250">
+        </div>
+      </div>
+
+      <div class="booking-total-bar mt-4">
+        <button class="btn btn-outline" id="btnCancelCreateRetreat">Cancel</button>
+        <button class="btn btn-gold" id="btnSubmitNewRetreat">Publish Retreat to Sanctuary</button>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="app-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <h4>SPRITUAL TECH</h4>
         <p>Digital Sanctuary & Operating System for Gurus, Ashrams & Disciples.</p>
-      </div>
-      <div class="footer-links">
-        <span>© 2026 Spritual Tech • Founded by RUDRA-2612 & Ishvit-Bhardwaj</span>
       </div>
     </div>
   </footer>

@@ -243,17 +243,33 @@ let ATTENDEE_ROSTER = [
   { id: 'RET-RISHI-4311', name: 'Ananya Joshi', tier: 'Standard Sadhak Pass', status: 'Booked', gate: 'Gate 1' }
 ];
 
+// Complete Directory of Disciples & Seekers for Guru Studio
+let DISCIPLES_DIRECTORY = [
+  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', city: 'Delhi', tier: 'Standard Sadhak Pass', streak: '18 Days', status: 'Booked' },
+  { id: 'RET-RISHI-8812', name: 'Rudra Pratap', city: 'Varanasi', tier: 'Residential Ashram Stay', streak: '42 Days', status: 'Verified' },
+  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', city: 'Rishikesh', tier: 'Standard Sadhak Pass', streak: '12 Days', status: 'Verified' },
+  { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', city: 'Bengaluru', tier: 'Residential Ashram Stay', streak: '30 Days', status: 'Booked' },
+  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', city: 'Pune', tier: 'Standard Sadhak Pass', streak: '9 Days', status: 'Booked' },
+  { id: 'RET-RISHI-5190', name: 'Vikramaditya Roy', city: 'Kolkata', tier: 'Residential Ashram Stay', streak: '65 Days', status: 'Verified' },
+  { id: 'RET-RISHI-3124', name: 'Meera Deshmukh', city: 'Mumbai', tier: 'Standard Sadhak Pass', streak: '21 Days', status: 'Booked' },
+  { id: 'RET-RISHI-2901', name: 'Gaurav Singhal', city: 'Jaipur', tier: 'Residential Ashram Stay', streak: '15 Days', status: 'Booked' },
+  { id: 'RET-RISHI-1144', name: 'Pooja Kashyap', city: 'Dehradun', tier: 'Standard Sadhak Pass', streak: '27 Days', status: 'Verified' },
+  { id: 'RET-RISHI-9921', name: 'Swami Chaitanya', city: 'Haridwar', tier: 'Residential Ashram Stay', streak: '108 Days', status: 'Verified' }
+];
+
 // ---------------------------------------------------------------------------
 // 3. APPLICATION INITIALIZATION & DOM BINDINGS
 // ---------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+function bootstrapApp() {
   setupNavigation();
   setupRoleSwitcher();
+  setupGuruStudio();
   setupAmbientAudio();
   renderDiscourses('all');
   renderRetreats();
   renderUserPasses();
   renderRoster();
+  renderDisciplesTable('all');
   setupJapaMala();
   setupPranayama();
   setupSwadhyayaJournal();
@@ -261,7 +277,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setupScannerSimulation();
   setupLiveSatsangRoom();
   setupDakshinaLogic();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrapApp);
+} else {
+  bootstrapApp();
+}
 
 // ---------------------------------------------------------------------------
 // NAVIGATION & ROLE SWITCHER
@@ -279,10 +301,12 @@ function setupNavigation() {
         // If in Guru Studio, switch back to seeker view
         const seekerWrapper = document.getElementById('viewSeekerWrapper');
         const guruWrapper = document.getElementById('viewGuruWrapper');
-        seekerWrapper.classList.add('active');
-        guruWrapper.classList.remove('active');
-        document.getElementById('btnRoleSeeker').classList.add('active');
-        document.getElementById('btnRoleGuru').classList.remove('active');
+        if (seekerWrapper) seekerWrapper.classList.add('active');
+        if (guruWrapper) guruWrapper.classList.remove('active');
+        const btnRoleSeeker = document.getElementById('btnRoleSeeker');
+        const btnRoleGuru = document.getElementById('btnRoleGuru');
+        if (btnRoleSeeker) btnRoleSeeker.classList.add('active');
+        if (btnRoleGuru) btnRoleGuru.classList.remove('active');
 
         targetEl.scrollIntoView({ behavior: 'smooth' });
       }
@@ -290,13 +314,21 @@ function setupNavigation() {
   });
 
   // Hero Quick CTAs
-  document.getElementById('heroExploreRetreats').addEventListener('click', () => {
-    document.getElementById('view-retreats').scrollIntoView({ behavior: 'smooth' });
-  });
+  const heroExplore = document.getElementById('heroExploreRetreats');
+  if (heroExplore) {
+    heroExplore.addEventListener('click', () => {
+      const viewRetreats = document.getElementById('view-retreats');
+      if (viewRetreats) viewRetreats.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 
-  document.getElementById('heroStartSadhana').addEventListener('click', () => {
-    document.getElementById('view-sadhana').scrollIntoView({ behavior: 'smooth' });
-  });
+  const heroSadhana = document.getElementById('heroStartSadhana');
+  if (heroSadhana) {
+    heroSadhana.addEventListener('click', () => {
+      const viewSadhana = document.getElementById('view-sadhana');
+      if (viewSadhana) viewSadhana.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 }
 
 function setupRoleSwitcher() {
@@ -305,33 +337,337 @@ function setupRoleSwitcher() {
   const seekerWrapper = document.getElementById('viewSeekerWrapper');
   const guruWrapper = document.getElementById('viewGuruWrapper');
 
-  btnSeeker.addEventListener('click', () => {
-    btnSeeker.classList.add('active');
-    btnGuru.classList.remove('active');
-    seekerWrapper.classList.add('active');
-    guruWrapper.classList.remove('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (btnSeeker) {
+    btnSeeker.addEventListener('click', () => {
+      btnSeeker.classList.add('active');
+      if (btnGuru) btnGuru.classList.remove('active');
+      if (seekerWrapper) seekerWrapper.classList.add('active');
+      if (guruWrapper) guruWrapper.classList.remove('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
-  btnGuru.addEventListener('click', () => {
-    btnGuru.classList.add('active');
-    btnSeeker.classList.remove('active');
-    guruWrapper.classList.add('active');
-    seekerWrapper.classList.remove('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (btnGuru) {
+    btnGuru.addEventListener('click', () => {
+      btnGuru.classList.add('active');
+      if (btnSeeker) btnSeeker.classList.remove('active');
+      if (guruWrapper) guruWrapper.classList.add('active');
+      if (seekerWrapper) seekerWrapper.classList.remove('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
-  document.getElementById('btnOpenScanner').addEventListener('click', () => {
-    const scannerEl = document.querySelector('.scanner-simulation-box');
-    if (scannerEl) {
-      scannerEl.scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('manualTicketInput').focus();
+  const openScanBtn = document.getElementById('btnOpenScanner');
+  if (openScanBtn) {
+    openScanBtn.addEventListener('click', () => {
+      const scannerEl = document.getElementById('sectionGuruScanner') || document.querySelector('.scanner-simulation-box');
+      if (scannerEl) {
+        scannerEl.scrollIntoView({ behavior: 'smooth' });
+        const input = document.getElementById('manualTicketInput');
+        if (input) input.focus();
+      }
+    });
+  }
+}
+
+// ---------------------------------------------------------------------------
+// GURU STUDIO INTERACTIVE DASHBOARD & DISCIPLES DIRECTORY
+// ---------------------------------------------------------------------------
+function renderDisciplesTable(filter = 'all', searchQuery = '') {
+  const tbody = document.getElementById('disciplesTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  let list = DISCIPLES_DIRECTORY;
+
+  if (filter !== 'all') {
+    if (filter === 'Verified') {
+      list = list.filter(d => d.status === 'Verified');
+    } else {
+      list = list.filter(d => d.tier === filter);
     }
+  }
+
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase().trim();
+    list = list.filter(d => 
+      d.name.toLowerCase().includes(q) || 
+      d.id.toLowerCase().includes(q) || 
+      d.city.toLowerCase().includes(q)
+    );
+  }
+
+  if (list.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 24px; color: var(--text-muted);">No disciples matching this filter.</td></tr>`;
+    return;
+  }
+
+  list.forEach(d => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><span class="mono-code">${d.id}</span></td>
+      <td><strong>${d.name}</strong></td>
+      <td><span style="color: var(--text-muted); font-size: 0.85rem;">📍 ${d.city}</span></td>
+      <td>${d.tier}</td>
+      <td><span style="color: #fb923c; font-weight: 600;">🔥 ${d.streak}</span></td>
+      <td>
+        <span class="status-pill ${d.status === 'Verified' ? 'status-verified' : 'status-pending'}">
+          ${d.status === 'Verified' ? '✓ Gate Verified' : 'Booked'}
+        </span>
+      </td>
+      <td>
+        <button class="btn-sm btn-ghost btn-disciple-action" data-id="${d.id}" data-name="${d.name}">
+          ${d.status === 'Verified' ? 'View Details' : 'Verify Entry'}
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
   });
 
-  document.getElementById('btnCreateRetreatModal').addEventListener('click', () => {
-    alert('Guru Studio: Ashram retreat creation wizard opened. Automatic Zoom link & QR pass generator activated.');
+  document.querySelectorAll('.btn-disciple-action').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      const name = btn.getAttribute('data-name');
+      const disciple = DISCIPLES_DIRECTORY.find(d => d.id === id);
+      if (disciple && disciple.status !== 'Verified') {
+        disciple.status = 'Verified';
+        // Also update roster if present
+        const att = ATTENDEE_ROSTER.find(a => a.id === id);
+        if (att) att.status = 'Verified';
+        renderDisciplesTable(filter, searchQuery);
+        renderRoster();
+        audioApp.playSingingBowl();
+        showToast(`✓ Entry verified for ${name} (${id})`);
+      } else {
+        showToast(`📋 Seeker: ${name} • Diksha: ${disciple?.tier} • Streak: ${disciple?.streak}`);
+      }
+    });
   });
+}
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.bottom = '30px';
+  toast.style.right = '30px';
+  toast.style.background = 'linear-gradient(135deg, #fb923c, #ea580c)';
+  toast.style.color = '#fff';
+  toast.style.padding = '12px 22px';
+  toast.style.borderRadius = '30px';
+  toast.style.fontWeight = '600';
+  toast.style.fontSize = '0.9rem';
+  toast.style.boxShadow = '0 8px 24px rgba(0,0,0,0.5)';
+  toast.style.zIndex = '9999';
+  toast.style.transition = 'all 0.3s ease';
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    setTimeout(() => toast.remove(), 350);
+  }, 3000);
+}
+
+function setupGuruStudio() {
+  // 1. Metric Cards Smooth Jump Handlers
+  const cardDisciples = document.getElementById('guruCardDisciples');
+  if (cardDisciples) {
+    cardDisciples.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('sectionGuruDisciples');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 30px rgba(249, 115, 22, 0.4)';
+        setTimeout(() => el.style.boxShadow = '', 1500);
+      }
+    });
+  }
+
+  const cardRetreat = document.getElementById('guruCardRetreat');
+  if (cardRetreat) {
+    cardRetreat.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('sectionGuruRetreats');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 30px rgba(249, 115, 22, 0.4)';
+        setTimeout(() => el.style.boxShadow = '', 1500);
+      }
+    });
+  }
+
+  const cardScanner = document.getElementById('guruCardScanner');
+  if (cardScanner) {
+    cardScanner.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('sectionGuruScanner');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        const input = document.getElementById('manualTicketInput');
+        if (input) input.focus();
+      }
+    });
+  }
+
+  const cardLedger = document.getElementById('guruCardLedger');
+  if (cardLedger) {
+    cardLedger.addEventListener('click', () => {
+      audioApp.playBeadClick();
+      const el = document.getElementById('sectionGuruLedger');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 30px rgba(249, 115, 22, 0.4)';
+        setTimeout(() => el.style.boxShadow = '', 1500);
+      }
+    });
+  }
+
+  // 2. Rishikesh Retreat Capacity Interaction
+  let rishikeshSlots = 450;
+  const btnAddSlots = document.getElementById('btnAddSlotsBtn');
+  if (btnAddSlots) {
+    btnAddSlots.addEventListener('click', () => {
+      rishikeshSlots += 25;
+      const booked = 412;
+      const remaining = rishikeshSlots - booked;
+      const pct = ((booked / rishikeshSlots) * 100).toFixed(1);
+
+      const capNumber = document.getElementById('rishikeshCapNumber');
+      if (capNumber) capNumber.textContent = `${booked} / ${rishikeshSlots}`;
+
+      const capPct = document.getElementById('rishikeshCapPct');
+      if (capPct) capPct.textContent = `${pct}% Total Capacity Filled`;
+
+      const capBar = document.getElementById('rishikeshCapBar');
+      if (capBar) capBar.style.width = `${pct}%`;
+
+      const remainingVal = document.getElementById('rishikeshRemainingVal');
+      if (remainingVal) remainingVal.textContent = `${remaining} Passes`;
+
+      const statBooked = document.getElementById('statRishikeshBooked');
+      if (statBooked) statBooked.textContent = `${booked} / ${rishikeshSlots}`;
+
+      const statCapText = document.getElementById('statRishikeshCapText');
+      if (statCapText) statCapText.textContent = `${pct}% capacity filled • ${remaining} slots left`;
+
+      audioApp.playSingingBowl();
+      showToast(`✨ +25 Accommodation slots added! Total capacity is now ${rishikeshSlots}.`);
+    });
+  }
+
+  const btnNotice = document.getElementById('btnSendSeekerNotice');
+  if (btnNotice) {
+    btnNotice.addEventListener('click', () => {
+      audioApp.playSingingBowl();
+      showToast('📢 WhatsApp message sent to all 412 registered disciples.');
+    });
+  }
+
+  // 3. Disciples Search & Filter Pills
+  const searchInput = document.getElementById('discipleSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const activePill = document.querySelector('.disciple-filter-pill.active');
+      const filter = activePill ? activePill.getAttribute('data-filter') : 'all';
+      renderDisciplesTable(filter, e.target.value);
+    });
+  }
+
+  document.querySelectorAll('.disciple-filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.disciple-filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.getAttribute('data-filter');
+      const q = searchInput ? searchInput.value : '';
+      renderDisciplesTable(filter, q);
+    });
+  });
+
+  // 4. Quick Code Chips in Scanner
+  document.querySelectorAll('.quick-code-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.getAttribute('data-code');
+      const input = document.getElementById('manualTicketInput');
+      if (input) {
+        input.value = code;
+        const btnVerify = document.getElementById('btnManualScanVerify');
+        if (btnVerify) btnVerify.click();
+      }
+    });
+  });
+
+  // 5. Export Ledger CSV
+  const btnExport = document.getElementById('btnExportLedgerCsv');
+  if (btnExport) {
+    btnExport.addEventListener('click', () => {
+      const csvContent = "data:text/csv;charset=utf-8," + 
+        "Transaction ID,Source,Purpose,Gross (INR),Ashram Fee (INR),Net Settled (INR),Status\n" +
+        "TXN-8841-A,Retreat Bookings,Rishikesh Silence Retreat,545000,0,545000,Settled SBI A/C 8841\n" +
+        "TXN-8841-B,Devotee Dakshina,Gau Seva & Ashram Langar,140000,0,140000,Settled SBI A/C 8841\n" +
+        "TOTAL,,685000,0,685000,T+0 Cleared\n";
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "Ashram_Ledger_Settlement_2026.csv");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      showToast('📥 Ashram Statement CSV downloaded successfully.');
+    });
+  }
+
+  // 6. Launch New Retreat Modal
+  const btnCreateModal = document.getElementById('btnCreateRetreatModal');
+  const createModal = document.getElementById('createRetreatModal');
+  const closeCreateModalBtn = document.getElementById('closeCreateRetreatModalBtn');
+  const btnCancelCreate = document.getElementById('btnCancelCreateRetreat');
+  const btnSubmitNew = document.getElementById('btnSubmitNewRetreat');
+
+  if (btnCreateModal && createModal) {
+    btnCreateModal.addEventListener('click', () => {
+      createModal.classList.remove('hidden');
+    });
+  }
+
+  if (closeCreateModalBtn && createModal) {
+    closeCreateModalBtn.addEventListener('click', () => {
+      createModal.classList.add('hidden');
+    });
+  }
+
+  if (btnCancelCreate && createModal) {
+    btnCancelCreate.addEventListener('click', () => {
+      createModal.classList.add('hidden');
+    });
+  }
+
+  if (btnSubmitNew && createModal) {
+    btnSubmitNew.addEventListener('click', () => {
+      const title = document.getElementById('newRetreatTitle').value.trim() || 'Himalayan Silence Gathering';
+      const loc = document.getElementById('newRetreatLocation').value.trim() || '📍 Rishikesh Ashram';
+      const month = document.getElementById('newRetreatMonth').value.trim() || 'FEB';
+      const days = document.getElementById('newRetreatDays').value.trim() || '18-22';
+      const price = parseInt(document.getElementById('newRetreatPrice').value, 10) || 5000;
+
+      RETREATS_DATA.push({
+        id: `retreat-${Date.now()}`,
+        codePrefix: 'RET-NEW',
+        title: title,
+        location: loc,
+        dateMonth: month,
+        dateDay: days,
+        desc: 'New residential ashram gathering published by the Guru.',
+        price: price,
+        image: 'assets/hero.jpg',
+        highlights: ['100% Ad-Free Guidance', 'Ashram Prasadam Included', 'Direct Guru Diksha Slot']
+      });
+
+      renderRetreats();
+      createModal.classList.add('hidden');
+      audioApp.playSingingBowl();
+      showToast(`✨ "${title}" successfully published to Sanctuary retreats!`);
+    });
+  }
 }
 
 // ---------------------------------------------------------------------------
