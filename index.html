@@ -26,18 +26,31 @@
   </div>
 
   <!-- Header & Navigation -->
+  <!-- Header & Navigation -->
   <header class="main-header">
     <div class="header-container">
-      <a href="#" class="brand-logo" id="brandLogo">
-        <div class="logo-symbol">
-          <span class="sacred-glow"></span>
-          🕉️
-        </div>
-        <div class="logo-text">
-          <span class="logo-title">SPRITUAL TECH</span>
-          <span class="logo-sub">Ashram OS & Digital Sanctuary</span>
-        </div>
-      </a>
+      <!-- Top Left: Universal Spiritual Practices Menu Button & Brand -->
+      <div class="header-left-wrap">
+        <button class="btn-sadhana-menu-trigger" id="btnSadhanaMenuTrigger" aria-label="Open Universal Practices Menu" title="Universal Sadhana Practices (Chanting, Pranayama, Meditation)">
+          <div class="menu-icon-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="menu-label-text">Sadhana Menu</span>
+        </button>
+
+        <a href="#" class="brand-logo" id="brandLogo">
+          <div class="logo-symbol">
+            <span class="sacred-glow"></span>
+            🕉️
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">SPRITUAL TECH</span>
+            <span class="logo-sub">Ashram OS & Digital Sanctuary</span>
+          </div>
+        </a>
+      </div>
 
       <!-- Navigation Tabs -->
       <nav class="nav-links" id="mainNav">
@@ -62,6 +75,135 @@
       </div>
     </div>
   </header>
+
+  <!-- ============================================== -->
+  <!-- UNIVERSAL SPIRITUAL PRACTICES DRAWER / MENU   -->
+  <!-- ============================================== -->
+  <div id="sadhanaMenuDrawer" class="sadhana-drawer-overlay hidden">
+    <div class="sadhana-drawer-panel">
+      <div class="drawer-header">
+        <div class="drawer-header-title">
+          <span class="drawer-badge">🕉️ Universal Practices</span>
+          <h2>Sacred Sadhana Menu</h2>
+          <p>Essential practices shared across all gurus & lineages.</p>
+        </div>
+        <button class="btn-close-drawer" id="btnCloseSadhanaDrawer" aria-label="Close menu">&times;</button>
+      </div>
+
+      <!-- Quick Audio Controls in Drawer -->
+      <div class="drawer-sound-synthesizer">
+        <div class="sound-synth-info">
+          <span>🎧 432Hz Ambient Sound</span>
+          <small>Meditation & Om Drone</small>
+        </div>
+        <div class="sound-synth-actions">
+          <button class="btn-sm btn-outline-gold" id="drawerBtnOmDrone">▶ 432Hz Om</button>
+          <button class="btn-sm btn-outline-gold" id="drawerBtnSingingBowl">🔔 528Hz Bowl</button>
+        </div>
+      </div>
+
+      <div class="drawer-practices-list">
+        <!-- 1. Japa Mala & Chanting -->
+        <div class="practice-menu-item" data-action="goto-japa">
+          <div class="practice-item-icon">📿</div>
+          <div class="practice-item-content">
+            <h4>108 Japa Mala & Chanting</h4>
+            <p>Sacred digital rosary counter with tactile bead feedback & singing bowl.</p>
+            <span class="practice-badge">Chanting & Mantra</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 2. Pranayama Breathwork -->
+        <div class="practice-menu-item" data-action="goto-pranayama">
+          <div class="practice-item-icon">🌬️</div>
+          <div class="practice-item-content">
+            <h4>Pranayama & Yogic Breathwork</h4>
+            <p>4-4-4-4 Box Breathing with Antar & Bahya Kumbhaka for mental stillness.</p>
+            <span class="practice-badge">Breath Mastery</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 3. Swadhyaya Reflection Journal -->
+        <div class="practice-menu-item" data-action="goto-journal">
+          <div class="practice-item-icon">📖</div>
+          <div class="practice-item-content">
+            <h4>Swadhyaya & Daily Reflection</h4>
+            <p>Nightly contemplative diary, sadhana streak tracker & self-inquiry.</p>
+            <span class="practice-badge">Inner Inquiry</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 4. Bhakti & Kirtan -->
+        <div class="practice-menu-item" data-action="goto-kirtan">
+          <div class="practice-item-icon">🪕</div>
+          <div class="practice-item-content">
+            <h4>Bhakti & Naam Sankirtan</h4>
+            <p>Heart-opening devotional chanting, bhajans, and sacred sound vibrations.</p>
+            <span class="practice-badge">Devotional Music</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 5. Dhyana & Meditation -->
+        <div class="practice-menu-item" data-action="goto-dhyan">
+          <div class="practice-item-icon">🧘</div>
+          <div class="practice-item-content">
+            <h4>Dhyana & Silent Meditation</h4>
+            <p>Guided quietude, stillness beyond restless thoughts, and mauna contemplation.</p>
+            <span class="practice-badge">Pure Awareness</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 6. Upanishads & Vedanta -->
+        <div class="practice-menu-item" data-action="goto-vedanta">
+          <div class="practice-item-icon">📜</div>
+          <div class="practice-item-content">
+            <h4>Upanishadic Pravachan</h4>
+            <p>Bhagavad Gita, Mandukya Upanishad, and timeless Vedic self-knowledge.</p>
+            <span class="practice-badge">Vedanta Teachings</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 7. Shows & Upcoming Retreats -->
+        <div class="practice-menu-item" data-action="goto-retreats">
+          <div class="practice-item-icon">🎟️</div>
+          <div class="practice-item-content">
+            <h4>Ashram Shows & Retreats</h4>
+            <p>Rishikesh silence gatherings, Vrindavan satsang, and instant QR entry passes.</p>
+            <span class="practice-badge">Residential Gatherings</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 8. Gau Seva & Dakshina -->
+        <div class="practice-menu-item" data-action="goto-dakshina">
+          <div class="practice-item-icon">🙏</div>
+          <div class="practice-item-content">
+            <h4>Ashram Seva & Digital Dakshina</h4>
+            <p>Support sacred Gau Seva, Annadanam mahaprasad, and ashram upkeep.</p>
+            <span class="practice-badge">Sacred Contribution</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+
+        <!-- 9. Gurus Directory -->
+        <div class="practice-menu-item" data-action="goto-directory">
+          <div class="practice-item-icon">🏛️</div>
+          <div class="practice-item-content">
+            <h4>All 12 Revered Lineage Masters</h4>
+            <p>Browse all Sanskrit masters across Vedanta, Bhakti, Kriya & Meditation.</p>
+            <span class="practice-badge">Directory</span>
+          </div>
+          <span class="practice-arrow">➔</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- MAIN WRAPPER -->
   <main class="app-body">

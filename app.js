@@ -477,12 +477,10 @@ let DISCIPLES_DIRECTORY = [
 // ---------------------------------------------------------------------------
 // 3. APPLICATION INITIALIZATION & DOM BINDINGS
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// 3. APPLICATION INITIALIZATION & DOM BINDINGS
-// ---------------------------------------------------------------------------
 function bootstrapApp() {
   setupNavigation();
   setupRoleSwitcher();
+  setupSadhanaMenuDrawer();
   setupGurusDirectory();
   setupGuruStudio();
   setupAmbientAudio();
@@ -505,6 +503,153 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', bootstrapApp);
 } else {
   bootstrapApp();
+}
+
+// ---------------------------------------------------------------------------
+// UNIVERSAL SADHANA PRACTICES DRAWER / MENU CONTROLLER
+// ---------------------------------------------------------------------------
+function openSadhanaDrawer() {
+  const drawer = document.getElementById('sadhanaMenuDrawer');
+  if (!drawer) return;
+  drawer.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  history.pushState({ sadhanaDrawerOpen: true }, '', window.location.pathname + window.location.search);
+}
+
+function closeSadhanaDrawer(fromPopState = false) {
+  const drawer = document.getElementById('sadhanaMenuDrawer');
+  if (!drawer || drawer.classList.contains('hidden')) return;
+  drawer.classList.add('hidden');
+
+  const anyOpenModal = document.querySelector('.modal-overlay:not(.hidden)');
+  if (!anyOpenModal) {
+    document.body.style.overflow = '';
+  }
+
+  if (!fromPopState && history.state && history.state.sadhanaDrawerOpen) {
+    history.back();
+  }
+}
+
+function setupSadhanaMenuDrawer() {
+  const triggerBtn = document.getElementById('btnSadhanaMenuTrigger');
+  const closeBtn = document.getElementById('btnCloseSadhanaDrawer');
+  const drawer = document.getElementById('sadhanaMenuDrawer');
+  const omDroneBtn = document.getElementById('drawerBtnOmDrone');
+  const singingBowlBtn = document.getElementById('drawerBtnSingingBowl');
+
+  if (triggerBtn) {
+    triggerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openSadhanaDrawer();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeSadhanaDrawer();
+    });
+  }
+
+  if (drawer) {
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) {
+        closeSadhanaDrawer();
+      }
+    });
+  }
+
+  if (omDroneBtn) {
+    omDroneBtn.addEventListener('click', () => {
+      const isPlaying = audioApp.toggleOmDrone();
+      omDroneBtn.textContent = isPlaying ? '⏸ Pause Om' : '▶ 432Hz Om';
+      showToast(isPlaying ? '🕉️ 432Hz Cosmic Om Drone started' : '432Hz Om Drone paused');
+    });
+  }
+
+  if (singingBowlBtn) {
+    singingBowlBtn.addEventListener('click', () => {
+      audioApp.playSingingBowl();
+      showToast('🔔 528Hz Tibetan Singing Bowl struck');
+    });
+  }
+
+  // Practices Item Click Handlers
+  document.querySelectorAll('.practice-menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const action = item.getAttribute('data-action');
+      closeSadhanaDrawer();
+      audioApp.playBeadClick();
+
+      // Ensure seeker view is active
+      const seekerWrapper = document.getElementById('viewSeekerWrapper');
+      const guruWrapper = document.getElementById('viewGuruWrapper');
+      if (seekerWrapper) seekerWrapper.classList.add('active');
+      if (guruWrapper) guruWrapper.classList.remove('active');
+      const btnRoleSeeker = document.getElementById('btnRoleSeeker');
+      const btnRoleGuru = document.getElementById('btnRoleGuru');
+      if (btnRoleSeeker) btnRoleSeeker.classList.add('active');
+      if (btnRoleGuru) btnRoleGuru.classList.remove('active');
+
+      if (action === 'goto-directory') {
+        returnToGurusDirectory();
+        return;
+      }
+
+      if (action === 'goto-dakshina') {
+        openModal('dakshinaModal');
+        return;
+      }
+
+      // If on home directory, open sanctuary first so the feature view exists
+      const homeDir = document.getElementById('seekerHomeDirectory');
+      if (homeDir && homeDir.classList.contains('active')) {
+        selectGuru(currentSelectedGuru.id);
+      }
+
+      setTimeout(() => {
+        if (action === 'goto-japa') {
+          const target = document.getElementById('view-sadhana');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          const bead = document.getElementById('beadCircle');
+          if (bead) {
+            bead.classList.add('tap-anim');
+            setTimeout(() => bead.classList.remove('tap-anim'), 300);
+          }
+          showToast('📿 108 Japa Mala Counter ready. Tap bead or press Spacebar!');
+        } else if (action === 'goto-pranayama') {
+          const target = document.getElementById('view-sadhana');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          showToast('🌬️ 4-4-4-4 Pranayama Box Breathing suite ready.');
+        } else if (action === 'goto-journal') {
+          const target = document.getElementById('view-sadhana');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          const input = document.getElementById('journalInput');
+          if (input) input.focus();
+          showToast('📖 Swadhyaya Daily Contemplative Journal ready.');
+        } else if (action === 'goto-kirtan') {
+          const target = document.getElementById('view-discourses');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          triggerDiscourseTab('bhakti');
+          showToast('🪕 Bhakti & Naam Sankirtan discourses loaded.');
+        } else if (action === 'goto-dhyan') {
+          const target = document.getElementById('view-discourses');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          triggerDiscourseTab('meditation');
+          showToast('🧘 Meditation & Dhyana discourses loaded.');
+        } else if (action === 'goto-vedanta') {
+          const target = document.getElementById('view-discourses');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          triggerDiscourseTab('vedanta');
+          showToast('📜 Upanishad & Vedanta Pravachan loaded.');
+        } else if (action === 'goto-retreats') {
+          const target = document.getElementById('view-retreats');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          showToast('🎟️ Ashram Retreats & Digital Passes ready.');
+        }
+      }, 120);
+    });
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -1707,15 +1852,26 @@ function setupModals() {
     });
   });
 
-  // Global Escape Key to close any open modal
+  // Global Escape Key to close any open modal or drawer
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      const drawer = document.getElementById('sadhanaMenuDrawer');
+      if (drawer && !drawer.classList.contains('hidden')) {
+        closeSadhanaDrawer();
+        return;
+      }
       closeAllModals();
     }
   });
 
-  // Global PopState: Touchpad swipe back / browser back button closes modal or returns to Gurus Directory smoothly
+  // Global PopState: Touchpad swipe back / browser back button closes drawer/modal or returns to Gurus Directory smoothly
   window.addEventListener('popstate', (e) => {
+    const drawer = document.getElementById('sadhanaMenuDrawer');
+    if (drawer && !drawer.classList.contains('hidden')) {
+      closeSadhanaDrawer(true);
+      return;
+    }
+
     const openModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
     if (openModals.length > 0) {
       closeAllModals(true);
