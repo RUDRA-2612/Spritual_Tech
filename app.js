@@ -174,7 +174,7 @@ const GURUS_DATA = [
     title: 'Bhakti Yoga & Naada Kirtan Visionary',
     tradition: 'Bhakti & Prema Marga',
     category: 'Bhakti',
-    location: 'Vrindavan Sacred Dham',
+    location: 'Vrindavan Sacred Ashram',
     avatar: 'assets/satsang.jpg',
     discipleCount: '62,000+ Disciples',
     liveStatus: 'Akhanda Kirtan Vigil Tonight at 8:00 PM IST',
@@ -249,7 +249,7 @@ const GURUS_DATA = [
     title: 'Prema Bhakti & Akhanda Japa Guru',
     tradition: 'Bhakti & Prema Marga',
     category: 'Bhakti',
-    location: 'Ayodhya Sacred Dham',
+    location: 'Ayodhya Sacred Ashram',
     avatar: 'assets/satsang_meditation.jpg',
     discipleCount: '54,000+ Disciples',
     liveStatus: 'Divine Naam Japa Session at 7:00 PM',
@@ -297,7 +297,7 @@ const GURUS_DATA = [
     location: 'Ujjain Kshipra Sanctuary',
     avatar: 'assets/satsang.jpg',
     discipleCount: '46,000+ Disciples',
-    liveStatus: 'Heart Awakening Pravachan Tonight',
+    liveStatus: 'Heart Awakening Discourse Tonight',
     liveTopic: 'Serving the Divine in All Living Beings',
     quote: '"True spiritual vision sees no other; it beholds the Supreme smiling through every tear and every laugh."',
     retreatsCount: 2,
@@ -358,7 +358,7 @@ const RETREATS_DATA = [
     guru: 'Mata Shantikrupa Devi',
     codePrefix: 'RET-VRINDA',
     title: 'Bhakti & Prema Satsang Maha-Utsav',
-    location: '📍 Vrindavan Sacred Dham',
+    location: '📍 Vrindavan Sacred Ashram',
     dateMonth: 'DEC',
     dateDay: '05-07',
     desc: 'Immersive Naam Sankirtan, devotion philosophy discourses, and temple seva walks for spiritual transformation.',
@@ -453,24 +453,24 @@ const DISCOURSES_DATA = [
 
 // Initial Live Checked-in Roster for Ashram Gate Volunteers
 let ATTENDEE_ROSTER = [
-  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', tier: 'Standard Sadhak Pass', status: 'Booked', gate: 'Gate 1' },
+  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' },
   { id: 'RET-RISHI-8812', name: 'Ashish Jain', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
-  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', tier: 'Standard Sadhak Pass', status: 'Verified', gate: 'Gate 2' },
+  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', tier: 'Standard Seeker Pass', status: 'Verified', gate: 'Gate 2' },
   { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', tier: 'Residential Ashram Stay', status: 'Booked', gate: 'Gate 1' },
-  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', tier: 'Standard Sadhak Pass', status: 'Booked', gate: 'Gate 1' }
+  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' }
 ];
 
 // Complete Directory of Disciples & Seekers for Guru Studio
 let DISCIPLES_DIRECTORY = [
-  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', city: 'Delhi', tier: 'Standard Sadhak Pass', streak: '18 Days', status: 'Booked' },
+  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', city: 'Delhi', tier: 'Standard Seeker Pass', streak: '18 Days', status: 'Booked' },
   { id: 'RET-RISHI-8812', name: 'Ashish Jain', city: 'Varanasi', tier: 'Residential Ashram Stay', streak: '42 Days', status: 'Verified' },
-  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', city: 'Rishikesh', tier: 'Standard Sadhak Pass', streak: '12 Days', status: 'Verified' },
+  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', city: 'Rishikesh', tier: 'Standard Seeker Pass', streak: '12 Days', status: 'Verified' },
   { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', city: 'Bengaluru', tier: 'Residential Ashram Stay', streak: '30 Days', status: 'Booked' },
-  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', city: 'Pune', tier: 'Standard Sadhak Pass', streak: '9 Days', status: 'Booked' },
+  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', city: 'Pune', tier: 'Standard Seeker Pass', streak: '9 Days', status: 'Booked' },
   { id: 'RET-RISHI-5190', name: 'Vikramaditya Roy', city: 'Kolkata', tier: 'Residential Ashram Stay', streak: '65 Days', status: 'Verified' },
-  { id: 'RET-RISHI-3124', name: 'Meera Deshmukh', city: 'Mumbai', tier: 'Standard Sadhak Pass', streak: '21 Days', status: 'Booked' },
+  { id: 'RET-RISHI-3124', name: 'Meera Deshmukh', city: 'Mumbai', tier: 'Standard Seeker Pass', streak: '21 Days', status: 'Booked' },
   { id: 'RET-RISHI-2901', name: 'Gaurav Singhal', city: 'Jaipur', tier: 'Residential Ashram Stay', streak: '15 Days', status: 'Booked' },
-  { id: 'RET-RISHI-1144', name: 'Pooja Kashyap', city: 'Dehradun', tier: 'Standard Sadhak Pass', streak: '27 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1144', name: 'Pooja Kashyap', city: 'Dehradun', tier: 'Standard Seeker Pass', streak: '27 Days', status: 'Verified' },
   { id: 'RET-RISHI-9921', name: 'Swami Chaitanya', city: 'Haridwar', tier: 'Residential Ashram Stay', streak: '108 Days', status: 'Verified' }
 ];
 
@@ -641,7 +641,7 @@ function setupSadhanaMenuDrawer() {
           const target = document.getElementById('view-discourses');
           if (target) target.scrollIntoView({ behavior: 'smooth' });
           triggerDiscourseTab('vedanta');
-          showToast('📜 Upanishad & Vedanta Pravachan loaded.');
+          showToast('📜 Upanishad & Vedanta Discourse loaded.');
         } else if (action === 'goto-retreats') {
           const target = document.getElementById('view-retreats');
           if (target) target.scrollIntoView({ behavior: 'smooth' });
@@ -1590,7 +1590,7 @@ function renderDiscourses(category = 'all', filterGuru = null) {
         <div class="card-footer">
           <span class="guru-name">Vani: ${d.guru}</span>
           <button class="btn-sm btn-gold btn-play-discourse" data-id="${d.id}">
-            ▶ Listen to Pravachan
+            ▶ Listen to Discourse
           </button>
         </div>
       </div>
@@ -1701,7 +1701,7 @@ function renderUserPasses() {
         title: '3-Day Silence & Kundalini Awakening Retreat',
         location: 'Rishikesh Ashram',
         dates: 'NOV 14-16, 2026',
-        tier: 'Standard Sadhak Pass'
+        tier: 'Standard Seeker Pass'
       }
     ];
     localStorage.setItem('spritual_tech_passes', JSON.stringify(savedPasses));
@@ -1728,7 +1728,7 @@ function renderUserPasses() {
   document.querySelectorAll('.btn-view-qr-pass').forEach(btn => {
     btn.addEventListener('click', () => {
       const code = btn.getAttribute('data-code');
-      showPassQRModal(code, 'Ishvit Bhardwaj', 'Rishikesh Silence Retreat', 'Standard Sadhak Pass');
+      showPassQRModal(code, 'Ishvit Bhardwaj', 'Rishikesh Silence Retreat', 'Standard Seeker Pass');
     });
   });
 }
@@ -2143,7 +2143,7 @@ function setupModals() {
     confirmBtn.addEventListener('click', () => {
       const name = document.getElementById('seekerName')?.value || 'Ishvit Bhardwaj';
       const selectedTierBox = document.querySelector('.tier-box.selected');
-      const tierName = selectedTierBox ? selectedTierBox.getAttribute('data-name') : 'Standard Sadhak Pass';
+      const tierName = selectedTierBox ? selectedTierBox.getAttribute('data-name') : 'Standard Seeker Pass';
       const retreat = selectedRetreatForBooking;
 
       // Generate ticket ID
@@ -2177,7 +2177,7 @@ function setupModals() {
         title: document.getElementById('passRetreatName')?.textContent || 'Retreat',
         location: 'Rishikesh Ganges Ashram',
         dates: 'Upcoming',
-        tier: document.getElementById('passTierName')?.textContent || 'Standard Sadhak Pass'
+        tier: document.getElementById('passTierName')?.textContent || 'Standard Seeker Pass'
       });
       localStorage.setItem('spritual_tech_passes', JSON.stringify(savedPasses));
       renderUserPasses();
