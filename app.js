@@ -163,7 +163,7 @@ const RETREATS_DATA = [
     desc: 'Complete digital detox, mauna (sacred silence), pranayama by the Ganga, and deep guided meditation with the Guru.',
     price: 4500,
     image: 'assets/hero.jpg',
-    highlights: ['100% Ad-Free Guidance', 'Complimentary Daily Japa Mala', 'Ashram Vegetarian Mahaprasad']
+    highlights: ['Direct Guru Guidance', 'Complimentary Daily Japa Mala', 'Ashram Vegetarian Mahaprasad']
   },
   {
     id: 'retreat-2',
@@ -199,7 +199,7 @@ const DISCOURSES_DATA = [
     categoryLabel: 'Meditation & Dhyana',
     guru: 'Maharishi Anand Ji',
     duration: '42 min',
-    desc: 'A pure ad-free exploration of how the ancient rishis mastered mental agitations without commercial distractions.',
+    desc: 'A pure sacred exploration of how the ancient rishis mastered mental agitations without external distractions.',
     image: 'assets/satsang.jpg'
   },
   {
@@ -659,7 +659,7 @@ function setupGuruStudio() {
         desc: 'New residential ashram gathering published by the Guru.',
         price: price,
         image: 'assets/hero.jpg',
-        highlights: ['100% Ad-Free Guidance', 'Ashram Prasadam Included', 'Direct Guru Diksha Slot']
+        highlights: ['Direct Guru Guidance', 'Ashram Prasadam Included', 'Direct Guru Diksha Slot']
       });
 
       renderRetreats();
@@ -706,7 +706,7 @@ function setupAmbientAudio() {
 }
 
 // ---------------------------------------------------------------------------
-// AD-FREE DISCOURSES & PRAVACHAN LIBRARY
+// SACRED DISCOURSES & PRAVACHAN LIBRARY
 // ---------------------------------------------------------------------------
 function renderDiscourses(category) {
   const grid = document.getElementById('discoursesGrid');
@@ -722,7 +722,7 @@ function renderDiscourses(category) {
     card.innerHTML = `
       <div class="card-media">
         <img src="${d.image}" alt="${d.title}">
-        <span class="ad-free-tag">🛡️ 100% Ad-Free</span>
+        <span class="sacred-audio-tag">🕉️ Sacred Audio</span>
         <span class="duration-tag">${d.duration}</span>
       </div>
       <div class="card-body">
@@ -732,7 +732,7 @@ function renderDiscourses(category) {
         <div class="card-footer">
           <span class="guru-name">Vani: ${d.guru}</span>
           <button class="btn-sm btn-gold btn-play-discourse" data-id="${d.id}">
-            ▶ Listen (Ad-Free)
+            ▶ Listen to Pravachan
           </button>
         </div>
       </div>
@@ -744,7 +744,7 @@ function renderDiscourses(category) {
   document.querySelectorAll('.btn-play-discourse').forEach(btn => {
     btn.addEventListener('click', () => {
       audioApp.playSingingBowl();
-      alert('Playing discourse in Ad-Free Sanctuary Mode with background audio support.');
+      alert('Playing discourse in Sacred Sanctuary Mode with background audio support.');
     });
   });
 
