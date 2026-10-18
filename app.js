@@ -902,17 +902,26 @@ function setupGurusDirectory() {
     });
   }
 
-  // Quick feature jump tabs inside selected Guru sanctuary
+  // Quick feature jump tabs inside selected Guru sanctuary (The 5 Pillars)
   document.querySelectorAll('.feature-nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
+      
+      if (link.id === 'quickJumpDiscover') {
+        audioApp.playBeadClick();
+        returnToGurusDirectory(false);
+        return;
+      }
+
       document.querySelectorAll('.feature-nav-link').forEach(l => l.classList.remove('active'));
       link.classList.add('active');
       
       const targetHref = link.getAttribute('href');
-      const targetEl = document.querySelector(targetHref);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (targetHref) {
+        const targetEl = document.querySelector(targetHref);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
       }
 
       const text = link.textContent;
@@ -920,7 +929,7 @@ function setupGurusDirectory() {
         triggerDiscourseTab('meditation');
       } else if (text.includes('Bhakti') || text.includes('Kirtan')) {
         triggerDiscourseTab('bhakti');
-      } else if (text.includes('Upanishad') || text.includes('Pravachan') || text.includes('Vedanta')) {
+      } else if (text.includes('Upanishad') || text.includes('Pravachan') || text.includes('Vedanta') || text.includes('Spiritual')) {
         triggerDiscourseTab('vedanta');
       }
     });
@@ -956,6 +965,15 @@ function setupNavigation() {
       btn.classList.add('active');
 
       const targetId = btn.getAttribute('data-target');
+      if (targetId === 'seekerHomeDirectory') {
+        const seekerWrapper = document.getElementById('viewSeekerWrapper');
+        const guruWrapper = document.getElementById('viewGuruWrapper');
+        if (seekerWrapper) seekerWrapper.classList.add('active');
+        if (guruWrapper) guruWrapper.classList.remove('active');
+        returnToGurusDirectory(false);
+        return;
+      }
+
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
         // If in Guru Studio, switch back to seeker view
