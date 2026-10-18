@@ -237,7 +237,7 @@ const DISCOURSES_DATA = [
 // Initial Live Checked-in Roster for Ashram Gate Volunteers
 let ATTENDEE_ROSTER = [
   { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', tier: 'Standard Sadhak Pass', status: 'Booked', gate: 'Gate 1' },
-  { id: 'RET-RISHI-8812', name: 'Rudra Pratap', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
+  { id: 'RET-RISHI-8812', name: 'Ashish Jain', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
   { id: 'RET-RISHI-7749', name: 'Sunita Mehra', tier: 'Standard Sadhak Pass', status: 'Verified', gate: 'Gate 2' },
   { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', tier: 'Residential Ashram Stay', status: 'Booked', gate: 'Gate 1' },
   { id: 'RET-RISHI-4311', name: 'Ananya Joshi', tier: 'Standard Sadhak Pass', status: 'Booked', gate: 'Gate 1' }
@@ -246,7 +246,7 @@ let ATTENDEE_ROSTER = [
 // Complete Directory of Disciples & Seekers for Guru Studio
 let DISCIPLES_DIRECTORY = [
   { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', city: 'Delhi', tier: 'Standard Sadhak Pass', streak: '18 Days', status: 'Booked' },
-  { id: 'RET-RISHI-8812', name: 'Rudra Pratap', city: 'Varanasi', tier: 'Residential Ashram Stay', streak: '42 Days', status: 'Verified' },
+  { id: 'RET-RISHI-8812', name: 'Ashish Jain', city: 'Varanasi', tier: 'Residential Ashram Stay', streak: '42 Days', status: 'Verified' },
   { id: 'RET-RISHI-7749', name: 'Sunita Mehra', city: 'Rishikesh', tier: 'Standard Sadhak Pass', streak: '12 Days', status: 'Verified' },
   { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', city: 'Bengaluru', tier: 'Residential Ashram Stay', streak: '30 Days', status: 'Booked' },
   { id: 'RET-RISHI-4311', name: 'Ananya Joshi', city: 'Pune', tier: 'Standard Sadhak Pass', streak: '9 Days', status: 'Booked' },
