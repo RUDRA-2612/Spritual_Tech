@@ -453,25 +453,36 @@ const DISCOURSES_DATA = [
 
 // Initial Live Checked-in Roster for Ashram Gate Volunteers
 let ATTENDEE_ROSTER = [
-  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' },
-  { id: 'RET-RISHI-8812', name: 'Ashish Jain', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
-  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', tier: 'Standard Seeker Pass', status: 'Verified', gate: 'Gate 2' },
-  { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', tier: 'Residential Ashram Stay', status: 'Booked', gate: 'Gate 1' },
-  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' }
+  { id: 'RET-RISHI-1001', name: 'Rudra', tier: 'Standard Seeker Pass', status: 'Verified', gate: 'Gate 1' },
+  { id: 'RET-RISHI-1002', name: 'Tanishq', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
+  { id: 'RET-RISHI-9041', name: 'Ishvit', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 2' },
+  { id: 'RET-RISHI-1004', name: 'Lakshit', tier: 'Residential Ashram Stay', status: 'Booked', gate: 'Gate 1' },
+  { id: 'RET-RISHI-1005', name: 'Vaishali', tier: 'Standard Seeker Pass', status: 'Verified', gate: 'Gate 2' },
+  { id: 'RET-RISHI-1006', name: 'Hansika', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
+  { id: 'RET-RISHI-1007', name: 'Hritvika', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 2' },
+  { id: 'RET-RISHI-1008', name: 'Raghav', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 1' },
+  { id: 'RET-RISHI-1009', name: 'Garvit', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' },
+  { id: 'RET-RISHI-1010', name: 'Aditi', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 2' },
+  { id: 'RET-RISHI-1011', name: 'Tvesha', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' },
+  { id: 'RET-RISHI-1012', name: 'Aayushi', tier: 'Residential Ashram Stay', status: 'Verified', gate: 'Gate 2' },
+  { id: 'RET-RISHI-1013', name: 'Gaurav', tier: 'Standard Seeker Pass', status: 'Booked', gate: 'Gate 1' }
 ];
 
 // Complete Directory of Disciples & Seekers for Guru Studio
 let DISCIPLES_DIRECTORY = [
-  { id: 'RET-RISHI-9041', name: 'Ishvit Bhardwaj', city: 'Delhi', tier: 'Standard Seeker Pass', streak: '18 Days', status: 'Booked' },
-  { id: 'RET-RISHI-8812', name: 'Ashish Jain', city: 'Varanasi', tier: 'Residential Ashram Stay', streak: '42 Days', status: 'Verified' },
-  { id: 'RET-RISHI-7749', name: 'Sunita Mehra', city: 'Rishikesh', tier: 'Standard Seeker Pass', streak: '12 Days', status: 'Verified' },
-  { id: 'RET-RISHI-6520', name: 'Dr. Alok Verma', city: 'Bengaluru', tier: 'Residential Ashram Stay', streak: '30 Days', status: 'Booked' },
-  { id: 'RET-RISHI-4311', name: 'Ananya Joshi', city: 'Pune', tier: 'Standard Seeker Pass', streak: '9 Days', status: 'Booked' },
-  { id: 'RET-RISHI-5190', name: 'Vikramaditya Roy', city: 'Kolkata', tier: 'Residential Ashram Stay', streak: '65 Days', status: 'Verified' },
-  { id: 'RET-RISHI-3124', name: 'Meera Deshmukh', city: 'Mumbai', tier: 'Standard Seeker Pass', streak: '21 Days', status: 'Booked' },
-  { id: 'RET-RISHI-2901', name: 'Gaurav Singhal', city: 'Jaipur', tier: 'Residential Ashram Stay', streak: '15 Days', status: 'Booked' },
-  { id: 'RET-RISHI-1144', name: 'Pooja Kashyap', city: 'Dehradun', tier: 'Standard Seeker Pass', streak: '27 Days', status: 'Verified' },
-  { id: 'RET-RISHI-9921', name: 'Swami Chaitanya', city: 'Haridwar', tier: 'Residential Ashram Stay', streak: '108 Days', status: 'Verified' }
+  { id: 'RET-RISHI-1001', name: 'Rudra', city: 'Delhi', tier: 'Standard Seeker Pass', streak: '48 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1002', name: 'Tanishq', city: 'Varanasi', tier: 'Residential Ashram Stay', streak: '35 Days', status: 'Verified' },
+  { id: 'RET-RISHI-9041', name: 'Ishvit', city: 'Rishikesh', tier: 'Standard Seeker Pass', streak: '28 Days', status: 'Booked' },
+  { id: 'RET-RISHI-1004', name: 'Lakshit', city: 'Bengaluru', tier: 'Residential Ashram Stay', streak: '40 Days', status: 'Booked' },
+  { id: 'RET-RISHI-1005', name: 'Vaishali', city: 'Pune', tier: 'Standard Seeker Pass', streak: '22 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1006', name: 'Hansika', city: 'Mumbai', tier: 'Residential Ashram Stay', streak: '51 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1007', name: 'Hritvika', city: 'Jaipur', tier: 'Standard Seeker Pass', streak: '19 Days', status: 'Booked' },
+  { id: 'RET-RISHI-1008', name: 'Raghav', city: 'Kolkata', tier: 'Residential Ashram Stay', streak: '63 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1009', name: 'Garvit', city: 'Dehradun', tier: 'Standard Seeker Pass', streak: '15 Days', status: 'Booked' },
+  { id: 'RET-RISHI-1010', name: 'Aditi', city: 'Chandigarh', tier: 'Residential Ashram Stay', streak: '31 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1011', name: 'Tvesha', city: 'Ahmedabad', tier: 'Standard Seeker Pass', streak: '24 Days', status: 'Booked' },
+  { id: 'RET-RISHI-1012', name: 'Aayushi', city: 'Haridwar', tier: 'Residential Ashram Stay', streak: '72 Days', status: 'Verified' },
+  { id: 'RET-RISHI-1013', name: 'Gaurav', city: 'Hyderabad', tier: 'Standard Seeker Pass', streak: '17 Days', status: 'Booked' }
 ];
 
 // ---------------------------------------------------------------------------
