@@ -1258,6 +1258,7 @@ function renderDisciplesTable(filter = 'all', searchQuery = '') {
 function showToast(message) {
   const toast = document.createElement('div');
   toast.textContent = message;
+  toast.className = 'app-toast';
   toast.style.position = 'fixed';
   toast.style.bottom = '30px';
   toast.style.right = '30px';

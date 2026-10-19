@@ -54,11 +54,11 @@
 
       <!-- Navigation Tabs (The 5 Core Pillars) -->
       <nav class="nav-links" id="mainNav">
-        <button class="nav-btn active" data-target="seekerHomeDirectory">🔍 1. Discover Gurus</button>
-        <button class="nav-btn" data-target="view-discourses">📜 2. Spiritual Content</button>
-        <button class="nav-btn" data-target="view-retreats">🎟️ 3. Retreat Booking</button>
-        <button class="nav-btn" data-target="view-sadhana">📿 4. Daily Sadhana</button>
-        <button class="nav-btn" data-target="view-dakshina">🌸 5. Guru Connection & Seva</button>
+        <button class="nav-btn active" data-target="seekerHomeDirectory" data-short="Gurus">🔍 <span class="nav-label">1. Discover Gurus</span></button>
+        <button class="nav-btn" data-target="view-discourses" data-short="Content">📜 <span class="nav-label">2. Spiritual Content</span></button>
+        <button class="nav-btn" data-target="view-retreats" data-short="Retreats">🎟️ <span class="nav-label">3. Retreat Booking</span></button>
+        <button class="nav-btn" data-target="view-sadhana" data-short="Sadhana">📿 <span class="nav-label">4. Daily Sadhana</span></button>
+        <button class="nav-btn" data-target="view-dakshina" data-short="Seva">🌸 <span class="nav-label">5. Guru Connection & Seva</span></button>
       </nav>
 
       <!-- Top Right: Active Profile & Role Logout / Switch -->
@@ -70,8 +70,8 @@
             <strong class="user-name-display" id="headerNameDisplay">Rudra</strong>
           </div>
         </div>
-        <button class="btn btn-outline-gold btn-logout-role" id="btnLogoutRole" title="Logout or Switch between Guru and Disciple mode">
-          <span>🚪 Logout</span>
+        <button class="btn btn-outline-gold btn-logout-role" id="btnLogoutRole" aria-label="Logout" title="Logout or Switch between Guru and Disciple mode">
+          <span>🚪 <span class="logout-label">Logout</span></span>
         </button>
       </div>
     </div>
@@ -299,7 +299,7 @@
         <div class="selected-guru-topbar" id="selectedGuruTopbar">
           <div class="topbar-inner">
             <button class="btn btn-outline-gold btn-back-to-gurus" id="btnBackToGurus">
-              <span>← Back to All Gurus</span>
+              <span>← Back<span class="back-label"> to All Gurus</span></span>
             </button>
             <div class="active-guru-meta">
               <span class="guru-avatar-mini" id="miniGuruAvatar">🕉️</span>

@@ -530,7 +530,7 @@ h1, h2, h3, h4 {
 /* Gurus Cards Grid */
 .gurus-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -971,7 +971,7 @@ h1, h2, h3, h4 {
    ========================================================================== */
 .discourses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
   gap: 28px;
   margin-bottom: 36px;
 }
@@ -1112,7 +1112,7 @@ h1, h2, h3, h4 {
    ========================================================================== */
 .retreats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
   gap: 32px;
   margin-bottom: 48px;
 }
@@ -1255,7 +1255,7 @@ h1, h2, h3, h4 {
 
 .passes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 16px;
 }
 
@@ -1640,7 +1640,7 @@ h1, h2, h3, h4 {
    ========================================================================== */
 .seva-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 28px;
 }
 
@@ -1743,7 +1743,7 @@ h1, h2, h3, h4 {
 /* Metrics Row */
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 20px;
   margin-bottom: 28px;
 }
@@ -2016,7 +2016,7 @@ h1, h2, h3, h4 {
 
 .capacity-breakdown-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 16px;
   margin-bottom: 28px;
 }
@@ -2050,7 +2050,7 @@ h1, h2, h3, h4 {
 
 .mini-retreats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 20px;
 }
 
@@ -3014,7 +3014,7 @@ h1, h2, h3, h4 {
 /* Gurus Cards Grid: Compact, multi-column layout (3-4 columns on desktop) */
 .gurus-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 20px;
   margin-top: 20px;
 }
@@ -3690,7 +3690,7 @@ h1, h2, h3, h4 {
 
 .content-popularity-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 16px;
   margin-top: 16px;
 }
@@ -3937,7 +3937,7 @@ h1, h2, h3, h4 {
 /* Traffic Channels 3-Card Grid */
 .traffic-channels-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 18px;
 }
 
@@ -4073,7 +4073,7 @@ h1, h2, h3, h4 {
 /* Multi-Gathering Summary Row */
 .retreats-summary-cards-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -4132,7 +4132,7 @@ h1, h2, h3, h4 {
 /* Demographics Grid */
 .demographics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 20px;
   margin-top: 16px;
 }
@@ -4581,7 +4581,7 @@ h1, h2, h3, h4 {
 /* Subscription Plans 3-Col Grid */
 .guru-plans-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 20px;
   margin-bottom: 24px;
 }
@@ -4949,3 +4949,106 @@ h1, h2, h3, h4 {
 
 
 
+
+/* Tablet: header can't fit brand + 5 pillars + profile on one row */
+@media (max-width: 1180px) {
+  .header-container { flex-wrap: wrap; }
+  .nav-links { order: 3; width: 100%; justify-content: center; }
+}
+
+/* ==========================================================================
+   MOBILE DECLUTTER (≤768px): one-row header, bottom tab bar, compact content
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Ambient audio bar: one slim line, device volume replaces the slider */
+  .ambient-bar { padding: 6px 16px; font-size: 0.78rem; gap: 10px; }
+  .ambient-info { min-width: 0; }
+  .ambient-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ambient-controls input[type="range"] { display: none; }
+  .btn-icon { width: 28px; height: 28px; flex-shrink: 0; }
+
+  /* Header: single row (menu, brand, avatar, logout). backdrop-filter would
+     trap the fixed bottom nav inside the header, so drop it here. */
+  .main-header { backdrop-filter: none; background: rgba(11, 6, 3, 0.97); }
+  .header-container { flex-direction: row; align-items: center; padding: 10px 16px; gap: 10px; }
+  .header-left-wrap { gap: 10px; min-width: 0; }
+  .btn-sadhana-menu-trigger { padding: 11px 10px; }
+  .menu-label-text, .logo-sub, .user-meta-text, .logout-label, .back-label { display: none; }
+  .logo-symbol { width: 36px; height: 36px; font-size: 1.1rem; }
+  .logo-title { font-size: 1rem; }
+  .header-actions { gap: 8px; }
+  .user-role-badge { padding: 3px; }
+  .btn-logout-role { padding: 7px 11px; }
+
+  /* Five pillars → fixed bottom tab bar */
+  .nav-links {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    justify-content: space-around; gap: 2px;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    border-radius: 0; border: 0; border-top: 1px solid var(--border-subtle);
+    background: rgba(11, 6, 3, 0.97);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+  }
+  .nav-btn {
+    flex: 1; min-width: 0;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 6px 2px; font-size: 1.15rem; line-height: 1;
+    border: 1px solid transparent; border-radius: var(--radius-md);
+  }
+  .nav-btn .nav-label { display: none; }
+  .nav-btn::after { content: attr(data-short); font-size: 0.66rem; font-weight: 600; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  .app-toast {
+    left: 16px !important; right: 16px !important; text-align: center;
+    bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Heroes & section headers: smaller type, drop long blurbs */
+  .gurus-directory-hero { min-height: 0; padding: 36px 16px 28px; }
+  .hero-content { min-width: 0; width: 100%; }
+  .sanctuary-hero { min-height: 0; padding: 36px 16px; }
+  .hero-heading { font-size: 1.75rem; margin-bottom: 14px; }
+  .sacred-tag { font-size: 0.66rem; padding: 5px 12px; margin-bottom: 14px; }
+  .hero-description, .section-subtitle, .japa-hint, .studio-sub, .metric-change, .click-hint { display: none; }
+  .guru-quote-box { font-size: 0.95rem; margin: 10px auto 18px; }
+  .hero-cta-group { margin-bottom: 22px; gap: 10px; }
+  .hero-cta-group .btn { width: 100%; justify-content: center; }
+  .live-satsang-pill { flex-wrap: wrap; justify-content: center; text-align: center; border-radius: var(--radius-lg); padding: 12px 14px; gap: 10px; }
+  .directory-search-bar { margin: 0 auto 14px; }
+  .section-container { padding: 40px 16px; }
+  .section-header { margin-bottom: 22px; }
+  .section-title { font-size: 1.4rem; }
+
+  /* Chip rows scroll sideways instead of wrapping into tall stacks */
+  .guru-category-pills, .filter-tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin-bottom: 22px; }
+  .guru-filter-pill, .tab-chip { flex-shrink: 0; white-space: nowrap; }
+
+  /* Guru sanctuary: the bottom bar replaces the duplicate pillar strip */
+  .guru-features-nav-bar, .active-guru-meta { display: none; }
+  .selected-guru-topbar { position: static; padding: 10px 16px; }
+  .topbar-inner { flex-wrap: nowrap; }
+
+  /* Modals */
+  .modal-overlay { padding: 12px; }
+  .modal-card, .role-gate-card { padding: 24px 18px !important; }
+  .payment-modal-card { width: 100%; padding: 20px 16px; max-height: 92vh; overflow-y: auto; }
+  .role-selection-card { padding: 18px 16px; }
+  .role-card-icon { width: 52px; height: 52px; font-size: 2rem; margin-bottom: 8px; }
+
+  /* Guru Studio */
+  .guru-studio-container { padding: 24px 16px 40px; }
+  .studio-topbar { gap: 14px; margin-bottom: 20px; }
+  .studio-title { font-size: 1.45rem; }
+  .studio-quick-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .studio-quick-actions .btn { justify-content: center; font-size: 0.8rem; padding-left: 10px; padding-right: 10px; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .metric-card { padding: 14px; }
+  .metric-card-header { margin-bottom: 6px; }
+  .metric-value { font-size: 1.15rem; }
+  .studio-subnav-tabs { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .studio-tab-btn { flex: 0 0 auto; padding: 8px 12px; }
+  .studio-tab-btn small { display: none; }
+  .studio-card { padding: 18px 16px; }
+  .views-bar-chart { gap: 6px; padding: 10px 0 0; }
+  .bar-col { min-width: 0; }
+}
