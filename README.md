@@ -1,4 +1,4 @@
-# 🕉️ Spritual Tech
+# 🕉️ SADHANA
 
 > **Digital Sanctuary & Operating System for Gurus, Ashrams & Disciples**
 
@@ -10,7 +10,7 @@
 
 ## 📖 Overview
 
-**Spritual Tech** bridges ancient Vedic wisdom with modern digital infrastructure. It offers a dual-experience architecture tailored for both **Spiritual Seekers (Disciples)** and **Revered Masters (Gurus & Ashram Administrators)**.
+**SADHANA** bridges ancient Vedic wisdom with modern digital infrastructure. It offers a dual-experience architecture tailored for both **Spiritual Seekers (Disciples)** and **Revered Masters (Gurus & Ashram Administrators)**.
 
 The entire interface is built with a bespoke dark-glassmorphism aesthetic, rich saffron/gold sacred palettes, Web Audio API sacred instruments (singing bowl, temple bell, japa beads), and zero external heavyweight dependencies.
 
@@ -117,4 +117,4 @@ http://localhost:3000/
 
 ## 📜 License & Copyright
 
-© 2026 **Spritual Tech**. Consecrated for sacred knowledge sharing, spiritual seekers, and ashram advancement.
+© 2026 **SADHANA**. Consecrated for sacred knowledge sharing, spiritual seekers, and ashram advancement.

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * SPRITUAL TECH — ASHRAM OPERATING SYSTEM & DIGITAL SANCTUARY
+ * SADHANA — ASHRAM OPERATING SYSTEM & DIGITAL SANCTUARY
  * Modern Vedic Spiritual Ecosystem
  * ============================================================================
  */
